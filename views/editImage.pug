@@ -1,0 +1,12 @@
+extends layouts/main.pug
+
+block content
+    .form-container
+        form(action=routes.editImage(image._id), method='post')
+            input(type='text', value=image.title, name='title')
+            textarea(name='description')=image.description
+            input(type='submit', value='Update')
+    .delete-video
+        a(href=routes.deleteImage(image._id))
+            button Delete Video
+

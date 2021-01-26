@@ -1,0 +1,84 @@
+.titlebar {
+  display: inline-flex;
+  font-size: 40px;
+  margin: 40px 40px 40px 40px;
+}
+
+/* input 관련 */
+
+.input__text {
+  height: 20px;
+  font-size: 15px;
+  border-radius: 7px;
+  border: 1px solid rgba(140, 19, 229, 0.5);
+  margin-bottom: 1%;
+  display: block;
+  width: 35%;
+}
+
+.input__file{
+    display: block;
+    width: 35%;
+    margin-bottom: 5%;
+
+}
+
+/* button 관련 */
+
+.submit__btn {
+    background-color: rgba(140, 19, 229, 0.55);
+    border: 0px;
+    border-radius: 7px;
+    color: white;
+    width: 35%;
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+  
+.button__profile {
+    margin: 0px 0px 0px 0px;
+    display: inline;
+    background: none;
+    border: 0px;
+}
+
+/* grid 관련 */
+
+.grid__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 5vh 5vh 5vh 5vh;
+  column-gap: 30px;
+}
+
+.grid__item{
+  color:rgba(255, 255, 255, 0)
+}
+
+.grid__image {
+  background-color: rgba(140, 19, 229, 0.55);
+  height: 20vh;
+  border: 1px solid rgba(140, 19, 229, 0.3);
+  border-radius: 1vh;
+}
+
+/* .grid__likes,
+.grid__share {
+  position: relative;
+  bottom: 5vh;
+  background:rgba(255, 255, 255, 0);
+  border: 0px;
+  color:rgba(255, 255, 255, 0)
+} */
+
+/* .grid__likes:hover,
+.grid__share:hover {
+  background:rgba(255, 255, 255, 0);
+  border: 0px;
+  color:rgba(255, 255, 255, 1)
+} */
+
+/* .grid__item:hover {
+  color:rgba(255, 255, 255, 1);
+  background:rgba(140, 19, 229, 0.1)
+} */

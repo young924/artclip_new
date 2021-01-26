@@ -1,0 +1,9 @@
+mixin imageBlock(image = {})
+    .imageBlock
+        .imageBlock__title
+            h1=image.title
+        .imageBlock__image
+            a(href=routes.imageDetail(image._id))
+                img(src=image.fileUrl)
+        .imageBlock__description
+            p=image.description

@@ -1,0 +1,21 @@
+.login__main {
+  font-size: 35px;
+}
+
+.login__main__form {
+  position: relative;
+  left: 50%;
+  font-size: 20px;
+  outline-style: none;
+  width: 50%;
+}
+
+.login_form__find {
+  font-size: 5px;
+  margin-bottom: 1%;
+}
+
+.login__already {
+  font-size: 5px;
+  margin-bottom: 1%;
+}

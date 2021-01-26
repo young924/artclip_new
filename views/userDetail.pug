@@ -1,0 +1,31 @@
+extends layouts/main.pug
+
+block content
+    .user__detail__profile
+        .user__detail__profile__info
+            //유저db 완성되면
+            .user__detail__profile__info__profile 작가사진
+            .user__detail__profile__info__name 작가이름
+            .user__detail__profile__info__career Exterior designer <br> Web UX/UI designer <br> Art direction
+            .user__detail__profile__info__follower 팔로워 XX명
+            .user__detail__profile__info__following 팔로잉 XX명
+            button(class = "button__profile") 메세지
+            button(class="button__profile") 팔로우+
+        .user__detail__profile__picture
+            //대표사진 불러오기
+        if !user.isAuthenticated
+            .user__detail__profile__picture__edit
+                a(href="/users/:id/edit") 프로필 편집
+    .user__detail__local__navbar
+        .user__detail__local__navbar__clip 클립
+        .user__detail__local__navbar__goods 굿즈
+        .user__detail__local__navbar__likes 좋아요
+        .user__detail__local__navbar__repository 보관함
+        .user__detail__local__navbar__profile 프로필
+    .grid__container
+        .grid__item
+            //유저데이터베이스에서 사진 가져오기
+            .grid__image 
+            .grid__title 제목
+            .grid__share 공유하기
+            .grid__likes 좋아요

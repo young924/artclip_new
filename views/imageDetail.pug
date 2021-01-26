@@ -1,0 +1,24 @@
+extends layouts/main.pug
+
+block content
+    .image__detail
+        .image__detail__title
+            h3=image.title
+        .image__detail__image
+            img(src=`/${image.fileUrl}`)
+        .image__detail__description
+            p=image.description
+        .image__detail__createdAt
+            time(datetime=image.createdAt)
+        .image__detail__likes
+            p 좋아요: #{image.likes}
+        .image__detail__dislikes
+            p 싫어요: #{image.dislikes}
+        .image__detail__views
+            p 조회수: #{image.views}
+        .image__detail__tags
+            for tag in image.tag
+                span.image__detail__tags__tag=tag
+        .image__detail__edit
+            a(href=routes.editImage(image._id))
+                p edit

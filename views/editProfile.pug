@@ -1,0 +1,21 @@
+extends layouts/main.pug
+
+block content
+    .editprofile__form
+        form(action=`/users${routes.editProfile}`, method='post')
+            label(for='avatar') Avatar
+            input(type='file', id='avatar', name='avatar', class = "input__file")
+            input(type='text', placeholder='Name', name='name', class = "input__text")
+            input(type='text', placeholder='Description', name='description', class = "input__text")
+            input(type='submit', value='Update Profile', class = "submit__btn")
+
+
+    //- .editprofile__name
+    //-     .editprofile__name__name 이름
+    //-     .editprofile__name__input
+    //-         input(type="text")
+    //- .editprofile__description
+    //-     .editprofile__description__description 소개
+    //-     .editprofile__description__input
+    //-         //default: 기존의 자기소개
+    //-         input(type="text")

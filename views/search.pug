@@ -1,0 +1,9 @@
+extends layouts/main.pug
+include mixins/imageBlock
+
+block content
+    .titlebar
+        h3 Searching for: #{searchingBy}
+    .search__images
+        each image in images
+            +imageBlock(image)

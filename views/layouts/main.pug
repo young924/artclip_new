@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        style
+            include ../../stylesheets/css/components/global.css
+            include ../../stylesheets/css/reset.css
+            include ../../stylesheets/css/partials/header.css
+            include ../../stylesheets/css/pages/home.css
+            include ../../stylesheets/css/pages/join.css
+            include ../../stylesheets/css/pages/login.css
+            include ../../stylesheets/css/pages/userDetail.css
+            include ../../stylesheets/css/pages/editProfile.css
+            include ../../stylesheets/css/pages/search.css
+            include ../../stylesheets/css/mixin/imageBlock.css
+        title #{pageTitle} | #{siteName}
+    body
+        header
+            include ../partials/header
+            //include ../partials/navbar
+        main
+            block content
+        footer
+            include ../partials/footer
+        script(src='/js/grid.js')

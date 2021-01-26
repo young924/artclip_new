@@ -1,0 +1,22 @@
+.navbar {
+  margin: 0 30px;
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  border-bottom: var(--main-border);
+}
+
+.navbar__home {
+  position: relative;
+}
+
+.navbar__showcase {
+  position: relative;
+}
+
+.navbar__feed {
+  position: relative;
+}

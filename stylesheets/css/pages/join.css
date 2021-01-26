@@ -1,0 +1,55 @@
+.join__main {
+  font-size: 35px;
+  width: auto;
+}
+
+.join__main__form {
+  position: relative;
+  left: 50%;
+  font-size: 20px;
+  outline-style: none;
+  width: 50%;
+}
+
+.join__form__ID__email {
+  width: 13%;
+}
+.join__form__ID__input,
+.join__form__password__input,
+.join__form__confirm__input {
+  height: 20px;
+  border: 0px;
+  font-size: 15px;
+  border-radius: 7px;
+  border: 1px solid rgba(140, 19, 229, 0.5);
+  margin-bottom: 1%;
+  display: block
+}
+
+.join__form__password__input,
+.join__form__confirm__input {
+  width: 35%;
+}
+
+.join__form__ID__email {
+  height: 24px;
+  font-size: 15px;
+  border: 1px solid rgba(140, 19, 229, 0.5);
+  border-radius: 7px;
+}
+
+.join__form__guideline,
+.join__already {
+  font-size: 5px;
+  margin-bottom: 1%;
+}
+
+.join__form__submit {
+  background-color: rgba(140, 19, 229, 0.8);
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  width: 35%;
+  font-size: 20px;
+  margin-bottom: 1%;
+}
