@@ -6,14 +6,3 @@
   position: absolute;
   right: 0;
 }
-
-.main__feed__grid {
-  display: grid;
-  margin: 30px 30px 30px 30px;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 30px;
-}
-
-.main__feed__mosaic__card {
-  margin: 20px 20px 20px 20px;
-}

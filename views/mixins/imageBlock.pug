@@ -2,9 +2,8 @@ mixin imageBlock(image = {})
     .imageBlock
         a(href=routes.imageDetail(image._id))
             img(src=image.fileUrl)
-            .imageBlock__info__title__hidden
+            .imageBlock__info
                 h1=image.title
-            .imageBlock__info__buttons__hidden
                 a.btn(href='#')
                     i.far.fa-heart(style='color:white')
                 a.btn(href='#')
