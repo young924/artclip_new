@@ -7,39 +7,5 @@ block content
         .main__feed__more
                 a(href="#") 더보기>
         .grid__container
-            .grid__item
-                .grid__image
-                .grid__item__buttons__hidden
-                    button 좋아요
-                    button 공유하기
-                .grid__item__info__hidden 작가사진
-                    
-                //- each item in images
-                //-     +imageBlock({
-                //-         id: item.id,
-                //-         title: item.title,
-                //-         description: item.description
-                //-         })
-                        //- .main__feed__mosaic__card__img 작품이미지
-                        //- .main__feed__mosaic__card__follow 
-                        //-     button 팔로우 +
-                        //- .main__feed__daily__mosaic__card__share 
-                        //-     button 공유하기
-                        //- .main__feed__mosaic__card__profile 작가프로필
-                        //- .main__feed__mosaic__card__title 작품이름
-                        //- .main__feed__mosaic__card__likes 좋아요수
-                        //- .main__feed__mosaic__card__more ...
-    // 새로 들어온 내용
-        //- .main__feed__mosaic
-        //-     .main__feed__mosaic__card
-        //-         each image in images
-        //-             +imageBlock(image)
-        //-         .main__feed__mosaic__card__img 작품이미지
-        //-         .main__feed__mosaic__card__follow 
-        //-             button 팔로우 +
-        //-         .main__feed__daily__mosaic__card__share 
-        //-             button 공유하기
-        //-         .main__feed__mosaic__card__profile 작가프로필
-        //-         .main__feed__mosaic__card__title 작품이름
-        //-         .main__feed__mosaic__card__likes 좋아요수
-        //-         .main__feed__mosaic__card__more ...
+            each image in images
+                +imageBlock(image)

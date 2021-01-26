@@ -1,9 +1,11 @@
 mixin imageBlock(image = {})
     .imageBlock
-        .imageBlock__title
-            h1=image.title
-        .imageBlock__image
-            a(href=routes.imageDetail(image._id))
-                img(src=image.fileUrl)
-        .imageBlock__description
-            p=image.description
+        a(href=routes.imageDetail(image._id))
+            img(src=image.fileUrl)
+            .imageBlock__info__title__hidden
+                h1=image.title
+            .imageBlock__info__buttons__hidden
+                a.btn(href='#')
+                    i.far.fa-heart(style='color:white')
+                a.btn(href='#')
+                    i.far.fa-share-square(style='color:white')

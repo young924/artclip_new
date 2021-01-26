@@ -1,3 +1,30 @@
-.imageBlock{
-    display: flex;
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.imageBlock__info__title__hidden,
+.imageBlock__info__buttons__hidden {
+  position: relative;
+  top: -5vw;
+  opacity: 0;
+}
+
+.imageBlock__info__title__hidden {
+  position: relative;
+  font-size: 20px;
+}
+
+.imageBlock__info__buttons__hidden {
+  position: relative;
+  font-size: 20px;
+  right: 0;
+  display: flex;
+}
+
+.imageBlock__info__title__hidden:hover,
+.imageBlock__info__buttons__hidden:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 1);
 }

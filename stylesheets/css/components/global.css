@@ -1,3 +1,8 @@
+/* variables */
+:root {
+  --main--color: rgba(140, 19, 229, 0.5);
+}
+
 .titlebar {
   display: inline-flex;
   font-size: 40px;
@@ -16,69 +21,68 @@
   width: 35%;
 }
 
-.input__file{
-    display: block;
-    width: 35%;
-    margin-bottom: 5%;
-
+.input__file {
+  display: block;
+  width: 35%;
+  margin-bottom: 5%;
 }
 
 /* button 관련 */
 
 .submit__btn {
-    background-color: rgba(140, 19, 229, 0.55);
-    border: 0px;
-    border-radius: 7px;
-    color: white;
-    width: 35%;
-    font-size: 20px;
-    margin-bottom: 1%;
+  background-color: rgba(140, 19, 229, 0.55);
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  width: 35%;
+  font-size: 20px;
+  margin-bottom: 1%;
 }
-  
+
 .button__profile {
-    margin: 0px 0px 0px 0px;
-    display: inline;
-    background: none;
-    border: 0px;
+  margin: 0px 0px 0px 0px;
+  display: inline;
+  background: none;
+  border: 0px;
 }
 
 /* grid 관련 */
 
 .grid__container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  grid-auto-rows: 1fr;
   margin: 5vh 5vh 5vh 5vh;
-  column-gap: 30px;
+  column-gap: 2vh;
+  row-gap: 2vh; */
+
+  /* // The content width you use on your website */
+  --content-width: 30vw;
+
+  /* // The size of the gutter */
+  --gutter: 5vw;
+
+  /* // The amount of columns */
+  --columns: 1;
+
+  /* // This is the calculation for the row height. */
+  --row-size: calc(
+    (var(--content-width) - (var(--gutter) * (var(--columns) - 1))) /
+      var(--columns)
+  );
+
+  width: 100%;
+  max-width: var(--content-width);
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-auto-rows: var(--row-size);
+
+  grid-column-gap: var(--gutter);
+  grid-row-gap: var(--gutter);
+
+  margin: 5vh 5vh 5vh 5vh;
 }
 
-.grid__item{
-  color:rgba(255, 255, 255, 0)
+.grid__item {
+  color: rgba(255, 255, 255, 0);
 }
-
-.grid__image {
-  background-color: rgba(140, 19, 229, 0.55);
-  height: 20vh;
-  border: 1px solid rgba(140, 19, 229, 0.3);
-  border-radius: 1vh;
-}
-
-/* .grid__likes,
-.grid__share {
-  position: relative;
-  bottom: 5vh;
-  background:rgba(255, 255, 255, 0);
-  border: 0px;
-  color:rgba(255, 255, 255, 0)
-} */
-
-/* .grid__likes:hover,
-.grid__share:hover {
-  background:rgba(255, 255, 255, 0);
-  border: 0px;
-  color:rgba(255, 255, 255, 1)
-} */
-
-/* .grid__item:hover {
-  color:rgba(255, 255, 255, 1);
-  background:rgba(140, 19, 229, 0.1)
-} */

@@ -1,0 +1,33 @@
+.image__detail__title {
+  font-size: 2vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.image__detail__tags {
+  font-size: 1vw;
+}
+.image__detail__image {
+  text-align: center;
+  border: 0.1vw solid var(--main--color);
+  border-radius: 0.5vw;
+}
+
+.image__detail__social {
+  font-size: 1vw;
+  display: flex;
+}
+
+.image__detail__social__likes,
+.image__detail__social__dislikes,
+.image__detail__social__views {
+  padding-top: 1vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+}
+
+.image__detail__description {
+  text-align: center;
+}
