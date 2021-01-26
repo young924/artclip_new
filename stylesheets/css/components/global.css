@@ -50,37 +50,13 @@
 
 .grid__container {
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr);
   margin: 5vh 5vh 5vh 5vh;
   column-gap: 2vh;
-  row-gap: 2vh; */
-
-  /* // The content width you use on your website */
-  --content-width: 30vw;
-
-  /* // The size of the gutter */
-  --gutter: 5vw;
-
-  /* // The amount of columns */
-  --columns: 1;
-
-  /* // This is the calculation for the row height. */
-  --row-size: calc(
-    (var(--content-width) - (var(--gutter) * (var(--columns) - 1))) /
-      var(--columns)
-  );
-
-  width: 100%;
-  max-width: var(--content-width);
-
-  grid-template-columns: repeat(var(--columns), 1fr);
-  grid-auto-rows: var(--row-size);
-
-  grid-column-gap: var(--gutter);
-  grid-row-gap: var(--gutter);
-
+  row-gap: 2vh;
+  text-align: center;
   margin: 5vh 5vh 5vh 5vh;
+  border-radius: 1vh;
 }
 
 .grid__item {

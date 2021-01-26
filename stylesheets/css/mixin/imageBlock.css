@@ -1,30 +1,27 @@
+.imageBlock {
+  vertical-align: middle;
+}
+
 img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  border-radius: 1vh;
 }
 
-.imageBlock__info__title__hidden,
-.imageBlock__info__buttons__hidden {
+.imageBlock__info {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
   position: relative;
-  top: -5vw;
   opacity: 0;
-}
-
-.imageBlock__info__title__hidden {
-  position: relative;
-  font-size: 20px;
-}
-
-.imageBlock__info__buttons__hidden {
-  position: relative;
-  font-size: 20px;
-  right: 0;
   display: flex;
+  top: -3vw;
+  height: 3vw;
+  border-radius: 1vh;
 }
 
-.imageBlock__info__title__hidden:hover,
-.imageBlock__info__buttons__hidden:hover {
+.imageBlock__info:hover {
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 1);
+  position: relative;
+  text-align: left;
+  font-size: 20px;
 }
