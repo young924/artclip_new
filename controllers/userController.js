@@ -40,7 +40,7 @@ const postLogin = passport.authenticate('local', {
 });
 
 const logout = (req, res) => {
-  // TODO : Process Log Out
+  req.logout();
   res.redirect(routes.home);
 }
 
