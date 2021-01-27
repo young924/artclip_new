@@ -39,6 +39,23 @@ const postLogin = passport.authenticate('local', {
   failureRedirect: '/login',
 });
 
+// social login
+
+const kakaoLogin = passport.authenticate('kakao');
+const kakaoLoginCallback = passport.authenticate('kakao', {
+  failureRedirect: routes.home,
+});
+
+const naverLogin = passport.authenticate('naver');
+const naverLoginCallback = passport.authenticate('naver', {
+  failureRedirect: routes.home,
+})
+
+const facebookLogin = passport.authenticate('facebook');
+const facebookLoginCallback = passport.authenticate('facebook', {
+  failureRedirect: routes.home,
+})
+
 const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
@@ -57,6 +74,12 @@ module.exports = {
   postJoin,
   getLogin,
   postLogin,
+  kakaoLogin,
+  kakaoLoginCallback,
+  naverLogin,
+  naverLoginCallback,
+  facebookLogin,
+  facebookLoginCallback,
   logout,
   showcase,
   userDetail,

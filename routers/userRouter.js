@@ -1,6 +1,8 @@
 const express = require('express');
 const {
-    userDetail, editProfile, editInfo
+    userDetail,
+    editProfile,
+    editInfo,
 } = require('../controllers/userController');
 const { onlyPrivate } = require('../middlewares');
 const routes = require('../routes');
