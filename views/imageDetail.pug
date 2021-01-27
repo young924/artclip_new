@@ -8,19 +8,18 @@ block content
                 for tag in image.tag
                     a.image__detail__tags__tag=tag 
                     //테그 클릭하면 검색할 수 있게
-        .image__detail__image
-            img(src=`/${image.fileUrl}`)
-        .image__detail__social
-            .image__detail__social__likes    
-                i.far.fa-heart(style='color: var(--main--color)') : #{image.likes}
-            //- .image__detail__social__dislikes
-            //-     p 싫어요: #{image.dislikes}
-            .image__detail__social__views
-                i.fas.fa-eye(style='color: var(--main--color)') : #{image.views}
-        .image__detail__description
-            p=image.description
-        .image__detail__createdAt
-            time(datetime=image.createdAt)
+        .image__detail__container
+            .image__detail__image
+                img(src=`/${image.fileUrl}`)
+            .image__detail__social
+                .image__detail__social__likes    
+                    i.far.fa-heart(style='color: var(--main--color)') : #{image.likes}
+                .image__detail__social__views
+                    i.fas.fa-eye(style='color: var(--main--color)') : #{image.views}
+            .image__detail__description
+                p=image.description
+            .image__detail__createdAt
+                time(datetime=image.createdAt)
         .image__detail__edit
             a(href=routes.editImage(image._id))
                 p edit

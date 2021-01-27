@@ -7,15 +7,23 @@
 }
 
 .image__detail__tags {
+  padding-top: 1vw;
   font-size: 1vw;
 }
-.image__detail__image {
+.image__detail__container {
+  margin-left: 15%;
+  margin-right: 15%;
   text-align: center;
+  border-radius: 0.5vw;
+}
+.image__detail__image {
   border: 0.1vw solid var(--main--color);
   border-radius: 0.5vw;
 }
 
 .image__detail__social {
+  /* border-left: 0.1vw solid var(--main--color);
+  border-right: 0.1vw solid var(--main--color); */
   font-size: 1vw;
   display: flex;
 }
@@ -29,5 +37,10 @@
 }
 
 .image__detail__description {
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   text-align: left;
+  border-top: 0.1vw solid #707070;
+  border-bottom: 0.1vw solid #707070;
+  /* border-radius: 0.5vw; */
 }

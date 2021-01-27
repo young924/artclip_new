@@ -1,5 +1,6 @@
 .imageBlock {
   vertical-align: middle;
+  color: rgba(0, 0, 0, 1);
 }
 
 img {
@@ -8,20 +9,27 @@ img {
   border-radius: 1vh;
 }
 
-.imageBlock__info {
+img:hover {
+  opacity: 0.5;
+  color: rgba(255, 255, 255, 1);
+}
+.imageBlock:hover {
   background-color: rgba(0, 0, 0, 0.3);
-  color: white;
+  color: rgba(255, 255, 255, 1);
+}
+
+.imageBlock__info {
+  text-align: left;
   position: relative;
   opacity: 0;
-  display: flex;
   top: -3vw;
   height: 3vw;
   border-radius: 1vh;
+  display: inline;
 }
 
 .imageBlock__info:hover {
   opacity: 1;
   position: relative;
-  text-align: left;
   font-size: 20px;
 }
