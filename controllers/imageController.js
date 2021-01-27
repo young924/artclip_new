@@ -65,8 +65,8 @@ const getEditImage = async (req, res) => {
       user: { _id: userId },
     } = req;
     const image = await Image.findById(id);
-    if(image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
-    res.render('editImage', { pageTitle: 'Edit Image', image })
+    if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    else res.render('editImage', { pageTitle: 'Edit Image', image });
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
