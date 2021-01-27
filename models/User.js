@@ -15,6 +15,15 @@ const UserSchema = new mongoose.Schema({
         type: String,
         // default: default photo
     },
+    career: [String],
+    follower: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }],
+    following: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }],
     kakaoID: Number,
     naverID: Number,
     googleID: Number,

@@ -10,9 +10,11 @@ const SHOWCASE = '/showcase';
 // Users
 
 const USERS = '/users';
-const USER_DETAIL = '/:id'; // 프로필
-const EDIT_PROFILE = '/:id/edit'; // 내 프로필 편집
-const EDIT_INFO = '/:id/info';  // personal(=account) info
+const USER_DETAIL = '/:name'; // 프로필
+const EDIT_PROFILE = '/:name/edit'; // 내 프로필 편집
+const EDIT_INFO = '/:name/info';  // personal(=account) info
+const FOLLOW = '/:name/follow';
+const UNFOLLOW = '/:name/unfollow';
 
 // Images
 
@@ -38,15 +40,41 @@ const routes = {
   search: SEARCH,
   showcase: SHOWCASE,
   users: USERS,
-  userDetail: id => {
-    if (id) {
-      return `/users/${id}`;
+  userDetail: name => {
+    if (name) {
+      return `/users/${name}`;
     } else {
       return USER_DETAIL;
     }
   },
-  editProfile: EDIT_PROFILE,
-  editInfo: EDIT_INFO,
+  editProfile: name => {
+    if (name) {
+      return `/users/${name}/edit`;
+    } else {
+      return EDIT_PROFILE;
+    }
+  },
+  editInfo: name => {
+    if (name) {
+      return `/users/${name}/edit`;
+    } else {
+      return EDIT_INFO;
+    }
+  },
+  follow: name => {
+    if (name) {
+      return `/users/${name}/follow`;
+    } else {
+      return FOLLOW;
+    }
+  },
+  unfollow: name => {
+    if (name) {
+      return `/users/${name}/unfollow`;
+    } else {
+      return UNFOLLOW;
+    }
+  },
   images: IMAGES,
   upload: UPLOAD,
   imageDetail: id => {

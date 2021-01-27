@@ -1,31 +1,49 @@
 extends layouts/main.pug
 
 block content
-    .user__detail__profile
-        .user__detail__profile__info
-            //유저db 완성되면
-            .user__detail__profile__info__profile 작가사진
-            .user__detail__profile__info__name 작가이름
-            .user__detail__profile__info__career Exterior designer <br> Web UX/UI designer <br> Art direction
-            .user__detail__profile__info__follower 팔로워 XX명
-            .user__detail__profile__info__following 팔로잉 XX명
-            button(class = "button__profile") 메세지
-            button(class="button__profile") 팔로우+
-        .user__detail__profile__picture
-            //대표사진 불러오기
-        if !user.isAuthenticated
-            .user__detail__profile__picture__edit
-                a(href="/users/:id/edit") 프로필 편집
-    .user__detail__local__navbar
-        .user__detail__local__navbar__clip 클립
-        .user__detail__local__navbar__goods 굿즈
-        .user__detail__local__navbar__likes 좋아요
-        .user__detail__local__navbar__repository 보관함
-        .user__detail__local__navbar__profile 프로필
-    .grid__container
-        .grid__item
-            //유저데이터베이스에서 사진 가져오기
-            .grid__image 
-            .grid__title 제목
-            .grid__share 공유하기
-            .grid__likes 좋아요
+    if viewedUser
+        .user__detail__profile
+            .user__detail__profile__info
+                //유저db 완성되면
+                .user__detail__profile__info__profile
+                    if viewedUser.avatarUrl
+                        img(src=`${viewedUser.avatarUrl}`)
+                .user__detail__profile__info__name
+                    |#{viewedUser.name}
+                .user__detail__profile__info__career
+                    .user__detail__profile__info__career__header Career
+                    for detail in viewedUser.career
+                        .user__detail__profile__info__career__detail=detail
+                .user__detail__profile__info__follower
+                    | 팔로워 #{viewedUser.follower.length}명
+                .user__detail__profile__info__following
+                    | 팔로잉 #{viewedUser.following.length}명
+                //- TODO: 메세지 컨트롤러는 나중에
+                if user
+                    button.button__profile 메세지
+                    if viewerFollowesViewedUser
+                        a(href=routes.unfollow(viewedUser.name))
+                            button.button__profile 팔로우취소
+                    else
+                        a(href=routes.follow(viewedUser.name))
+                            button.button__profile 팔로우+
+            .user__detail__profile__picture
+                //대표사진 불러오기
+            if user && user.name === viewedUser.name
+                .user__detail__profile__picture__edit
+                    a(href="/users/:id/edit") 프로필 편집
+        .user__detail__local__navbar
+            .user__detail__local__navbar__clip 클립
+            .user__detail__local__navbar__goods 굿즈
+            .user__detail__local__navbar__likes 좋아요
+            .user__detail__local__navbar__repository 보관함
+            .user__detail__local__navbar__profile 프로필
+        .grid__container
+            .grid__item
+                //유저데이터베이스에서 사진 가져오기
+                .grid__image 
+                .grid__title 제목
+                .grid__share 공유하기
+                .grid__likes 좋아요
+    else
+        p 존재하지 않는 유저입니다

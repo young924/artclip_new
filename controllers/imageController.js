@@ -3,6 +3,7 @@ const path = require('path');
 
 const routes = require('../routes');
 const Image = require('../models/Image')
+const User = require('../models/User');
 
 const home = async (req, res) => {
   try {
@@ -49,7 +50,8 @@ const imageDetail = async (req, res) => {
   try {
     const { params: { id } } = req;
     const image = await Image.findById(id);
-    res.render('imageDetail', { pageTitle: 'Image Detail', image });
+    const viewedUser = await User.findById(image.creator);
+    res.render('imageDetail', { pageTitle: 'Image Detail', image, viewedUser });
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
