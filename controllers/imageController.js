@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 const routes = require('../routes');
 const Image = require('../models/Image')
 
@@ -24,10 +27,12 @@ const getUpload = (req, res) => {
 const postUpload = async (req, res) => {
   const {
     body: { title, description, tag },
-    file: { path }
+    file: { path },
+    user: { _id: id },
   } = req;
   try {
     const newImage = await Image.create({
+      creator: id,
       fileUrl: path,
       title,
       description,
@@ -41,27 +46,66 @@ const postUpload = async (req, res) => {
 }
 
 const imageDetail = async (req, res) => {
-  const { params: { id } } = req;
-  const image = await Image.findById(id);
-  res.render('imageDetail', { pageTitle: 'Image Detail', image }
-)};
+  try {
+    const { params: { id } } = req;
+    const image = await Image.findById(id);
+    res.render('imageDetail', { pageTitle: 'Image Detail', image });
+  } catch (err) {
+    console.error(err);
+    res.redirect(routes.home);
+  }
+};
 
 const getEditImage = async (req, res) => {
-  const { params: { id } } = req;
-  const image = await Image.findById(id);
-  res.render('editImage', { pageTitle: 'Edit Image', image })
+  try {
+    const {
+      params: { id },
+      user: { _id: userId },
+    } = req;
+    const image = await Image.findById(id);
+    if(image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    res.render('editImage', { pageTitle: 'Edit Image', image })
+  } catch (err) {
+    console.error(err);
+    res.redirect(routes.home);
+  }
 };
 
 const postEditImage = async (req, res) => {
-  const { body: { title, description }, params: { id } } = req;
-  await Image.findByIdAndUpdate(id, { title, description });
-  res.redirect(routes.imageDetail(id));
+  try {
+    const {
+      body: { title, description },
+      params: { id },
+      user: { _id: userId },
+    } = req;
+    const image = await Image.findById(id);
+    if(image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    await Image.findByIdAndUpdate(id, { title, description });
+    res.redirect(routes.imageDetail(id));
+  } catch (err) {
+    console.error(err);
+    res.redirect(routes.home);
+  }
 }
 
 const deleteImage = async (req, res) => {
-  const { params: { id } } = req;
-  await Image.findByIdAndDelete(id);
-  res.redirect(routes.home);
+  try {
+    const { params: { id } } = req;
+    const image = await Image.findById(id);
+    if(image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    await Image.findByIdAndDelete(id); // mongoose에서 지우고
+    fs.unlink( // 파일도 지우고
+      path.resolve(__dirname, '..', ...image.fileUrl.split('\\')),
+      (err) => {
+        if (err) throw err;
+        console.log(`image file(title:${image.title}, id:${id}) was deleted`);
+      }
+    );
+    res.redirect(routes.home);
+  } catch (err) {
+    console.error(err);
+    res.redirect(routes.editImage(id));
+  }
 }
 
 module.exports = {
