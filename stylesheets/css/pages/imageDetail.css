@@ -6,10 +6,24 @@
   margin-right: 1vw;
 }
 
+h3 {
+  display: inline;
+  /* border-bottom: 0.2vw solid var(--grey); */
+}
+
 .image__detail__tags {
   padding-top: 1vw;
   font-size: 1vw;
 }
+
+.image__detail__edit {
+  position: absolute;
+  margin: 1vw;
+  right: 0;
+  padding-right: 1vw;
+  font-size: 1vw;
+}
+
 .image__detail__container {
   margin-left: 15%;
   margin-right: 15%;

@@ -1,6 +1,7 @@
 /* variables */
 :root {
   --main--color: rgba(140, 19, 229, 0.5);
+  --grey: #707070;
 }
 
 .titlebar {
@@ -50,14 +51,44 @@
 
 .grid__container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr); 
   margin: 5vh 5vh 5vh 5vh;
   column-gap: 2vh;
   row-gap: 2vh;
   text-align: center;
-  border-radius: 1vh;
+  border-radius: 1vh;*/
+
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
 }
 
-.grid__item {
-  color: rgba(255, 255, 255, 0);
+.grid__container > .imageBlock {
+  background: black;
+  padding: 1rem;
+}
+
+.grid__container > .imageBlock::before {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+
+.grid > .imageBlock {
+  display: grid;
+}
+
+.grid > .imageBlock::before,
+.grid > .imageBlock > img {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.grid > div > img {
+  position: absolute;
+  max-width: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
 }

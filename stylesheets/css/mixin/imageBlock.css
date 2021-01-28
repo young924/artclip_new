@@ -1,21 +1,12 @@
-.imageBlock {
+/* .imageBlock {
   vertical-align: middle;
-  color: rgba(0, 0, 0, 1);
 }
 
 img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 1vh;
-}
-
-img:hover {
-  opacity: 0.5;
-  color: rgba(255, 255, 255, 1);
-}
-.imageBlock:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-  color: rgba(255, 255, 255, 1);
+  object-fit: contain;
 }
 
 .imageBlock__info {
@@ -28,8 +19,18 @@ img:hover {
   display: inline;
 }
 
+img:hover {
+  opacity: 0.5;
+  color: rgba(255, 255, 255, 1);
+}
+
+.imageBlock:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 1);
+}
+
 .imageBlock__info:hover {
   opacity: 1;
   position: relative;
   font-size: 20px;
-}
+} */

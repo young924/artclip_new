@@ -4,6 +4,9 @@ block content
     .image__detail
         .image__detail__title
             h3=image.title
+            .image__detail__edit
+                a(href=routes.editImage(image._id))
+                    p edit
             .image__detail__tags
                 for tag in image.tag
                     a.image__detail__tags__tag=tag 
@@ -20,6 +23,3 @@ block content
                 p=image.description
             .image__detail__createdAt
                 time(datetime=image.createdAt)
-        .image__detail__edit
-            a(href=routes.editImage(image._id))
-                p edit
