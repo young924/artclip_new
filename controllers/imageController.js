@@ -7,7 +7,7 @@ const User = require('../models/User');
 
 const home = async (req, res) => {
   try {
-    const images = await Image.find({});
+    const images = await Image.find({}).sort({ _id: -1 });
     res.render('home', { pageTitle: 'Home', images })
   } catch (error) {
     console.log(error);
@@ -17,8 +17,13 @@ const home = async (req, res) => {
 
 const search = async (req, res) => {
   const { query: { term: searchingBy } } = req;
-  const images = await Image.find({ title: { $regex: String(searchingBy), $options: 'i' } });
-  res.render('search', { pageTitle: 'Search', searchingBy, images });
+  let images = []
+  try {
+    images = await Image.find({ title: { $regex: String(searchingBy), $options: 'i' } });
+  } catch (error) {
+    console.log(error);
+  }
+  res.render('search', { pageTitle: searchingBy, searchingBy, images });
 };
 
 const getUpload = (req, res) => {
@@ -51,7 +56,7 @@ const imageDetail = async (req, res) => {
     const { params: { id } } = req;
     const image = await Image.findById(id);
     const viewedUser = await User.findById(image.creator);
-    res.render('imageDetail', { pageTitle: 'Image Detail', image, viewedUser });
+    res.render('imageDetail', { pageTitle: image.title, image, viewedUser });
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
@@ -66,7 +71,7 @@ const getEditImage = async (req, res) => {
     } = req;
     const image = await Image.findById(id);
     if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
-    else res.render('editImage', { pageTitle: 'Edit Image', image });
+    else res.render('editImage', { pageTitle: `Edit ${image.title}`, image });
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
@@ -81,7 +86,7 @@ const postEditImage = async (req, res) => {
       user: { _id: userId },
     } = req;
     const image = await Image.findById(id);
-    if(image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    if (image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
     await Image.findByIdAndUpdate(id, { title, description });
     res.redirect(routes.imageDetail(id));
   } catch (err) {
@@ -94,7 +99,7 @@ const deleteImage = async (req, res) => {
   try {
     const { params: { id } } = req;
     const image = await Image.findById(id);
-    if(image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    if (image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
     await Image.findByIdAndDelete(id); // mongoose에서 지우고
     fs.unlink( // 파일도 지우고
       path.resolve(__dirname, '..', ...image.fileUrl.split('\\')),

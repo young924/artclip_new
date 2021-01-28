@@ -5,5 +5,7 @@ block content
     .titlebar
         h3 Searching for: #{searchingBy}
     .search__images
+        if images.length === 0 
+            h5 검색 결과가 없습니다.
         each image in images
             +imageBlock(image)
