@@ -11,7 +11,8 @@ mixin imageBlock(image = {})
     //-                     i.far.fa-share-square(style='color:white')
     
     .imageBlock
-        img(src=image.fileUrl)
+        a.imageBlock__img(href=routes.imageDetail(image._id))
+            img(src=image.fileUrl)
         a.imageBlock__info(href=routes.imageDetail(image._id))
             h1=image.title
         .imageBlock__info__btn
