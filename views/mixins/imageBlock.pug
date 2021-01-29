@@ -11,6 +11,7 @@ mixin imageBlock(image = {})
     //-                     i.far.fa-share-square(style='color:white')
     
     .imageBlock
+        img(src=image.fileUrl)
         a.imageBlock__info(href=routes.imageDetail(image._id))
             h1=image.title
             .imageBlock__info__btn
@@ -18,4 +19,3 @@ mixin imageBlock(image = {})
                     i.far.fa-heart(style='color:white')
                 a.imageBlock__info__btn__share(href='#')
                     i.far.fa-share-square(style='color:white')
-        img(src=image.fileUrl)
