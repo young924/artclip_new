@@ -60,29 +60,29 @@
   row-gap: 2vh;
 }
 
-.grid__container > .imageBlock {
+.grid__container .imageBlock {
   background: var(--background--color);
   padding: 1rem;
   position: relative;
 }
 
-.grid__container > .imageBlock {
+.grid__container .imageBlock {
   display: grid;
 }
 
-.grid__container > .imageBlock::before {
+.grid__container .imageBlock::before {
   content: "";
   padding-bottom: 100%;
   height: 0px;
   display: block;
 }
 
-.grid__container > .imageBlock::before,
-.grid__container > .imageBlock > img {
+.grid__container .imageBlock::before,
+.grid__container .imageBlock > img {
   grid-area: 1 / 1 / 2 / 2;
 }
 
-.grid__container > .imageBlock > img {
+.grid__container .imageBlock > img {
   object-fit: contain;
   width: 100%;
   height: 100%;
@@ -96,9 +96,9 @@
 
 .imageBlock__info {
   position: absolute;
-  top: 0;
+  bottom: 0%;
   left: 0;
-  height: 100%;
+  height: 30%;
   width: 100%;
   background: rgba(0, 0, 0, 0.2);
   color: white;
