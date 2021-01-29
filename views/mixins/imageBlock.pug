@@ -13,10 +13,13 @@ mixin imageBlock(image = {})
     .imageBlock
         a.imageBlock__img(href=routes.imageDetail(image._id))
             img(src=image.fileUrl)
-        a.imageBlock__info(href=routes.imageDetail(image._id))
-            h1=image.title
-        .imageBlock__info__btn
-            a.imageBlock__info__btn__heart(href='#')
-                i.far.fa-heart(style='color:white')
-            a.imageBlock__info__btn__share(href='#')
-                i.far.fa-share-square(style='color:white')
+        a.imageBlock__container(href=routes.imageDetail(image._id))
+        a.imageBlock__profile(href="#")
+            img(src=image.fileUrl)
+        h1
+            a.imageBlock__title(href=routes.imageDetail(image._id)) #{image.title}
+        .imageBlock__btn
+            a.imageBlock__btn__heart(href='#')
+                i.far.fa-heart(style='color: white')
+            a.imageBlock__btn__share(href='#')
+                i.far.fa-share-square(style='color: white;')

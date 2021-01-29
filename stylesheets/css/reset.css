@@ -123,3 +123,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+
+a:visited, a:active, a:link, a:hover {
+  text-decoration: none;
+}
