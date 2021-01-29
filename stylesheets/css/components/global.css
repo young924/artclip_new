@@ -48,7 +48,7 @@
   border: 0px;
 }
 
-/* grid 관련 */
+/* grid container 관련 */
 
 .grid__container {
   display: grid;
@@ -88,9 +88,10 @@
   height: 100%;
 }
 
+/* grid content 관련 */
+
 .imageBlock img {
   filter: blur(0px);
-  transition: filter 0.3s ease-in;
 }
 
 .imageBlock__info {
@@ -111,15 +112,12 @@
   transition: opacity 0.5s;
 }
 
-/* .imageBlock__info__btn {
+.imageBlock__info__btn {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  bottom: 10%;
   opacity: 0;
   transition: opacity 0.5s;
-} */
+}
 
 .imageBlock:hover .imageBlock__info,
 .imageBlock:hover .imageBlock__info__btn {
