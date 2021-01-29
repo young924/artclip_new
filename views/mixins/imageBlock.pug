@@ -11,11 +11,11 @@ mixin imageBlock(image = {})
     //-                     i.far.fa-share-square(style='color:white')
     
     .imageBlock
+        a.imageBlock__info(href=routes.imageDetail(image._id))
+            h1=image.title
+            .imageBlock__info__btn
+                a.imageBlock__info__btn__heart(href='#')
+                    i.far.fa-heart(style='color:white')
+                a.imageBlock__info__btn__share(href='#')
+                    i.far.fa-share-square(style='color:white')
         img(src=image.fileUrl)
-        //- .imageBlock__info
-        //-     a(href=routes.imageDetail(image._id))
-        //-         h1=image.title
-        //-         a.btn(href='#')
-        //-             i.far.fa-heart(style='color:white')
-        //-         a.btn(href='#')
-        //-             i.far.fa-share-square(style='color:white')
