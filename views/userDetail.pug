@@ -33,17 +33,14 @@ block content
                 .user__detail__profile__picture__edit
                     a(href="/users/:id/edit") 프로필 편집
         .user__detail__local__navbar
-            .user__detail__local__navbar__clip 클립
-            .user__detail__local__navbar__goods 굿즈
-            .user__detail__local__navbar__likes 좋아요
-            .user__detail__local__navbar__repository 보관함
-            .user__detail__local__navbar__profile 프로필
+            a.user__detail__local__navbar__clip 클립
+            a.user__detail__local__navbar__goods 굿즈
+            a.user__detail__local__navbar__likes 좋아요
+            a.user__detail__local__navbar__repository 보관함
+            a.user__detail__local__navbar__profile 프로필
         .grid__container
-            .grid__item
-                //유저데이터베이스에서 사진 가져오기
-                .grid__image 
-                .grid__title 제목
-                .grid__share 공유하기
-                .grid__likes 좋아요
+            //유저데이터베이스에서 사진 가져오기
+                each image in images
+                    +imageBlock(image)
     else
         p 존재하지 않는 유저입니다

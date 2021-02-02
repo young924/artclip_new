@@ -15,11 +15,16 @@ block content
             .image__detail__image
                 img(src=`/${image.fileUrl}`)
             .image__detail__social
-                .image__detail__social__likes    
-                    i.far.fa-heart(style='color: var(--main--color)') : #{image.likes}
+                .image__detail__social__likes
+                    a(href='#')
+                        //누르면 좋아요
+                        i.far.fa-heart(style='color: var(--main--color)') : #{image.likes}
                 .image__detail__social__views
                     i.fas.fa-eye(style='color: var(--main--color)') : #{image.views}
-            .image__detail__description
-                p=image.description
-            .image__detail__createdAt
-                time(datetime=image.createdAt)
+            .image__detail__info
+                .image__detail__description
+                    p=image.description
+                .image__detail__createdAt
+                    time(datetime=image.createdAt)
+            .image__detail__comment
+                p 댓글이 들어갈 자리입니다.
