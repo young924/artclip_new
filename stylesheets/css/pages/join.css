@@ -10,6 +10,12 @@
   margin-bottom: 1vw;
 }
 
+.join__main__container {
+  padding: 2vw 1vw 2vw 1vw;
+  border-radius: 2vw;
+  border: 1px solid var(--main--color);
+}
+
 .join__form {
   position: relative;
   font-size: 20px;
@@ -44,6 +50,5 @@
   padding-top: 2vw;
   padding-bottom: 2vw;
   text-align: center;
-  border-top: 1px solid var(--main--color);
   border-bottom: 1px solid var(--main--color);
 }
