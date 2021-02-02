@@ -114,7 +114,7 @@
 
 .imageBlock__btn,
 .imageBlock h1 {
-  left: 20%;
+  left: 25%;
 }
 
 .imageBlock__btn,
@@ -127,16 +127,17 @@
 }
 
 .imageBlock__profile {
-  left: 2%;
+  left: 4%;
   bottom: 5%;
   width: 20%;
   height: 20%;
 }
 
 .imageBlock__profile img {
-  object-fit: contain;
+  border-radius: 50%;
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .imageBlock h1,
@@ -144,7 +145,7 @@
 .imageBlock h1 a:visited {
   font-weight: bold;
   text-decoration: none;
-  left: 20%;
+  left: 25%;
   color: white;
   bottom: 15%;
 }
@@ -153,8 +154,22 @@
   bottom: 5%;
 }
 
+.imageBlock__btn__more {
+  font-size: 1.5em;
+  position: absolute;
+  right: 5%;
+  bottom: 15%;
+  opacity: 0;
+}
+
+.imageBlock .imageBlock__btn a span {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
 .imageBlock:hover .imageBlock__container,
 .imageBlock:hover .imageBlock__btn,
+.imageBlock:hover .imageBlock__btn__more,
 .imageBlock:hover h1,
 .imageBlock:hover .imageBlock__profile {
   opacity: 1;
