@@ -76,8 +76,8 @@ const userDetail = async (req, res) => {
         name: viewedName
       },
     } = req;
-    const viewedUser = await User.findOne({ name: viewedName }).populate('images', 'fileUrl');
-    const images = viewedUser.images;
+    const viewedUser = await User.findOne({ name: viewedName }).populate('images', 'fileUrl title');    
+    const images = viewedUser.images.reverse();
     if (req.user) {
       const {
         user: {

@@ -42,9 +42,9 @@ block content
             for image in images 
                 //- img(src=`/${image.fileUrl}`)
                 .imageBlock
-                    a.imageBlock__img
+                    a.imageBlock__img(href=routes.imageDetail(image.id))
                         img(src=`/${image.fileUrl}`)
-                    a.imageBlock__container
+                    a.imageBlock__container(href=routes.imageDetail(image.id))
                     a.imageBlock__profile(href="#")
                         img(src=`/${image.fileUrl}`)
                     h1
