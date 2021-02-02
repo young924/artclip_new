@@ -1,7 +1,10 @@
-.social-login
-    a.login__other__kakao(href='/auth/kakao')
-        button kakao
-    a.login__other__naver(href='/auth/naver')
-        button naver
-    a.login__other__facebook(href='/auth/facebook')
-        button facebook
+.social__login
+    a.login__other(href='/auth/kakao')
+        button.btn__social__login(style='background:#FFEB00')
+            i.xi-3x.xi-kakaotalk.text-dark(style='color: black')
+    a.login__other(href='/auth/naver')
+        button.btn__social__login(style='background:#1FC700')
+            i.xi-3x.xi-naver
+    a.login__other(href='/auth/facebook')
+        button.btn__social__login(style='background:#4267B2')
+            i.xi-3x.xi-facebook

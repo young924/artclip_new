@@ -40,12 +40,23 @@ block content
             a.user__detail__local__navbar__profile 프로필
         .grid__container
             for image in images 
-                .grid__item
-                    //유저데이터베이스에서 사진 가져오기
-                    .grid__image
+                //- img(src=`/${image.fileUrl}`)
+                .imageBlock
+                    a.imageBlock__img
                         img(src=`/${image.fileUrl}`)
-                    .grid__title 제목
-                    .grid__share 공유하기
-                    .grid__likes 좋아요
+                    a.imageBlock__container
+                    a.imageBlock__profile(href="#")
+                        img(src=`/${image.fileUrl}`)
+                    h1
+                        a.imageBlock__title #{image.title}
+                    .imageBlock__btn
+                        a.imageBlock__btn__heart(href='#')
+                            i.far.fa-heart(style='color: white')
+                            span 좋아요
+                        a.imageBlock__btn__comment(href="#")
+                            i.i.far.fa-comment-dots(style='color: white')
+                            span 댓글
+                    a.imageBlock__btn__more(href='#')
+                        i.fas.fa-ellipsis-v(style='color: white;')
     else
         p 존재하지 않는 유저입니다

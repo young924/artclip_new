@@ -14,13 +14,22 @@
 /* input 관련 */
 
 .input__text {
-  height: 20px;
-  font-size: 15px;
-  border-radius: 7px;
+  width: 15vw;
+  height: 2vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
   border: 1px solid rgba(140, 19, 229, 0.5);
   margin-bottom: 1%;
-  display: block;
-  width: 35%;
+}
+
+.input__select {
+  display: inline;
+  height: 2vw;
+  width: 15vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid rgba(140, 19, 229, 0.5);
+  margin-bottom: 1%;
 }
 
 .input__file {
@@ -36,7 +45,7 @@
   border: 0px;
   border-radius: 7px;
   color: white;
-  width: 35%;
+  width: 33vw;
   font-size: 20px;
   margin-bottom: 1%;
 }
@@ -46,6 +55,32 @@
   display: inline;
   background: none;
   border: 0px;
+}
+
+/* Social login */
+
+.social__login {
+  text-align: center;
+}
+
+.login__other {
+  display: inline;
+}
+
+.btn__social__login {
+  margin: 0vw 2vw 2vw 2vw;
+  transition: all 0.2s;
+  outline: 0;
+  border: 1px solid transparent;
+  padding: 0.5rem !important;
+  border-radius: 50%;
+  color: #fff;
+}
+.btn__social__login:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.text__dark {
+  color: #343a40 !important;
 }
 
 /* grid container 관련 */
