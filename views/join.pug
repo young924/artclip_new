@@ -7,11 +7,11 @@ block content
     .join__main 가입하기
         form.join__form(action='/join', method='post')
             .join__form__name
-                input(type="text" class="join__form__name__input" name="name" placeholder="닉네임" required)
+                input(type="text" class="input__text" name="name" placeholder="닉네임" required)
             .join__form__ID
-                input(type="text" class="join__form__ID__input" name="emailId" placeholder="이메일" required)
+                input(type="text" class="input__text" name="emailId" placeholder="이메일" required)
                 .join__form__ID__at @
-                select(class="join__form__ID__email" name="emailDomain")
+                select(class="input__text" name="emailDomain")
                     option(value='gmail.com') gmail.com
                     option(value='naver.com') naver.com
                     option(value='daum.net') daum.net

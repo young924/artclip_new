@@ -1,6 +1,7 @@
 .join__main {
   font-size: 35px;
   width: auto;
+  text-align: center;
 }
 
 .join__main__form {
@@ -23,7 +24,7 @@
   border-radius: 7px;
   border: 1px solid rgba(140, 19, 229, 0.5);
   margin-bottom: 1%;
-  display: block
+  display: block;
 }
 
 .join__form__password__input,
