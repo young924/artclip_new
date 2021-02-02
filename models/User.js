@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     }],
+    images: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Image",
+    }],
     kakaoID: Number,
     naverID: Number,
     googleID: Number,
