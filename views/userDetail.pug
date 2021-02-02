@@ -39,8 +39,13 @@ block content
             a.user__detail__local__navbar__repository 보관함
             a.user__detail__local__navbar__profile 프로필
         .grid__container
-            //유저데이터베이스에서 사진 가져오기
-                each image in images
-                    +imageBlock(image)
+            for image in images 
+                .grid__item
+                    //유저데이터베이스에서 사진 가져오기
+                    .grid__image
+                        img(src=`/${image.fileUrl}`)
+                    .grid__title 제목
+                    .grid__share 공유하기
+                    .grid__likes 좋아요
     else
         p 존재하지 않는 유저입니다

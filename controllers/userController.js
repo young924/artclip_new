@@ -2,6 +2,7 @@ const passport = require('passport');
 
 const routes = require('../routes');
 const User = require('../models/User');
+const Image = require('../models/Image');
 
 const users = async (req, res) => {
   const users = await User.find({});
@@ -69,27 +70,26 @@ const logout = (req, res) => {
 const showcase = (req, res) => res.render('showcase', { pageTitle: 'Showcase' });
 
 const userDetail = async (req, res) => {
-  const {
-    params: {
-      name: viewedName
-    },
-  } = req;
   try {
+    const {
+      params: {
+        name: viewedName
+      },
+    } = req;
+    const viewedUser = await User.findOne({ name: viewedName }).populate('images', 'fileUrl');
+    const images = viewedUser.images;
     if (req.user) {
       const {
         user: {
           name: viewerName
         }
       } = req;
-      console.log(viewedName);
-      const viewedUser = await User.findOne({ name: viewedName });
       const viewer = await User.findOne({ name: viewerName }); 
       const viewerFollowesViewedUser = viewedUser.follower.includes(viewer._id) ? true : false;
-      res.render('userDetail', { pageTitle: 'User Detail', viewedUser, viewerFollowesViewedUser });
+      res.render('userDetail', { pageTitle: 'User Detail', viewedUser, viewerFollowesViewedUser, images});
     } else {
-      const viewedUser = await User.findOne({ name: viewedName });
-      const viewerFollowesViewedUser = false
-      res.render('userDetail', { pageTitle: 'User Detail', viewedUser, viewerFollowesViewedUser });
+      const viewerFollowesViewedUser = false;
+      res.render('userDetail', { pageTitle: 'User Detail', viewedUser, viewerFollowesViewedUser, images});
     }    
   } catch (err) {
     console.error(err);
