@@ -2,15 +2,13 @@
 
 art clip 2021
 
-## Pages:
-- [ ] Home
-- [ ] Join
-- [ ] Login
-- [ ] Search
-- [ ] Showcase
-- [ ] User Detail (다른 사람이 보는 프로필)
-- [ ] Edit Profile
-- [ ] Edit Account Info
-- [ ] Upload
-- [ ] Image Detail
-- [ ] Edit Image
+## 남은 구현
+
+- [ ] edit을 업로드한 사람한테만 뜨게 하기
+- [ ] 이미지 삭제
+- [ ] 프로필 프런트 수정(간소화)
+
+## bonus
+
+- [ ] 회원 탈퇴
+- [ ] 프로필 편집 추가
