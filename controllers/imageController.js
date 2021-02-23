@@ -34,7 +34,7 @@ const postUpload = async (req, res) => {
   const {
     body: { title, description, tag },
     file: { path },
-    user: { _id: id },
+    user: { id },
   } = req;
   try {
     const newImage = await Image.create({
@@ -46,8 +46,8 @@ const postUpload = async (req, res) => {
     })
     await User.findByIdAndUpdate(id, {$push: {images: newImage}});
     res.redirect(routes.imageDetail(newImage.id));
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.error(err);
     res.redirect(routes.home);
   }
 }

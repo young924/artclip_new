@@ -106,16 +106,18 @@ const follow = async (req, res) => {
     // const follower = await User.findById(followerId);
     const followed = await User.findOne({ name: followedName });
     const followedId = followed._id;
-    // await follower.follow(followed);
-    // await followed.getFollowed(follower);
-    await User.findOneAndUpdate(
-      { name: followedName },
-      { $addToSet: { follower: followerId } }
-    );
-    await User.findByIdAndUpdate(
-      followerId,
-      { $addToSet: { following: followedId } },
-    );
+    if(String(followedId) != String(followerId)) {
+      // await follower.follow(followed);
+      // await followed.getFollowed(follower);
+      await User.findOneAndUpdate(
+        { name: followedName },
+        { $addToSet: { follower: followerId } }
+      );
+      await User.findByIdAndUpdate(
+        followerId,
+        { $addToSet: { following: followedId } },
+      );
+    }
     res.redirect(routes.userDetail(followed.name));
   } catch (err) {
     console.error(err);
@@ -149,8 +151,54 @@ const unfollow = async (req, res) => {
   }
 };
 
-const editProfile = async (req, res) => {
+const getEditProfile = (req, res) => {
   res.render('editProfile', { pageTitle: 'Edit Profile' });
+};
+
+const postEditProfile = async (req, res) => {
+  const {
+    body: { name, career, description },
+    file,
+    user: { id },
+  } = req;
+
+  try {
+
+    let nameChanged = false;
+
+    if (name) {
+      if(req.user.name !== name && await User.findOne({ name })) {
+        res.status(400);
+        return res.redirect(routes.editProfile(req.user.name));
+      }
+      await User.findByIdAndUpdate(id, { name });
+      nameChanged = true;
+    }
+    
+    if (file) {
+      await User.findByIdAndUpdate(id, { avatarUrl: file.path });
+    }
+
+    if (career) {
+      const careerList = career.split(',').map(e => e.trim());
+      await User.findByIdAndUpdate(id, { career: careerList });
+    }
+
+    if (description) {
+      await User.findByIdAndUpdate(id, { description })
+    }
+
+    if (nameChanged) {
+      res.redirect(routes.userDetail(name));
+    } else {
+      res.redirect(routes.userDetail(req.user.name));
+    }
+
+  } catch(err) {
+    console.error(err);
+    res.redirect(routes.editProfile());
+  }
+
 };
 
 const editInfo = (req, res) => {
@@ -174,6 +222,7 @@ module.exports = {
   userDetail,
   follow,
   unfollow,
-  editProfile,
+  getEditProfile,
+  postEditProfile,
   editInfo,
 };

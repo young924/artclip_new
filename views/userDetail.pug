@@ -5,9 +5,9 @@ block content
         .user__detail__profile
             .user__detail__profile__info
                 //유저db 완성되면
-                .user__detail__profile__info__profile
+                .user__detail__profile__info__avatar
                     if viewedUser.avatarUrl
-                        img(src=`${viewedUser.avatarUrl}`)
+                        img(src=`/${viewedUser.avatarUrl}`, class="user__detail__profile__info__avatar__img")
                 .user__detail__profile__info__name
                     |#{viewedUser.name}
                 .user__detail__profile__info__career
@@ -19,7 +19,7 @@ block content
                 .user__detail__profile__info__following
                     | 팔로잉 #{viewedUser.following.length}명
                 //- TODO: 메세지 컨트롤러는 나중에
-                if user
+                if user && user.name !== viewedUser.name
                     button.button__profile 메세지
                     if viewerFollowesViewedUser
                         a(href=routes.unfollow(viewedUser.name))
@@ -27,17 +27,13 @@ block content
                     else
                         a(href=routes.follow(viewedUser.name))
                             button.button__profile 팔로우+
+            .user__detail__description
+                |#{user.description}
             .user__detail__profile__picture
                 //대표사진 불러오기
-            if user && user.name === viewedUser.name
-                .user__detail__profile__picture__edit
-                    a(href="/users/:id/edit") 프로필 편집
-        .user__detail__local__navbar
-            a.user__detail__local__navbar__clip 클립
-            a.user__detail__local__navbar__goods 굿즈
-            a.user__detail__local__navbar__likes 좋아요
-            a.user__detail__local__navbar__repository 보관함
-            a.user__detail__local__navbar__profile 프로필
+        if user && user.name === viewedUser.name
+            .user__detail__profile__picture__edit
+                a(href=`${routes.editProfile(user.id)}`) 프로필 편집    
         .grid__container
             for image in images 
                 //- img(src=`/${image.fileUrl}`)

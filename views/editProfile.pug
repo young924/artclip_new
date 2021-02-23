@@ -2,12 +2,28 @@ extends layouts/main.pug
 
 block content
     .editprofile__form
-        form(action=`/users${routes.editProfile}`, method='post')
-            label(for='avatar') Avatar
-            input(type='file', id='avatar', name='avatar', class = "input__file")
-            input(type='text', placeholder='Name', name='name', class = "input__text")
-            input(type='text', placeholder='Description', name='description', class = "input__text")
-            input(type='submit', value='Update Profile', class = "submit__btn")
+        form(action=`/users${routes.editProfile()}`, method='post', enctype='multipart/form-data')
+            label(for='avatar') 프로필 사진
+            br
+            input(type='file', id='avatar', name='avatar', accept='image/*', class='input__file')
+            br
+            br
+            label(for='name') 이름
+            br
+            input(type='text', placeholder='Name', id='name', name='name', value=user.name, class='input__text')
+            br
+            br
+            label(for='career') 경력
+            p(class='career-rule') (따옴표(,)로 구분하여 입력. 예: XX대학교 재학(20XX.XX.XX~20XX.XX.XX), XX 인턴(20XX.XX.XX~20XX.XX.XX), XX전시, XX전시)
+            br
+            textarea(id='career', name='career', class='input__textarea')=String(user.career)
+            br
+            br
+            label(for='description') 자기소개
+            br
+            textarea(placeholder='Description', id='description', name='description', value=user.description, class='input__textarea')
+            br
+            input(type='submit', value='Update Profile', class='submit__btn')
 
 
     //- .editprofile__name
