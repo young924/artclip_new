@@ -4,7 +4,7 @@
   "description": "2021 art clip",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon init.js --delay 2"
+    "start": "nodemon init.js --delay 2 -e js,pug,css"
   },
   "author": "",
   "license": "ISC",

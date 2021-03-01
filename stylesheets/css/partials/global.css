@@ -1,0 +1,13 @@
+/* variables */
+:root {
+  --main--color: rgba(140, 19, 229, 0.5);
+  --background--color: rgba(140, 19, 229, 0.3);
+  --grey: #707070;
+}
+
+.titlebar {
+  display: inline-flex;
+  font-size: 40px;
+  margin: 40px 40px 40px 40px;
+}
+

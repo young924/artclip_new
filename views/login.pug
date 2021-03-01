@@ -11,6 +11,7 @@ block content
                 input(type="password" class="login__input__text" name="password" placeholder="비밀번호 (8자리 이상)")
             .login_form__find 이메일/비밀번호 찾기
             button(class="login__submit__btn") 로그인
-            .login__already 아직 회원이 아니신가요? 가입하기
+            .login__already 아직 회원이 아니신가요? 
+                a(href=routes.join) 가입하기
             .login__divider
     include partials/socialLogin
