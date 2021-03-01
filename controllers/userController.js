@@ -17,22 +17,22 @@ const postJoin = async (req, res, next) => {
   const { name, emailId, emailDomain, password, password2 } = req.body;
   const email = `${emailId}@${emailDomain}`;
   req.body.email = email; // next로 넘길때 passport.authenticate() 함수가 얘를 봐야 함 -> // usernameField를 email에서 name으로 바꿔서 필요 없을것같음
-  if ( password !== password2 || password.length < 8 ) {
-      res.status(400);
-      res.render('join', { pageTitle: 'join', passwordUnmatch: true });
+  if (password !== password2 || password.length < 8) {
+    res.status(400);
+    res.render('join', { pageTitle: 'join', passwordUnmatch: true });
   } else if (await User.findOne({ name })) {
-      res.status(400);
-      res.render('join', { pageTitle: 'join', userAlreadyExist: true });
+    res.status(400);
+    res.render('join', { pageTitle: 'join', userAlreadyExist: true });
   } else {
-      try {
-          const user = User({ name, email });
-          // passport-local-mongoose가 준 register 함수. mongodb의 해당 유저에 salt, hash 필드 작성하여 저장함. (이 단계에서는 아직 쿠키나 세션같은건 없음!!!!!!)
-          await User.register(user, password); 
-          next();
-      } catch (err) {
-          console.error(err);
-          res.redirect('/');
-      }
+    try {
+      const user = User({ name, email });
+      // passport-local-mongoose가 준 register 함수. mongodb의 해당 유저에 salt, hash 필드 작성하여 저장함. (이 단계에서는 아직 쿠키나 세션같은건 없음!!!!!!)
+      await User.register(user, password);
+      next();
+    } catch (err) {
+      console.error(err);
+      res.redirect('/');
+    }
   }
 };
 
@@ -41,8 +41,8 @@ const getLogin = (req, res) => {
 }
 
 const postLogin = passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
+  successRedirect: routes.home,
+  failureRedirect: routes.login
 });
 
 // social login
@@ -76,7 +76,7 @@ const userDetail = async (req, res) => {
         name: viewedName
       },
     } = req;
-    const viewedUser = await User.findOne({ name: viewedName }).populate('images', 'fileUrl title');    
+    const viewedUser = await User.findOne({ name: viewedName }).populate('images', 'fileUrl title');
     const images = viewedUser.images.reverse();
     if (req.user) {
       const {
@@ -84,13 +84,13 @@ const userDetail = async (req, res) => {
           name: viewerName
         }
       } = req;
-      const viewer = await User.findOne({ name: viewerName }); 
+      const viewer = await User.findOne({ name: viewerName });
       const viewerFollowesViewedUser = viewedUser.follower.includes(viewer._id) ? true : false;
-      res.render('userDetail', { pageTitle: 'User Detail', viewedUser, viewerFollowesViewedUser, images});
+      res.render('userDetail', { pageTitle: 'User Detail', viewedUser, viewerFollowesViewedUser, images });
     } else {
       const viewerFollowesViewedUser = false;
-      res.render('userDetail', { pageTitle: 'User Detail', viewedUser, viewerFollowesViewedUser, images});
-    }    
+      res.render('userDetail', { pageTitle: 'User Detail', viewedUser, viewerFollowesViewedUser, images });
+    }
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
@@ -106,7 +106,7 @@ const follow = async (req, res) => {
     // const follower = await User.findById(followerId);
     const followed = await User.findOne({ name: followedName });
     const followedId = followed._id;
-    if(String(followedId) != String(followerId)) {
+    if (String(followedId) != String(followerId)) {
       // await follower.follow(followed);
       // await followed.getFollowed(follower);
       await User.findOneAndUpdate(
@@ -167,14 +167,14 @@ const postEditProfile = async (req, res) => {
     let nameChanged = false;
 
     if (name) {
-      if(req.user.name !== name && await User.findOne({ name })) {
+      if (req.user.name !== name && await User.findOne({ name })) {
         res.status(400);
         return res.redirect(routes.editProfile(req.user.name));
       }
       await User.findByIdAndUpdate(id, { name });
       nameChanged = true;
     }
-    
+
     if (file) {
       await User.findByIdAndUpdate(id, { avatarUrl: file.path });
     }
@@ -194,7 +194,7 @@ const postEditProfile = async (req, res) => {
       res.redirect(routes.userDetail(req.user.name));
     }
 
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     res.redirect(routes.editProfile());
   }

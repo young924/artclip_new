@@ -6,7 +6,7 @@ block content
             input(type='text', value=image.title, name='title')
             textarea(name='description')=image.description
             input(type='submit', value='Update')
-    .delete-video
+    .delete-image
         a(href=routes.deleteImage(image._id))
             button Delete Image
 

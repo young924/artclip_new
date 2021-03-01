@@ -34,6 +34,6 @@ const UserSchema = new mongoose.Schema({
     facebookID: Number,
 });
 
-UserSchema.plugin(passportLocalMongoose, {usernameField: 'name'});
+UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 module.exports = mongoose.model('User', UserSchema);

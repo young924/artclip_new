@@ -44,7 +44,7 @@ const postUpload = async (req, res) => {
       description,
       tag
     })
-    await User.findByIdAndUpdate(id, {$push: {images: newImage}});
+    await User.findByIdAndUpdate(id, { $push: { images: newImage } });
     res.redirect(routes.imageDetail(newImage.id));
   } catch (err) {
     console.error(err);
@@ -87,7 +87,9 @@ const postEditImage = async (req, res) => {
       user: { _id: userId },
     } = req;
     const image = await Image.findById(id);
-    if (image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    if (String(image.creator._id) !== String(userId)) { // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+      return res.redirect(routes.home);
+    }
     await Image.findByIdAndUpdate(id, { title, description });
     res.redirect(routes.imageDetail(id));
   } catch (err) {
@@ -98,9 +100,12 @@ const postEditImage = async (req, res) => {
 
 const deleteImage = async (req, res) => {
   try {
-    const { params: { id } } = req;
+    const {
+      params: { id },
+      user: { _id: userId },
+    } = req;
     const image = await Image.findById(id);
-    if (image.creator._id !== userId) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
     await Image.findByIdAndDelete(id); // mongoose에서 지우고
     fs.unlink( // 파일도 지우고
       path.resolve(__dirname, '..', ...image.fileUrl.split('\\')),

@@ -5,7 +5,7 @@ header.header
     .header__column
         form(action=routes.search, method='get')
             input.search__text(type='text', placeholder='Searching by term...', name='term')
-        if !user
+        if !loggedUser
             .header__column__divider
             .header__column__signin
                 a(href=routes.login) 로그인
@@ -17,7 +17,7 @@ header.header
                 a(href=`/images${routes.upload}`) Upload
             .header__column__divider
             .header__column__profile
-                a(href=routes.userDetail(user.name)) 프로필
+                a(href=routes.userDetail(loggedUser.name)) 프로필
             .header__column__divider
             .header__column__profile
                 a(href=routes.logout) 로그아웃

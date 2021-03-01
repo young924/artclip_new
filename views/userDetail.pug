@@ -28,12 +28,12 @@ block content
                         a(href=routes.follow(viewedUser.name))
                             button.button__profile 팔로우+
             .user__detail__description
-                |#{user.description}
+                |#{viewedUser.description}
             .user__detail__profile__picture
                 //대표사진 불러오기
-        if user && user.name === viewedUser.name
+        if loggedUser && loggedUser.name === viewedUser.name
             .user__detail__profile__picture__edit
-                a(href=`${routes.editProfile(user.id)}`) 프로필 편집    
+                a(href=`${routes.editProfile(loggedUser.id)}`) 프로필 편집    
         .grid__container
             for image in images 
                 //- img(src=`/${image.fileUrl}`)

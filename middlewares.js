@@ -6,7 +6,7 @@ const multerImage = multer({ dest: 'uploads/images/' });
 const localsMiddleware = (req, res, next) => {
     res.locals.siteName = 'Art Clip';
     res.locals.routes = routes;
-    res.locals.user = req.user;
+    res.locals.loggedUser = req.user || null;
     next();
 }
 
