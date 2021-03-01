@@ -55,9 +55,8 @@ const postUpload = async (req, res) => {
 const imageDetail = async (req, res) => {
   try {
     const { params: { id } } = req;
-    const image = await Image.findById(id);
-    const viewedUser = await User.findById(image.creator);
-    res.render('imageDetail', { pageTitle: image.title, image, viewedUser });
+    const image = await Image.findById(id).populate("creator");
+    res.render('imageDetail', { pageTitle: image.title, image });
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);

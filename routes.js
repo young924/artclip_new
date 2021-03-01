@@ -22,7 +22,7 @@ const IMAGES = '/images';
 const UPLOAD = '/upload';
 const IMAGE_DETAIL = '/:id';  // 다른 사람이 올린 image 볼 때
 const EDIT_IMAGE = '/:id/edit'; // 내가 올린 image 수정할 때
-const DELETE_IMAGE= '/:id/delete';
+const DELETE_IMAGE = '/:id/delete';
 
 // social login
 const KAKAO = '/auth/kakao';
@@ -92,7 +92,7 @@ const routes = {
     }
   },
   deleteImage: id => {
-    if(id) {
+    if (id) {
       return `/images/${id}/delete`;
     } else {
       return DELETE_IMAGE;

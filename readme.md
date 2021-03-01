@@ -7,7 +7,7 @@ art clip 2021
 - [x] edit을 업로드한 사람한테만 뜨게 하기
 - [x] edit Image
 - [x] 이미지 삭제
-- [ ] 사진에 creator 링크
+- [x] 사진에 creator 링크
 - [ ] 댓글 구현
 - [ ] 좋아요 구현
 - [ ] 팔로우 구현 수정 (api 사용)
