@@ -55,7 +55,9 @@ const postUpload = async (req, res) => {
 const imageDetail = async (req, res) => {
   try {
     const { params: { id } } = req;
-    const image = await Image.findById(id).populate("creator");
+    const image = await Image.findById(id)
+      .populate("creator")
+      .populate("comments.comment");
     res.render('imageDetail', { pageTitle: image.title, image });
   } catch (err) {
     console.error(err);
@@ -120,6 +122,44 @@ const deleteImage = async (req, res) => {
   }
 }
 
+const postRegisterView = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const image = await Image.findById(id);
+    image.views += 1;
+    image.save();
+    res.status(200);
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+const postAddComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { comment },
+    user,
+  } = req;
+  try {
+    const image = await Image.findById(id);
+    const newComment = await Comment.create({
+      text: comment,
+      creator: user.id,
+    });
+    image.comments.push(newComment.id);
+    image.save();
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+}
+
+
 module.exports = {
   home,
   search,
@@ -128,5 +168,7 @@ module.exports = {
   imageDetail,
   getEditImage,
   postEditImage,
-  deleteImage
+  deleteImage,
+  postAddComment,
+  postRegisterView,
 };

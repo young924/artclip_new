@@ -26,7 +26,20 @@ block content
             .image__detail__info
                 .image__detail__creator Created By 
                     a(href=`/users/${image.creator.name}`) #{image.creator.name}
-                .image__detail__createdAt #{image.createdAt.toLocaleDateString("ko-KR")}
+                .image__detail__createdAt #{image.createdAt.toLocaleDateString()}
                 .image__detail__description #{image.description}
             .image__detail__comment
-                p 댓글이 들어갈 자리입니다.
+                if image.comments.length === 1
+                    span.image__detail__comment-number
+                        span#jsCommentNumber 1
+                        |  comment
+                else
+                    span.image__detail__comment-number
+                        span#jsCommentNumber=image.comments.length
+                        |  comments
+                form.add__commment#jsAddComment
+                    input(type="text", placeholder="Add a comment")
+                ul.image__detail__comments-list#jsCommentList
+                    each comment in image.comments.reverse()
+                        li
+                            span=comment.text

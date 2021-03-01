@@ -43,9 +43,11 @@ const ImageSchema = new mongoose.Schema({
         default: false
     },
     comments: [{
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: "Comment",
-        default: []
+        comment: {
+            type: [mongoose.Schema.Types.ObjectId],
+            ref: "Comment",
+            default: []
+        }
     }]
 })
 

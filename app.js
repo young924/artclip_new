@@ -14,6 +14,7 @@ const routes = require('./routes');
 const globalRouter = require('./routers/globalRouter');
 const userRouter = require('./routers/userRouter');
 const imageRouter = require('./routers/imageRouter');
+const apiRouter = require('./routers/apiRouter');
 const User = require('./models/User');
 require('./passport');
 require('./db');
@@ -41,5 +42,6 @@ app.use(express.static('static'));
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.images, imageRouter);
+app.use(routes.api, apiRouter);
 
 module.exports = app;

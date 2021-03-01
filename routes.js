@@ -24,13 +24,20 @@ const IMAGE_DETAIL = '/:id';  // 다른 사람이 올린 image 볼 때
 const EDIT_IMAGE = '/:id/edit'; // 내가 올린 image 수정할 때
 const DELETE_IMAGE = '/:id/delete';
 
-// social login
+// Social Login
+
 const KAKAO = '/auth/kakao';
 const KAKAO_CALLBACK = '/auth/kakao/callback';
 const NAVER = '/auth/naver';
 const NAVER_CALLBACK = '/auth/naver/callback';
 const FACEBOOK = '/auth/facebook';
 const FACEBOOK_CALLBACK = '/auth/facebook/callback';
+
+// API
+
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
+const ADD_COMMENT = "/:id/comment";
 
 const routes = {
   home: HOME,
@@ -104,6 +111,9 @@ const routes = {
   naverCallback: NAVER_CALLBACK,
   facebook: FACEBOOK,
   facebookCallback: FACEBOOK_CALLBACK,
+  api: API,
+  registerView: REGISTER_VIEW,
+  addComment: ADD_COMMENT,
 };
 
 module.exports = routes;
