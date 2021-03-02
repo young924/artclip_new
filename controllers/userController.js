@@ -42,7 +42,9 @@ const getLogin = (req, res) => {
 
 const postLogin = passport.authenticate('local', {
   successRedirect: routes.home,
-  failureRedirect: routes.login
+  failureRedirect: routes.login,
+  successFlash: "환영합니다!",
+  failureFlash: "로그인할 수 없습니다. 아이디와 비밀번호를 확인해주세요.",
 });
 
 // social login

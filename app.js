@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const flash = require("express-flash");
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const mongoose = require('mongoose');
@@ -33,6 +34,8 @@ app.use(session({
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
+app.use(flash());
+
 app.use(morgan('dev'));
 app.use(passport.initialize());
 app.use(passport.session());

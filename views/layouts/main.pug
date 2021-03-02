@@ -1,3 +1,5 @@
+include ../mixins/message
+
 doctype html
 html
     head
@@ -10,6 +12,7 @@ html
             include ../../stylesheets/css/partials/form.css
             include ../../stylesheets/css/partials/grid.css
             include ../../stylesheets/css/partials/socialLogin.css
+            include ../../stylesheets/css/partials/messages.css
 
             include ../../stylesheets/css/pages/home.css
             include ../../stylesheets/css/pages/join.css
@@ -26,6 +29,21 @@ html
         link(rel='stylesheet' href='//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css')
 
     body
+        if messages.error
+            +message({
+                type: 'error',
+                text: messages.error
+            })
+        else if messages.info
+            +message({
+                type: 'info',
+                text: messages.info
+            })
+        else if messages.success 
+            +message({
+                type: 'success',
+                text: messages.success
+            })
         header
             include ../partials/header
             //include ../partials/navbar
