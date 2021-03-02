@@ -22,7 +22,7 @@
     padding: 20px;
     text-align: center;
     animation: flashAnimation 4s ease-in-out forwards;
-    background-color: var(--main--color);
+    background-color: $main-color;
 }
 
 .flash-message__text {

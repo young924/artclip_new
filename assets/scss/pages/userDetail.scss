@@ -1,0 +1,63 @@
+.user__detail__profile {
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    height: auto;
+    display: flex;
+  }
+  .user__detail__profile__info__avatar__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid $main-color;
+  }
+  .user__detail__profile__info {
+    width: 30%;
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 15px 15px 15px 15px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .user__detail__profile__info__follower,
+  .user__detail__profile__info__following,
+  .user__detail__profile__info__profile,
+  .user__detail__profile__info__name,
+  .user__detail__profile__info__career {
+    padding-bottom: 5px;
+  }
+  .user__detail__description {
+    padding: 15px 15px 15px 15px;
+  }
+  
+  .user__detail__profile__info__career__detail {
+    font-size: 15px;
+    color: grey;
+  }
+  
+  .user__detail__profile__info__name {
+    font-size: 30px;
+    padding: 10px;
+  }
+  
+  .user__detail__local__navbar {
+    height: 40px;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+  }
+  .user__detail__local__navbar__profile,
+  .user__detail__local__navbar__goods,
+  .user__detail__local__navbar__likes,
+  .user__detail__local__navbar__repository,
+  .user__detail__local__navbar__clip {
+    margin: 5px 5px 5px 5px;
+    margin: auto;
+    text-align: justify;
+  }
+  
+  .grid__1__image {
+    background-color: black;
+    height: 20vh;
+    padding-top: 25%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  

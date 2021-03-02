@@ -42,13 +42,12 @@ const ImageSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    comments: [{
-        comment: {
-            type: [mongoose.Schema.Types.ObjectId],
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
             ref: "Comment",
-            default: []
         }
-    }]
+    ]
 })
 
 module.exports = mongoose.model('Image', ImageSchema);
