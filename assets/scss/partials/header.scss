@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.header__logo {
+    position: relative;
+    margin: -15px;
+    width: 120px;
+    font-size: 20px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.header__logo__circle {
+    z-index: -1;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 10px;
+    top: -5px;
+}
+
+.header__column {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header__column__divider {
+    width: 1px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+}

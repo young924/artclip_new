@@ -1,0 +1,19 @@
+@import "main.scss";
+
+@import "config/_variable.scss";
+@import "config/reset.scss";
+
+@import "pages/home.scss";
+@import "pages/imageDetail.scss";
+@import "pages/join.scss";
+@import "pages/login.scss";
+@import "pages/search.scss";
+@import "pages/userDetail.scss";
+@import "pages/users.scss";
+
+@import "partials/form.scss";
+@import "partials/grid.scss";
+@import "partials/header.scss";
+@import "partials/messages.scss";
+@import "partials/navbar.scss";
+@import "partials/socialLogin.scss";

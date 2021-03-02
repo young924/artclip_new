@@ -42,4 +42,4 @@ block content
                 ul.image__detail__comments-list#jsCommentList
                     each comment in image.comments.reverse()
                         li
-                            span=comment.text
+                            span #{comment.creator.name} : #{comment.text}

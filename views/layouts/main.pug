@@ -4,29 +4,10 @@ doctype html
 html
     head
         style
-            include ../../stylesheets/css/reset.css
-
-            include ../../stylesheets/css/partials/global.css
-            include ../../stylesheets/css/partials/header.css
-            include ../../stylesheets/css/partials/navbar.css
-            include ../../stylesheets/css/partials/form.css
-            include ../../stylesheets/css/partials/grid.css
-            include ../../stylesheets/css/partials/socialLogin.css
-            include ../../stylesheets/css/partials/messages.css
-
-            include ../../stylesheets/css/pages/home.css
-            include ../../stylesheets/css/pages/join.css
-            include ../../stylesheets/css/pages/login.css
-            include ../../stylesheets/css/pages/userDetail.css
-            include ../../stylesheets/css/pages/editProfile.css
-            include ../../stylesheets/css/pages/search.css
-            include ../../stylesheets/css/pages/imageDetail.css
-            include ../../stylesheets/css/pages/users.css
-
-            include ../../stylesheets/css/mixin/imageBlock.css
         title #{pageTitle} | #{siteName}
         link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.2/css/all.css' integrity='sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu' crossorigin='anonymous')
         link(rel='stylesheet' href='//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css')
+        link(rel="stylesheet", href="/static/styles.css")
 
     body
         if messages.error
@@ -51,4 +32,5 @@ html
             block content
         footer
             include ../partials/footer
-        script(src='/js/grid.js')
+        script(src="/static/main.js")
+

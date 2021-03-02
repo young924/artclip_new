@@ -4,6 +4,7 @@ const path = require('path');
 const routes = require('../routes');
 const Image = require('../models/Image')
 const User = require('../models/User');
+const Comment = require('../models/Comment');
 
 const home = async (req, res) => {
   try {
@@ -57,7 +58,13 @@ const imageDetail = async (req, res) => {
     const { params: { id } } = req;
     const image = await Image.findById(id)
       .populate("creator")
-      .populate("comments.comment");
+      .populate({
+        path: "comments",
+        populate: {
+          path: "creator",
+          model: "User"
+        }
+      });
     res.render('imageDetail', { pageTitle: image.title, image });
   } catch (err) {
     console.error(err);
