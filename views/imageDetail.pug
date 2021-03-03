@@ -18,11 +18,14 @@ block content
                 img(src=`/${image.fileUrl}`)
             .image__detail__social
                 .image__detail__social__likes
-                    a(href='#')
-                        //누르면 좋아요
-                        i.far.fa-heart(style='color: var(--main--color)') : #{image.likes}
+                    button#jsLike
+                        i.far.fa-heart(style='color: var(--main--color)')
+                    | : 
+                    span#jsLikeNumber=image.likes
                 .image__detail__social__views
-                    i.fas.fa-eye(style='color: var(--main--color)') : #{image.views}
+                    i.fas.fa-eye(style='color: var(--main--color)')
+                    | : 
+                    span=image.views
             .image__detail__info
                 .image__detail__creator Created By 
                     a(href=`/users/${image.creator.name}`) #{image.creator.name}
@@ -37,8 +40,9 @@ block content
                     span.image__detail__comment-number
                         span#jsCommentNumber=image.comments.length
                         |  comments
-                form.add__commment#jsAddComment
-                    input(type="text", placeholder="Add a comment")
+                if loggedUser
+                    form.add__commment#jsAddComment
+                        input(type="text", placeholder="Add a comment")
                 ul.image__detail__comments-list#jsCommentList
                     each comment in image.comments.reverse()
                         li

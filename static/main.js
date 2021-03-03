@@ -245,6 +245,73 @@ init();
 
 /***/ }),
 
+/***/ "./assets/js/like.js":
+/*!***************************!*\
+  !*** ./assets/js/like.js ***!
+  \***************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var likeButton = document.getElementById("jsLike");
+var likeNumber = document.getElementById("jsLikeNumber");
+
+var increaseLike = function increaseLike() {
+  likeNumber.innerHTML = parseInt(likeNumber.innerHTML, 10) + 1;
+};
+
+var handleLike = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+    var imageId, response;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            imageId = window.location.href.split("/images/")[1];
+            _context.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+              url: "/api/".concat(imageId, "/like"),
+              method: "POST"
+            });
+
+          case 3:
+            response = _context.sent;
+
+            if (response.status === 200) {
+              increaseLike();
+            }
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function handleLike(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+function init() {
+  likeButton.addEventListener("click", handleLike);
+}
+
+if (likeButton) {
+  init();
+}
+
+/***/ }),
+
 /***/ "./assets/js/main.js":
 /*!***************************!*\
   !*** ./assets/js/main.js ***!
@@ -257,8 +324,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/style.scss */ "./assets/scss/style.scss");
 /* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _addComment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addComment */ "./assets/js/addComment.js");
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid */ "./assets/js/grid.js");
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_grid__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _like__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./like */ "./assets/js/like.js");
+/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./grid */ "./assets/js/grid.js");
+/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_grid__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 

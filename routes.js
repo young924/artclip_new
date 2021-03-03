@@ -36,7 +36,7 @@ const FACEBOOK_CALLBACK = '/auth/facebook/callback';
 // API
 
 const API = "/api";
-const REGISTER_VIEW = "/:id/view";
+const LIKE = "/:id/like";
 const ADD_COMMENT = "/:id/comment";
 
 const routes = {
@@ -112,7 +112,7 @@ const routes = {
   facebook: FACEBOOK,
   facebookCallback: FACEBOOK_CALLBACK,
   api: API,
-  registerView: REGISTER_VIEW,
+  like: LIKE,
   addComment: ADD_COMMENT,
 };
 

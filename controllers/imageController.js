@@ -65,6 +65,8 @@ const imageDetail = async (req, res) => {
           model: "User"
         }
       });
+    image.views += 1;
+    image.save();
     res.render('imageDetail', { pageTitle: image.title, image });
   } catch (err) {
     console.error(err);
@@ -129,13 +131,13 @@ const deleteImage = async (req, res) => {
   }
 }
 
-const postRegisterView = async (req, res) => {
+const postLike = async (req, res) => {
   const {
     params: { id },
   } = req;
   try {
     const image = await Image.findById(id);
-    image.views += 1;
+    image.likes += 1;
     image.save();
     res.status(200);
   } catch (error) {
@@ -143,7 +145,7 @@ const postRegisterView = async (req, res) => {
   } finally {
     res.end();
   }
-};
+}
 
 const postAddComment = async (req, res) => {
   const {
@@ -176,6 +178,6 @@ module.exports = {
   getEditImage,
   postEditImage,
   deleteImage,
+  postLike,
   postAddComment,
-  postRegisterView,
 };

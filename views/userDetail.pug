@@ -19,7 +19,7 @@ block content
                 .user__detail__profile__info__following
                     | 팔로잉 #{viewedUser.following.length}명
                 //- TODO: 메세지 컨트롤러는 나중에
-                if user && user.name !== viewedUser.name
+                if loggedUser && loggedUser.name !== viewedUser.name
                     button.button__profile 메세지
                     if viewerFollowesViewedUser
                         a(href=routes.unfollow(viewedUser.name))
@@ -35,7 +35,7 @@ block content
             .user__detail__profile__picture__edit
                 a(href=`${routes.editProfile(loggedUser.id)}`) 프로필 편집    
         .grid__container
-            for image in images 
+            for image in images.reverse()
                 //- img(src=`/${image.fileUrl}`)
                 .imageBlock
                     a.imageBlock__img(href=routes.imageDetail(image.id))
