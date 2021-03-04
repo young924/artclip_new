@@ -78,7 +78,7 @@ const userDetail = async (req, res) => {
         name: viewedName
       },
     } = req;
-    const viewedUser = await User.findOne({ name: viewedName }).populate('images', 'fileUrl title');
+    const viewedUser = await User.findOne({ name: viewedName }).populate('images', 'fileUrl title').populate("likeImages");
     const images = viewedUser.images;
     if (req.user) {
       const {

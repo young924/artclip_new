@@ -4,7 +4,7 @@ const likeButton = document.getElementById("jsLike");
 const likeNumber = document.getElementById("jsLikeNumber");
 const heartIcon = document.getElementById("jsHeart");
 
-let like = heartIcon.classList.contains("fas") ? true : false;
+let like;
 
 const increaseLike = () => {
     likeNumber.innerHTML = parseInt(likeNumber.innerHTML, 10) + 1;
@@ -25,7 +25,6 @@ const emptyHeart = () => {
 const handleLike = async (event) => {
     const imageId = window.location.href.split("/images/")[1];
     let response;
-    console.log(heartIcon.classList);
     try {
         if (like) {
             like = false;
@@ -64,5 +63,6 @@ function init() {
 }
 
 if (likeButton) {
+    like = heartIcon.classList.contains("fas") ? true : false;
     init();
 }

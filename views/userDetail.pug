@@ -34,25 +34,49 @@ block content
         if loggedUser && loggedUser.name === viewedUser.name
             .user__detail__profile__picture__edit
                 a(href=`${routes.editProfile(loggedUser.id)}`) 프로필 편집    
-        .grid__container
-            for image in images.reverse()
-                //- img(src=`/${image.fileUrl}`)
-                .imageBlock
-                    a.imageBlock__img(href=routes.imageDetail(image.id))
-                        img(src=`/${image.fileUrl}`)
-                    a.imageBlock__container(href=routes.imageDetail(image.id))
-                    a.imageBlock__profile(href="#")
-                        img(src=`/${image.fileUrl}`)
-                    h1
-                        a.imageBlock__title #{image.title}
-                    .imageBlock__btn
-                        a.imageBlock__btn__heart(href='#')
-                            i.far.fa-heart(style='color: white')
-                            span 좋아요
-                        a.imageBlock__btn__comment(href="#")
-                            i.i.far.fa-comment-dots(style='color: white')
-                            span 댓글
-                    a.imageBlock__btn__more(href='#')
-                        i.fas.fa-ellipsis-v(style='color: white;')
+        .user__detail__my-images
+            .user__detail__my-images__title 내 작품
+            .grid__container
+                for image in images.reverse()
+                    //- img(src=`/${image.fileUrl}`)
+                    .imageBlock
+                        a.imageBlock__img(href=routes.imageDetail(image.id))
+                            img(src=`/${image.fileUrl}`)
+                        a.imageBlock__container(href=routes.imageDetail(image.id))
+                        a.imageBlock__profile(href="#")
+                            img(src=`/${image.fileUrl}`)
+                        h1
+                            a.imageBlock__title #{image.title}
+                        .imageBlock__btn
+                            a.imageBlock__btn__heart(href='#')
+                                i.far.fa-heart(style='color: white')
+                                span 좋아요
+                            a.imageBlock__btn__comment(href="#")
+                                i.i.far.fa-comment-dots(style='color: white')
+                                span 댓글
+                        a.imageBlock__btn__more(href='#')
+                            i.fas.fa-ellipsis-v(style='color: white;')
+        .user__detail__like-images 
+            .user__detail__like-images__title 좋아요 한 작품
+            .grid__container
+                for image in viewedUser.likeImages.reverse()
+                    //- img(src=`/${image.fileUrl}`)
+                    .imageBlock
+                        a.imageBlock__img(href=routes.imageDetail(image.id))
+                            img(src=`/${image.fileUrl}`)
+                        a.imageBlock__container(href=routes.imageDetail(image.id))
+                        a.imageBlock__profile(href="#")
+                            img(src=`/${image.fileUrl}`)
+                        h1
+                            a.imageBlock__title #{image.title}
+                        .imageBlock__btn
+                            a.imageBlock__btn__heart(href='#')
+                                i.far.fa-heart(style='color: white')
+                                span 좋아요
+                            a.imageBlock__btn__comment(href="#")
+                                i.i.far.fa-comment-dots(style='color: white')
+                                span 댓글
+                        a.imageBlock__btn__more(href='#')
+                            i.fas.fa-ellipsis-v(style='color: white;')
     else
         p 존재하지 않는 유저입니다

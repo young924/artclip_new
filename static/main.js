@@ -264,7 +264,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var likeButton = document.getElementById("jsLike");
 var likeNumber = document.getElementById("jsLikeNumber");
 var heartIcon = document.getElementById("jsHeart");
-var like = heartIcon.classList.contains("fas") ? true : false;
+var like;
 
 var increaseLike = function increaseLike() {
   likeNumber.innerHTML = parseInt(likeNumber.innerHTML, 10) + 1;
@@ -290,16 +290,15 @@ var handleLike = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             imageId = window.location.href.split("/images/")[1];
-            console.log(heartIcon.classList);
-            _context.prev = 2;
+            _context.prev = 1;
 
             if (!like) {
-              _context.next = 11;
+              _context.next = 10;
               break;
             }
 
             like = false;
-            _context.next = 7;
+            _context.next = 6;
             return axios__WEBPACK_IMPORTED_MODULE_0___default()({
               url: "/api/".concat(imageId, "/like"),
               method: "POST",
@@ -308,7 +307,7 @@ var handleLike = /*#__PURE__*/function () {
               }
             });
 
-          case 7:
+          case 6:
             response = _context.sent;
 
             if (response.status === 200) {
@@ -316,12 +315,12 @@ var handleLike = /*#__PURE__*/function () {
               emptyHeart();
             }
 
-            _context.next = 16;
+            _context.next = 15;
             break;
 
-          case 11:
+          case 10:
             like = true;
-            _context.next = 14;
+            _context.next = 13;
             return axios__WEBPACK_IMPORTED_MODULE_0___default()({
               url: "/api/".concat(imageId, "/like"),
               method: "POST",
@@ -330,7 +329,7 @@ var handleLike = /*#__PURE__*/function () {
               }
             });
 
-          case 14:
+          case 13:
             response = _context.sent;
 
             if (response.status === 200) {
@@ -338,21 +337,21 @@ var handleLike = /*#__PURE__*/function () {
               fillHeart();
             }
 
-          case 16:
-            _context.next = 21;
+          case 15:
+            _context.next = 20;
             break;
 
-          case 18:
-            _context.prev = 18;
-            _context.t0 = _context["catch"](2);
+          case 17:
+            _context.prev = 17;
+            _context.t0 = _context["catch"](1);
             console.log(_context.t0);
 
-          case 21:
+          case 20:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[2, 18]]);
+    }, _callee, null, [[1, 17]]);
   }));
 
   return function handleLike(_x) {
@@ -365,6 +364,7 @@ function init() {
 }
 
 if (likeButton) {
+  like = heartIcon.classList.contains("fas") ? true : false;
   init();
 }
 
