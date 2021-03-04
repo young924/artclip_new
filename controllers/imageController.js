@@ -55,7 +55,10 @@ const postUpload = async (req, res) => {
 
 const imageDetail = async (req, res) => {
   try {
-    const { params: { id } } = req;
+    const {
+      params: { id },
+    } = req;
+    let like;
     const image = await Image.findById(id)
       .populate("creator")
       .populate({
@@ -66,8 +69,14 @@ const imageDetail = async (req, res) => {
         }
       });
     image.views += 1;
+    if (!req.user) like = false;
+    else {
+      const user = await User.findById(req.user._id);
+      if (user.likeImages.includes(id)) like = true;
+      else like = false;
+    }
     image.save();
-    res.render('imageDetail', { pageTitle: image.title, image });
+    res.render('imageDetail', { pageTitle: image.title, image, like });
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
@@ -134,11 +143,23 @@ const deleteImage = async (req, res) => {
 const postLike = async (req, res) => {
   const {
     params: { id },
+    body: { like },
+    user,
   } = req;
   try {
     const image = await Image.findById(id);
-    image.likes += 1;
-    image.save();
+    if (like === true && !user.likeImages.includes(id)) {
+      image.likes += 1;
+      user.likeImages.push(image);
+      user.save()
+      image.save();
+    } else if (like === false && user.likeImages.includes(id)) {
+      image.likes -= 1;
+      const index = user.likeImages.indexOf(id);
+      user.likeImages.splice(index, 1);
+      user.save()
+      image.save();
+    }
     res.status(200);
   } catch (error) {
     res.status(400);

@@ -263,9 +263,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var likeButton = document.getElementById("jsLike");
 var likeNumber = document.getElementById("jsLikeNumber");
+var heartIcon = document.getElementById("jsHeart");
+var like = heartIcon.classList.contains("fas") ? true : false;
 
 var increaseLike = function increaseLike() {
   likeNumber.innerHTML = parseInt(likeNumber.innerHTML, 10) + 1;
+};
+
+var decreaseLike = function decreaseLike() {
+  likeNumber.innerHTML = parseInt(likeNumber.innerHTML, 10) - 1;
+};
+
+var fillHeart = function fillHeart() {
+  heartIcon.classList.replace("far", "fas");
+};
+
+var emptyHeart = function emptyHeart() {
+  heartIcon.classList.replace("fas", "far");
 };
 
 var handleLike = /*#__PURE__*/function () {
@@ -276,25 +290,69 @@ var handleLike = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             imageId = window.location.href.split("/images/")[1];
-            _context.next = 3;
+            console.log(heartIcon.classList);
+            _context.prev = 2;
+
+            if (!like) {
+              _context.next = 11;
+              break;
+            }
+
+            like = false;
+            _context.next = 7;
             return axios__WEBPACK_IMPORTED_MODULE_0___default()({
               url: "/api/".concat(imageId, "/like"),
-              method: "POST"
+              method: "POST",
+              data: {
+                like: like
+              }
             });
 
-          case 3:
+          case 7:
+            response = _context.sent;
+
+            if (response.status === 200) {
+              decreaseLike();
+              emptyHeart();
+            }
+
+            _context.next = 16;
+            break;
+
+          case 11:
+            like = true;
+            _context.next = 14;
+            return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+              url: "/api/".concat(imageId, "/like"),
+              method: "POST",
+              data: {
+                like: like
+              }
+            });
+
+          case 14:
             response = _context.sent;
 
             if (response.status === 200) {
               increaseLike();
+              fillHeart();
             }
 
-          case 5:
+          case 16:
+            _context.next = 21;
+            break;
+
+          case 18:
+            _context.prev = 18;
+            _context.t0 = _context["catch"](2);
+            console.log(_context.t0);
+
+          case 21:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[2, 18]]);
   }));
 
   return function handleLike(_x) {

@@ -18,8 +18,14 @@ block content
                 img(src=`/${image.fileUrl}`)
             .image__detail__social
                 .image__detail__social__likes
-                    button#jsLike
-                        i.far.fa-heart(style='color: var(--main--color)')
+                    if loggedUser
+                        button#jsLike
+                            if like === true
+                                i.fas.fa-heart#jsHeart
+                            else
+                                i.far.fa-heart#jsHeart
+                    else
+                        i.far.fa-heart
                     | : 
                     span#jsLikeNumber=image.likes
                 .image__detail__social__views
