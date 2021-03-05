@@ -1,7 +1,41 @@
 const multer = require('multer');
+const multerS3 = require("multer-s3");
+const aws = require("aws-sdk");
+const path = require("path");
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 const routes = require('./routes');
 
-const multerImage = multer({ dest: 'uploads/images/' });
+const s3 = new aws.S3({
+    accessKeyId: process.env.AWS_KEY,
+    secretAccessKey: process.env.AWS_PRIVATE_KEY,
+    region: "ap-northeast-2",
+})
+
+const multerImage = multer({
+    storage: multerS3({
+        s3,
+        acl: "public-read",
+        bucket: "artclip2021/image",
+        // key: function (req, file, cb) {
+        //     let extension = path.extname(file.originalname);
+        //     cb(null, Date.now().toString() + extension);
+        // },
+    })
+});
+
+const multerAvatar = multer({
+    storage: multerS3({
+        s3,
+        acl: "public-read",
+        bucket: "artclip2021/avatar",
+    })
+});
+
+const uploadImage = multerImage.single("imageFile");
+const uploadAvatar = multerAvatar.single("avatar");
 
 const localsMiddleware = (req, res, next) => {
     res.locals.siteName = 'Art Clip';
@@ -28,7 +62,8 @@ const onlyPublic = (req, res, next) => {
 }
 
 module.exports = {
-    multerImage,
+    uploadImage,
+    uploadAvatar,
     localsMiddleware,
     onlyPrivate,
     onlyPublic,

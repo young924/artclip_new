@@ -178,7 +178,7 @@ const postEditProfile = async (req, res) => {
     }
 
     if (file) {
-      await User.findByIdAndUpdate(id, { avatarUrl: file.path });
+      await User.findByIdAndUpdate(id, { avatarUrl: file.location });
     }
 
     if (career) {

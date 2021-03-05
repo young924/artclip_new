@@ -13,7 +13,8 @@ art clip 2021
 - [x] view 구현
 - [x] 프로필 프런트 수정(간소화)
 - [ ] tags 처리 (아예 없애든지 태그를 여러 개 올릴 수 있게)
-- [ ] uploads aws 연결
+- [x] uploads aws 연결
+- [ ] delete aws 반영
 - [ ] 카카오톡 로그인
 
 ## bonus

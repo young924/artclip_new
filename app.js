@@ -23,7 +23,14 @@ require('./db');
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+            "img-src": ["'self'", "artclip2021.s3.ap-northeast-2.amazonaws.com"],
+        },
+    },
+}));
 app.set('view engine', 'pug');
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static(path.join(__dirname, "static")));

@@ -34,13 +34,13 @@ const getUpload = (req, res) => {
 const postUpload = async (req, res) => {
   const {
     body: { title, description, tag },
-    file: { path },
+    file: { location },
     user: { id },
   } = req;
   try {
     const newImage = await Image.create({
       creator: id,
-      fileUrl: path,
+      fileUrl: location,
       title,
       description,
       tag
@@ -68,6 +68,7 @@ const imageDetail = async (req, res) => {
           model: "User"
         }
       });
+    console.log(image.fileUrl);
     image.views += 1;
     if (!req.user) like = false;
     else {
