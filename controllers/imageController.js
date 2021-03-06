@@ -127,13 +127,13 @@ const deleteImage = async (req, res) => {
     const image = await Image.findById(id);
     if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
     await Image.findByIdAndDelete(id); // mongoose에서 지우고
-    fs.unlink( // 파일도 지우고
-      path.resolve(__dirname, '..', ...image.fileUrl.split('\\')),
-      (err) => {
-        if (err) throw err;
-        console.log(`image file(title:${image.title}, id:${id}) was deleted`);
-      }
-    );
+    // fs.unlink( // 파일도 지우고
+    //   path.resolve(__dirname, '..', ...image.fileUrl.split('\\')),
+    //   (err) => {
+    //     if (err) throw err;
+    //     console.log(`image file(title:${image.title}, id:${id}) was deleted`);
+    //   }
+    // );
     res.redirect(routes.home);
   } catch (err) {
     console.error(err);
