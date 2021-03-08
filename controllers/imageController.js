@@ -1,6 +1,3 @@
-const fs = require('fs');
-const path = require('path');
-
 const routes = require('../routes');
 const Image = require('../models/Image')
 const User = require('../models/User');
@@ -68,7 +65,6 @@ const imageDetail = async (req, res) => {
           model: "User"
         }
       });
-    console.log(image.fileUrl);
     image.views += 1;
     if (!req.user) like = false;
     else {
@@ -119,14 +115,16 @@ const postEditImage = async (req, res) => {
 }
 
 const deleteImage = async (req, res) => {
+  const {
+    params: { id },
+    user: { _id: userId },
+  } = req;
   try {
-    const {
-      params: { id },
-      user: { _id: userId },
-    } = req;
     const image = await Image.findById(id);
+
     if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
     await Image.findByIdAndDelete(id); // mongoose에서 지우고
+
     // fs.unlink( // 파일도 지우고
     //   path.resolve(__dirname, '..', ...image.fileUrl.split('\\')),
     //   (err) => {

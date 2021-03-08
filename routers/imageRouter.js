@@ -8,7 +8,7 @@ const {
   postEditImage,
   deleteImage,
 } = require('../controllers/imageController');
-const { uploadImage, onlyPrivate } = require('../middlewares');
+const { uploadImage, onlyPrivate, awsDeleteImage } = require('../middlewares');
 
 const imageRouter = express.Router();
 
@@ -17,6 +17,6 @@ imageRouter.post(routes.upload, onlyPrivate, uploadImage, postUpload);
 imageRouter.get(routes.imageDetail(), imageDetail);
 imageRouter.get(routes.editImage(), onlyPrivate, getEditImage);
 imageRouter.post(routes.editImage(), onlyPrivate, postEditImage);
-imageRouter.get(routes.deleteImage(), onlyPrivate, deleteImage);
+imageRouter.get(routes.deleteImage(), onlyPrivate, awsDeleteImage, deleteImage);
 
 module.exports = imageRouter;

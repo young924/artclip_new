@@ -1,12 +1,11 @@
 const multer = require('multer');
 const multerS3 = require("multer-s3");
 const aws = require("aws-sdk");
-const path = require("path");
+const routes = require('./routes');
+const Image = require('./models/Image');
 const dotenv = require("dotenv");
 
 dotenv.config();
-
-const routes = require('./routes');
 
 const s3 = new aws.S3({
     accessKeyId: process.env.AWS_KEY,
@@ -19,10 +18,6 @@ const multerImage = multer({
         s3,
         acl: "public-read",
         bucket: "artclip2021/image",
-        // key: function (req, file, cb) {
-        //     let extension = path.extname(file.originalname);
-        //     cb(null, Date.now().toString() + extension);
-        // },
     })
 });
 
@@ -36,6 +31,28 @@ const multerAvatar = multer({
 
 const uploadImage = multerImage.single("imageFile");
 const uploadAvatar = multerAvatar.single("avatar");
+
+const awsDeleteImage = async (req, res, next) => {
+    try {
+        const {
+            params: { id },
+        } = req;
+        const image = await Image.findById(id);
+        const url = image.fileUrl.split('/');
+        const fileName = url[url.length - 1];
+
+        s3.deleteObject({
+            Bucket: 'artclip2021/image',
+            Key: fileName,
+        }, function (err) {
+            if (err) throw new Error("Cannot delete object")
+        })
+        next();
+    } catch (err) {
+        console.error(err);
+        res.redirect(routes.editImage(id));
+    }
+}
 
 const localsMiddleware = (req, res, next) => {
     res.locals.siteName = 'Art Clip';
@@ -62,6 +79,7 @@ const onlyPublic = (req, res, next) => {
 }
 
 module.exports = {
+    awsDeleteImage,
     uploadImage,
     uploadAvatar,
     localsMiddleware,
