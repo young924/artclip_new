@@ -10,10 +10,10 @@ block content
             .editprofile__name
                 .editprofile__title 이름
                 input(type='text', placeholder='Name', id='name', name='name', value=loggedUser.name, class='input__text')
-            .editprofile__career
-                .editprofile__title 경력
-                p(class='career-rule') (따옴표(,)로 구분하여 입력. 예: XX대학교 재학(20XX.XX.XX~20XX.XX.XX), XX 인턴(20XX.XX.XX~20XX.XX.XX), XX전시, XX전시)
-                textarea(id='career', name='career', class='input__textarea')=String(loggedUser.career)
+            //- .editprofile__career
+            //-     .editprofile__title 경력
+            //-     p(class='career-rule') (따옴표(,)로 구분하여 입력. 예: XX대학교 재학(20XX.XX.XX~20XX.XX.XX), XX 인턴(20XX.XX.XX~20XX.XX.XX), XX전시, XX전시)
+            //-     textarea(id='career', name='career', class='input__textarea')=String(loggedUser.career)
             .editprofile__description
                 .editprofile__title 자기소개
                 textarea(id='description', name='description', class='input__textarea')=loggedUser.description

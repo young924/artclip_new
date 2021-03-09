@@ -42,6 +42,10 @@ const ImageSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    volatile: {
+        type: Boolean,
+        default: true,
+    },
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,

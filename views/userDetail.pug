@@ -10,10 +10,10 @@ block content
                         img(src=viewedUser.avatarUrl, class="user__detail__profile__info__avatar__img")
                 .user__detail__profile__info__name
                     |#{viewedUser.name}
-                .user__detail__profile__info__career
-                    .user__detail__profile__info__career__header Career
-                    for detail in viewedUser.career
-                        .user__detail__profile__info__career__detail=detail
+                //- .user__detail__profile__info__career
+                //-     .user__detail__profile__info__career__header Career
+                //-     for detail in viewedUser.career
+                //-         .user__detail__profile__info__career__detail=detail
                 .user__detail__profile__info__follower
                     | 팔로워 #{viewedUser.follower.length}명
                 .user__detail__profile__info__following
@@ -38,13 +38,12 @@ block content
             .user__detail__my-images__title 내 작품
             .grid__container
                 for image in images.reverse()
-                    //- img(src=`/${image.fileUrl}`)
                     .imageBlock
                         a.imageBlock__img(href=routes.imageDetail(image.id))
-                            img(src=`/${image.fileUrl}`)
+                            img(src=image.fileUrl)
                         a.imageBlock__container(href=routes.imageDetail(image.id))
                         a.imageBlock__profile(href="#")
-                            img(src=`/${image.fileUrl}`)
+                            img(src=image.fileUrl)
                         h1
                             a.imageBlock__title #{image.title}
                         .imageBlock__btn
@@ -60,13 +59,12 @@ block content
             .user__detail__like-images__title 좋아요 한 작품
             .grid__container
                 for image in viewedUser.likeImages.reverse()
-                    //- img(src=`/${image.fileUrl}`)
                     .imageBlock
                         a.imageBlock__img(href=routes.imageDetail(image.id))
-                            img(src=`/${image.fileUrl}`)
+                            img(src=image.fileUrl)
                         a.imageBlock__container(href=routes.imageDetail(image.id))
                         a.imageBlock__profile(href="#")
-                            img(src=`/${image.fileUrl}`)
+                            img(src=image.fileUrl)
                         h1
                             a.imageBlock__title #{image.title}
                         .imageBlock__btn

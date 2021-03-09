@@ -8,10 +8,10 @@ block content
                 .image__detail__edit
                     a(href=routes.editImage(image._id))
                         p edit
-            .image__detail__tags
-                |Tags : 
-                for tag in image.tag
-                    a.image__detail__tags__tag=tag 
+            //- .image__detail__tags
+            //-     |Tags : 
+            //-     for tag in image.tag
+            //-         a.image__detail__tags__tag=tag 
                     //테그 클릭하면 검색할 수 있게
         .image__detail__container
             .image__detail__image
@@ -49,6 +49,7 @@ block content
                 if loggedUser
                     form.add__commment#jsAddComment
                         input(type="text", placeholder="Add a comment")
+                        input(type='submit', value='댓글 쓰기', class="submit__btn")
                 ul.image__detail__comments-list#jsCommentList
                     each comment in image.comments.reverse()
                         li
