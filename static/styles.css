@@ -408,6 +408,12 @@ h3 {
 .user__avatar {
   max-height: 3vw; }
 
+.editprofile__form {
+  margin-left: 15%;
+  margin-right: 15%; }
+  .editprofile__form .editprofile__avatar img {
+    width: 300px; }
+
 /* input 관련 */
 .input__text {
   width: 15vw;

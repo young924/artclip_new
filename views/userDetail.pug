@@ -7,7 +7,7 @@ block content
                 //유저db 완성되면
                 .user__detail__profile__info__avatar
                     if viewedUser.avatarUrl
-                        img(src=`/${viewedUser.avatarUrl}`, class="user__detail__profile__info__avatar__img")
+                        img(src=viewedUser.avatarUrl, class="user__detail__profile__info__avatar__img")
                 .user__detail__profile__info__name
                     |#{viewedUser.name}
                 .user__detail__profile__info__career
