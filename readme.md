@@ -14,10 +14,10 @@ art clip 2021
 - [x] 프로필 프런트 수정(간소화)
 - [x] uploads aws 연결
 - [x] delete aws 반영
-- [ ] favicon
+- [x] favicon
 - [ ] 카카오톡 로그인
-- [ ] tag 없애기
-- [ ] 댓글 assets/js에서 작가이름 보이게
+- [x] tag 없애기
+- [x] 댓글 assets/js에서 작가이름 보이게
 - [ ] 댓글 삭제
   
 - [ ] 30일 사진을 업로드 안하면 계정 삭제
@@ -31,7 +31,8 @@ art clip 2021
 
 ## CSS
 
-- [ ] logo 사진으로 대체
+- [x] logo 사진으로 대체
+- [ ] pug 상에서 logo 구조가 변경되었으니 css로 사이즈 조정
 - [ ] header 수정
 - [ ] 폰트 해주세요
 - [ ] favicon 이미지 / default avatar 파일 보내주기

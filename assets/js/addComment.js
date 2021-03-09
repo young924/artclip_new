@@ -3,6 +3,8 @@ import axios from "axios";
 const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
 const commentNumber = document.getElementById("jsCommentNumber");
+const commentCreator = document.getElementById("jsCreator");
+
 
 const increaseNumber = () => {
     commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
@@ -11,7 +13,7 @@ const increaseNumber = () => {
 const addComment = async (comment) => {
     const li = document.createElement("li");
     const span = document.createElement("span");
-    span.innerHTML = comment;
+    span.innerHTML = `${commentCreator.innerHTML} : ${comment}`;
     li.appendChild(span);
     commentList.prepend(li);
     increaseNumber();

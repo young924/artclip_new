@@ -34,7 +34,7 @@ block content
                     span=image.views
             .image__detail__info
                 .image__detail__creator Created By 
-                    a(href=`/users/${image.creator.name}`) #{image.creator.name}
+                    a(href=`/users/${image.creator.name}`)#jsCreator #{image.creator.name}
                 .image__detail__createdAt #{image.createdAt.toLocaleDateString()}
                 .image__detail__description #{image.description}
             .image__detail__comment

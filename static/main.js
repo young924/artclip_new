@@ -105,6 +105,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var addCommentForm = document.getElementById("jsAddComment");
 var commentList = document.getElementById("jsCommentList");
 var commentNumber = document.getElementById("jsCommentNumber");
+var commentCreator = document.getElementById("jsCreator");
 
 var increaseNumber = function increaseNumber() {
   commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
@@ -119,7 +120,7 @@ var addComment = /*#__PURE__*/function () {
           case 0:
             li = document.createElement("li");
             span = document.createElement("span");
-            span.innerHTML = comment;
+            span.innerHTML = "".concat(commentCreator.innerHTML, " : ").concat(comment);
             li.appendChild(span);
             commentList.prepend(li);
             increaseNumber();
@@ -13796,7 +13797,7 @@ try {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! @babel/polyfill */"./node_modules/@babel/polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! /Users/z1n00/Documents/GitHub/artclip_new/assets/js/main.js */"./assets/js/main.js");
+module.exports = __webpack_require__(/*! /Users/Nayoung/Documents/GitHub/artclip_new/assets/js/main.js */"./assets/js/main.js");
 
 
 /***/ })
