@@ -53,4 +53,6 @@ block content
                 ul.image__detail__comments-list#jsCommentList
                     each comment in image.comments.reverse()
                         li
-                            span #{comment.creator.name} : #{comment.text}
+                            form(action=`/images/${image.id}/delete-comment/${comment.id}`)#jsDeleteComment
+                                span #{comment.creator.name} : #{comment.text} 
+                                input(type='submit', value='x')

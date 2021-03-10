@@ -4,38 +4,22 @@ art clip 2021
 
 ## Backend
 
-- [x] edit을 업로드한 사람한테만 뜨게 하기
-- [x] edit Image
-- [x] 이미지 삭제
-- [x] 사진에 creator 링크
-- [x] 댓글 구현
-- [x] 좋아요 구현
-- [x] view 구현
-- [x] 프로필 프런트 수정(간소화)
-- [x] uploads aws 연결
-- [x] delete aws 반영
-- [x] favicon
 - [ ] 카카오톡 로그인
-- [x] tag 없애기
-- [x] 댓글 assets/js에서 작가이름 보이게
-- [ ] 댓글 삭제
+- [ ] 댓글 본인이 쓴 댓글만 삭제 버튼 보이고 삭제 가능하게 / 올리고 나서 바로 삭제버튼 보이게
+- [ ] 댓글 삭제 확인 팝업
   
 - [ ] 30일 사진을 업로드 안하면 계정 삭제
 
 ### bonus
 
-- [x] 로그인 실패 시, message 띄우기
-- [x] unlike 구현
 - [ ] 팔로우 구현 수정 (api 사용)
   
 
 ## CSS
-
-- [x] logo 사진으로 대체
 - [ ] pug 상에서 logo 구조가 변경되었으니 css로 사이즈 조정
 - [ ] header 수정
-- [ ] 폰트 해주세요
-- [ ] favicon 이미지 / default avatar 파일 보내주기
+- [ ] 폰트
+- [ ] default avatar 파일 보내주기
 
 ### Login
 - [ ] Input box 그라데이션
@@ -54,4 +38,4 @@ art clip 2021
 - [ ] 전반적 크게 수정 (좌우 여백 만들고)
 
 ### editProfile
-- [ ] upload같이 수정해주세용
+- [ ] upload같이 수정

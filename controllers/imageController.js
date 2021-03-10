@@ -121,21 +121,29 @@ const deleteImage = async (req, res) => {
   } = req;
   try {
     const image = await Image.findById(id);
-
     if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
     await Image.findByIdAndDelete(id); // mongoose에서 지우고
-
-    // fs.unlink( // 파일도 지우고
-    //   path.resolve(__dirname, '..', ...image.fileUrl.split('\\')),
-    //   (err) => {
-    //     if (err) throw err;
-    //     console.log(`image file(title:${image.title}, id:${id}) was deleted`);
-    //   }
-    // );
     res.redirect(routes.home);
   } catch (err) {
     console.error(err);
     res.redirect(routes.editImage(id));
+  }
+}
+
+const deleteComment = async (req, res) => {
+  const {
+    params: { id, commentId },
+  } = req;
+  try {
+    await Image.updateOne(
+      { id },
+      { $pull: { comments: commentId } },
+    )
+    await Comment.findByIdAndDelete(commentId);
+    res.redirect(routes.imageDetail(id));
+  } catch (err) {
+    console.log(err);
+    res.redirect(routes.imageDetail(id));
   }
 }
 
@@ -188,7 +196,6 @@ const postAddComment = async (req, res) => {
   }
 }
 
-
 module.exports = {
   home,
   search,
@@ -198,6 +205,7 @@ module.exports = {
   getEditImage,
   postEditImage,
   deleteImage,
+  deleteComment,
   postLike,
   postAddComment,
 };

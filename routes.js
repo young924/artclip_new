@@ -23,6 +23,7 @@ const UPLOAD = '/upload';
 const IMAGE_DETAIL = '/:id';  // 다른 사람이 올린 image 볼 때
 const EDIT_IMAGE = '/:id/edit'; // 내가 올린 image 수정할 때
 const DELETE_IMAGE = '/:id/delete';
+const DELETE_COMMENT = "/:id/delete-comment/:commentId";
 
 // Social Login
 
@@ -38,6 +39,7 @@ const FACEBOOK_CALLBACK = '/auth/facebook/callback';
 const API = "/api";
 const LIKE = "/:id/like";
 const ADD_COMMENT = "/:id/comment";
+
 
 const routes = {
   home: HOME,
@@ -103,6 +105,13 @@ const routes = {
       return `/images/${id}/delete`;
     } else {
       return DELETE_IMAGE;
+    }
+  },
+  deleteComment: (id, commentId) => {
+    if (id && commentId) {
+      return `/images/${id}/delete-comment/${commentId}`;
+    } else {
+      return DELETE_COMMENT;
     }
   },
   kakao: KAKAO,
