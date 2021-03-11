@@ -28,31 +28,30 @@ block content
                         i.far.fa-heart
                     | : 
                     span#jsLikeNumber=image.likes
+                .image__detail__social__comments 
+                    i.far.fa-comment-dots
+                    | : 
+                    span=image.comments.length
                 .image__detail__social__views
                     i.fas.fa-eye(style='color: var(--main--color)')
                     | : 
                     span=image.views
             .image__detail__info
                 .image__detail__creator Created By 
-                    a(href=`/users/${image.creator.name}`)#jsCreator #{image.creator.name}
+                    a(href=`/users/${image.creator.name}`) #{image.creator.name}
                 .image__detail__createdAt #{image.createdAt.toLocaleDateString()}
                 .image__detail__description #{image.description}
             .image__detail__comment
-                if image.comments.length === 1
-                    span.image__detail__comment-number
-                        span#jsCommentNumber 1
-                        |  comment
-                else
-                    span.image__detail__comment-number
-                        span#jsCommentNumber=image.comments.length
-                        |  comments
-                if loggedUser
-                    form.add__commment#jsAddComment
-                        input(type="text", placeholder="Add a comment")
-                        input(type='submit', value='댓글 쓰기', class="submit__btn")
-                ul.image__detail__comments-list#jsCommentList
+                ul.image__detail__comments-list
                     each comment in image.comments.reverse()
                         li
-                            form(action=`/images/${image.id}/delete-comment/${comment.id}`)#jsDeleteComment
-                                span #{comment.creator.name} : #{comment.text} 
+                            form(action=`/images/${image.id}/delete-comment/${comment.id}`)
+                                span
+                                    a(href=`/users/${comment.creator.name}`) #{comment.creator.name}
+                                span : #{comment.text}    
+                                span #{comment.createdAt.toLocaleString()} 
                                 input(type='submit', value='x')
+                if loggedUser
+                    form(action=`/images/${image.id}/add-comment`, method="post").add__commment
+                        input(type="text", placeholder="Add a comment", name="comment")
+                        input(type='submit', value='댓글 쓰기')

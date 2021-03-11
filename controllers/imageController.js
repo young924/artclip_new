@@ -130,6 +130,27 @@ const deleteImage = async (req, res) => {
   }
 }
 
+const postAddComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { comment },
+    user
+  } = req;
+  try {
+    const image = await Image.findById(id);
+    const newComment = await Comment.create({
+      text: comment,
+      creator: user.id,
+    });
+    image.comments.push(newComment.id);
+    image.save();
+    res.redirect(routes.imageDetail(id));
+  } catch (err) {
+    console.log(err);
+    res.redirect(routes.home);
+  }
+}
+
 const deleteComment = async (req, res) => {
   const {
     params: { id, commentId },
@@ -168,27 +189,6 @@ const postLike = async (req, res) => {
       image.save();
     }
     res.status(200);
-  } catch (error) {
-    res.status(400);
-  } finally {
-    res.end();
-  }
-}
-
-const postAddComment = async (req, res) => {
-  const {
-    params: { id },
-    body: { comment },
-    user,
-  } = req;
-  try {
-    const image = await Image.findById(id);
-    const newComment = await Comment.create({
-      text: comment,
-      creator: user.id,
-    });
-    image.comments.push(newComment.id);
-    image.save();
   } catch (error) {
     res.status(400);
   } finally {

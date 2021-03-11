@@ -7,6 +7,7 @@ const {
   getEditImage,
   postEditImage,
   deleteImage,
+  postAddComment,
   deleteComment,
 } = require('../controllers/imageController');
 const { uploadImage, onlyPrivate, awsDeleteImage } = require('../middlewares');
@@ -19,6 +20,7 @@ imageRouter.get(routes.imageDetail(), imageDetail);
 imageRouter.get(routes.editImage(), onlyPrivate, getEditImage);
 imageRouter.post(routes.editImage(), onlyPrivate, postEditImage);
 imageRouter.get(routes.deleteImage(), onlyPrivate, awsDeleteImage, deleteImage);
+imageRouter.post(routes.addComment(), onlyPrivate, postAddComment);
 imageRouter.get(routes.deleteComment(), onlyPrivate, deleteComment);
 
 module.exports = imageRouter;

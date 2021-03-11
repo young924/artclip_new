@@ -1,7 +1,7 @@
 header.header
     .header__logo
         a(href = "/")
-            img.header__logo__circle(src=logoImageUrl)
+            img.header__logo__image(src=logoImageUrl)
     .header__column
         form(action=routes.search, method='get')
             input.search__text(type='text', placeholder='Searching by term...', name='term')

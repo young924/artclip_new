@@ -12,9 +12,12 @@ const increaseNumber = () => {
 
 const addComment = async (comment) => {
     const li = document.createElement("li");
-    const span = document.createElement("span");
-    span.innerHTML = `${commentCreator.innerHTML} : ${comment}`;
-    li.appendChild(span);
+    const commentSpan = document.createElement("span");
+    const dateSpan = document.createElement("span");
+    commentSpan.innerHTML = `${commentCreator.innerHTML} : ${comment} `;
+    dateSpan.innerHTML = Date.now().toLocaleString();
+    li.appendChild(commentSpan);
+    li.appendChild(dateSpan);
     commentList.prepend(li);
     increaseNumber();
 }
