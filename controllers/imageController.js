@@ -5,7 +5,7 @@ const Comment = require('../models/Comment');
 
 const home = async (req, res) => {
   try {
-    const images = await Image.find({}).sort({ _id: -1 });
+    const images = await Image.find({}).sort({ _id: -1 }).populate("creator");
     res.render('home', { pageTitle: 'Home', images })
   } catch (error) {
     console.log(error);

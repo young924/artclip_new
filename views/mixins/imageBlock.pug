@@ -14,16 +14,16 @@ mixin imageBlock(image = {})
         a.imageBlock__img(href=routes.imageDetail(image._id))
             img(src=image.fileUrl)
         a.imageBlock__container(href=routes.imageDetail(image._id))
-        a.imageBlock__profile(href="#")
-            img(src=image.fileUrl)
+        a.imageBlock__profile(href=`/users/${image.creator.name}`)
+            img(src=image.creator.avatarUrl)
         h1
-            a.imageBlock__title(href=routes.imageDetail(image._id)) #{image.title}
-        .imageBlock__btn
-            a.imageBlock__btn__heart(href='#')
-                i.far.fa-heart(style='color: white')
-                span 좋아요
-            a.imageBlock__btn__comment(href="#")
-                i.i.far.fa-comment-dots(style='color: white')
-                span 댓글
-        a.imageBlock__btn__more(href='#')
-            i.fas.fa-ellipsis-v(style='color: white;')
+            a.imageBlock__title(href=routes.imageDetail(image._id)) #{image.title} by #{image.creator.name}
+        //- .imageBlock__btn
+        //-     a.imageBlock__btn__heart(href='#')
+        //-         i.far.fa-heart(style='color: white')
+        //-         span 좋아요
+        //-     a.imageBlock__btn__comment(href="#")
+        //-         i.i.far.fa-comment-dots(style='color: white')
+        //-         span 댓글
+        //- a.imageBlock__btn__more(href='#')
+        //-     i.fas.fa-ellipsis-v(style='color: white;')
