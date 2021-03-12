@@ -5,6 +5,9 @@ art clip 2021
 ## Backend
 
 - [ ] 카카오톡 로그인
+- [ ] image model comments array에서 삭제
+- [ ] image model like 변경
+- [ ] image 삭제하면 creator의 user 모델 image에서도 삭제
 - [ ] 댓글 삭제 확인 팝업
   
 - [ ] 30일 사진을 업로드 안하면 계정 삭제

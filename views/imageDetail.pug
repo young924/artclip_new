@@ -45,12 +45,13 @@ block content
                 ul.image__detail__comments-list
                     each comment in image.comments.reverse()
                         li
-                            form(action=`/images/${image.id}/delete-comment/${comment.id}`)
+                            form(action=`/images/${image.id}/delete-comment/${comment.id}`, name="deleteForm")
                                 span
                                     a(href=`/users/${comment.creator.name}`) #{comment.creator.name}
                                 span : #{comment.text}    
                                 span #{comment.createdAt.toLocaleString()} 
-                                input(type='submit', value='x')
+                                if loggedUser && loggedUser.id === comment.creator.id
+                                    input(type='submit', value='x')
                 if loggedUser
                     form(action=`/images/${image.id}/add-comment`, method="post").add__commment
                         input(type="text", placeholder="Add a comment", name="comment")

@@ -20,7 +20,6 @@ const ImageSchema = new mongoose.Schema({
     },
     tag: {
         type: [String],
-        required: "At least one tag is required"
     },
     views: {
         type: Number,
