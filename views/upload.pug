@@ -8,4 +8,6 @@ block content
             input(type='text', placeholder="Title", name='title', required=true, class="input__text")
             textarea(name='description', placeholder='Description', class="input__text")
             //- textarea(name='tag', placeholder='Tags', class="input__text")
+            input(type='checkbox', name="volatile")
+            label(for='volatile') 회원 정보 파기 시에 해당 작품을 함께 파기합니다.
             input(type='submit', value='Upload Image', class="submit__btn")

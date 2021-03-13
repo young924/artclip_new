@@ -27,7 +27,9 @@ block content
                 if userAlreadyExist
                     .join__form__userAlreadyExist
                     | 소셜 로그인으로 가입된 계정이거나 이미 존재하는 닉네임입니다
-                .join__form__guideline 버튼을 클릭함으로써 아트클립의 이용약관과 개인정보보호정책에 동의합니다.
+                .join__form__guideline
+                    input(type="checkbox")
+                    | 아트클립의 이용약관과 개인정보보호정책에 동의합니다.
                 button(class= "submit__btn") 회원가입
                 .join__already 이미 가입하셨나요? 
                     a(href="/login") 로그인

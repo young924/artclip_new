@@ -9,6 +9,8 @@ art clip 2021
 - [ ] image model like 변경
 - [ ] image 삭제하면 creator의 user 모델 image에서도 삭제
 - [ ] 댓글 삭제 확인 팝업
+- [ ] join checkbox
+- [ ] upload checkbox
   
 - [ ] 30일 사진을 업로드 안하면 계정 삭제
 
@@ -24,16 +26,11 @@ art clip 2021
 
 ### Login
 - [ ] Input box 그라데이션
-- [ ] 아이디비밀번호 찾기 지워주세요
 - [ ] 가로 길이 줄이고 사진 넣기
 - [ ] social Login 버튼 수정 (알아서 원하는대로)
 
 ### Join
-- [ ] 체크박스 만들기
 - [ ] login과 같은 포맷으로
-
-### Upload
-- [ ] 체크박스
 
 ### userDetail
 - [ ] 전반적 크게 수정 (좌우 여백 만들고)
