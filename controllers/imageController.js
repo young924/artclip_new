@@ -120,10 +120,14 @@ const deleteImage = async (req, res) => {
     user: { _id: userId },
   } = req;
   try {
-    // creator의 images에서도 삭제
     const image = await Image.findById(id);
     if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
     await Image.findByIdAndDelete(id); // mongoose에서 지우고
+    // creator의 images에서도 삭제
+    await User.updateOne(
+      { _id: userId },
+      { $pull: { images: id } },
+    )
     res.redirect(routes.home);
   } catch (err) {
     console.error(err);
