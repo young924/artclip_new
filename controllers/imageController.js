@@ -42,7 +42,7 @@ const postUpload = async (req, res) => {
       description,
       tag
     })
-    await User.findByIdAndUpdate(id, { $push: { images: newImage } });
+    await User.findByIdAndUpdate(id, { $push: { images: newImage }, $set: { lastUpload: Date.now() } });
     res.redirect(routes.imageDetail(newImage.id));
   } catch (err) {
     console.error(err);

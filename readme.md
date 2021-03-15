@@ -11,7 +11,11 @@ art clip 2021
 - [ ] 댓글 삭제 확인 팝업
 - [ ] join checkbox
 - [ ] upload checkbox
-- [ ] 30일 사진을 업로드 안하면 계정 삭제
+- [ ] 30일 사진을 업로드 안하면 계정 삭제 ->
+  - [x] 1. 업로드 할때마다 UserSchema의 lastUpload 갱신
+  - [x] 2. userRefresh.js에 일정 기간동안 업로드 안한 유저 목록 찾아내서 콘솔에 출력
+  - [ ] 3. userRefresh.js에서 업로드 안한 유저 삭제
+  - [ ] 4. userRefresh.js에 5분마다 이미지 삭제 4. 5분에서 30일로 변경
 
 ### bonus
 
