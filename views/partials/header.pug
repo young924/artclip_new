@@ -2,22 +2,25 @@ header.header
     .header__logo
         a(href = "/")
             img.header__logo__image(src=logoImageUrl)
-    .header__column
-        form(action=routes.search, method='get')
-            input.search__text(type='text', placeholder='Searching by term...', name='term')
-        if !loggedUser
-            .header__column__divider
-            .header__column__signin
-                a(href=routes.login) 로그인
-            .header__column__divider
-            .header__column__signup
-                a(href=routes.join) 회원가입
-        else 
-            .header__column__upload
-                a(href=`/images${routes.upload}`) Upload
-            .header__column__divider
-            .header__column__profile
-                a(href=routes.userDetail(loggedUser.name)) 프로필
-            .header__column__divider
-            .header__column__profile
-                a(href=routes.logout) 로그아웃
+    .header__right
+        .header__search
+            form(action=routes.search, method='get')
+                input.search__text(type='text', placeholder='Searching by term...', name='term')
+        .header__column
+            if !loggedUser
+                .header__column__divider
+                .header__column__signin
+                    a(href=routes.login) 로그인
+                .header__column__divider
+                .header__column__signup
+                    a(href=routes.join) 회원가입
+            else 
+                .header__column__upload
+                    a(href=`/images${routes.upload}`)
+                        i.fas.fa-arrow-circle-up
+                .header__column__divider
+                .header__column__profile
+                    a(href=routes.userDetail(loggedUser.name)) 프로필
+                .header__column__divider
+                .header__column__profile
+                    a(href=routes.logout) 로그아웃
