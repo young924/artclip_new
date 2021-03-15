@@ -32,6 +32,10 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Image",
     }],
+    lastUpload: {
+        type: Date,
+        default: Date.now,
+    },
     kakaoID: Number,
     naverID: Number,
     googleID: Number,
