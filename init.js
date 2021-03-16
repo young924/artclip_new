@@ -4,7 +4,7 @@ const setUserRefresh = require('./userRefresh');
 
 dotenv.config();
 
-setUserRefresh(3);
+setUserRefresh(1, 1);
 
 const PORT = process.env.PORT || 4000;
 
