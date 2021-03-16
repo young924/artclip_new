@@ -57,6 +57,7 @@ const awsDeleteImage = async (req, res, next) => {
 const localsMiddleware = (req, res, next) => {
     res.locals.siteName = 'Art Clip';
     res.locals.logoImageUrl = "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/KakaoTalk_Photo_2021-03-09-18-06-06.png";
+    res.locals.greyImageUrl = "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/solid+grey+image.jpg";
     res.locals.routes = routes;
     res.locals.loggedUser = req.user || null;
     next();

@@ -30,7 +30,7 @@ const getUpload = (req, res) => {
 
 const postUpload = async (req, res) => {
   const {
-    body: { title, description, tag },
+    body: { title, description, tag, volatile },
     file: { location },
     user: { id },
   } = req;
@@ -40,7 +40,8 @@ const postUpload = async (req, res) => {
       fileUrl: location,
       title,
       description,
-      tag
+      tag,
+      volatile: (volatile === 'on') ? false : true,
     })
     await User.findByIdAndUpdate(id, { $push: { images: newImage }, $set: { lastUpload: Date.now() } });
     res.redirect(routes.imageDetail(newImage.id));

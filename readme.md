@@ -10,7 +10,7 @@ art clip 2021
 - [x] image 삭제하면 creator의 user 모델 image에서도 삭제
 - [ ] 댓글 삭제 확인 팝업
 - [ ] join checkbox
-- [ ] upload checkbox
+- [x] upload checkbox
 - [ ] 30일 사진을 업로드 안하면 계정 삭제 ->
   - [x] 1. 업로드 할때마다 UserSchema의 lastUpload 갱신
   - [x] 2. userRefresh.js에 일정 기간동안 업로드 안한 유저 목록 찾아내서 콘솔에 출력
