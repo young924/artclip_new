@@ -1,16 +1,29 @@
 .login__main {
     font-size: 35px;
+    height: 100%;
+    margin-top: 2vw;
+    display: flex;
   }
   
-  .login__main {
-    margin-top: 2vw;
-    margin-left: 35%;
-    margin-right: 35%;
-  }
-  
-  .login__form {
-    margin-top: 2vw;
+
+.login__image__container {
+  width: 50%;
+}
+
+.login__image{
+  width: 100%;
+  max-height: 100%;
+  object-fit: fill;
+}
+
+  .login__container {
     text-align: center;
+    margin: auto;
+    margin-top: 10vw;
+  }
+
+  .login__form {
+    padding-top: 3vw;
   }
   
   .login_form__find,
