@@ -9,7 +9,7 @@ art clip 2021
 - [ ] image model like 변경
 - [x] image 삭제하면 creator의 user 모델 image에서도 삭제
 - [ ] 댓글 삭제 확인 팝업
-- [ ] join checkbox
+- [x] join checkbox
 - [x] upload checkbox
 - [ ] 30일 사진을 업로드 안하면 계정 삭제 ->
   - [x] 1. 업로드 할때마다 UserSchema의 lastUpload 갱신
