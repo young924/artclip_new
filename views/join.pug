@@ -8,7 +8,7 @@ block content
         .join__main 
             .join__main__title 가입하기
             .join__main__container
-                form.join__form(action='/join', method='post')
+                form.join__form(action='/join', method='post')#jsJoinForm
                     .join__form__name
                         input(type="text" class="input__text__long" name="name" placeholder="닉네임" required)
                     .join__form__ID
@@ -29,10 +29,10 @@ block content
                         .join__form__userAlreadyExist
                         | 소셜 로그인으로 가입된 계정이거나 이미 존재하는 닉네임입니다
                     .join__form__guideline
-                        input(type="checkbox")
+                        input(type="checkbox")#jsJoinCheckbox
                         | 아트클립의 이용약관과 개인정보보호정책에 동의합니다.
                     .join__form__btn
-                        button(class= "submit__btn__long") 회원가입
+                        button(class= "submit__btn__long")#jsJoinBtn 회원가입
                     .join__already 이미 가입하셨나요? 
                         a(href="/login") 로그인
             .join__SNS SNS로 가입하기
