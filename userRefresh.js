@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const Image = require('./models/Image');
+const Comment = require('./models/Comment');
 
 const deleteUsers = async (uploadRenewalInterval) => {
     try {
@@ -9,10 +10,7 @@ const deleteUsers = async (uploadRenewalInterval) => {
         before.setMinutes(now.getMinutes() - uploadRenewalInterval);
 
         const lazyUsers = await User.find({ lastUpload: { $lte: String(before) } });
-        if(!Array.isArray(lazyUsers)) {
-            lazyUsers = Array(lazyUsers);
-        }
-        console.log(`lazy users: ${lazyUsers.map(e => [e.name, e.lastUpload])}`);
+        lazyUsers.forEach(lazyUser => console.log(' user name: ', lazyUser.name, ' last upload: ', lazyUser.lastUpload));
 
         await User.deleteMany({ lastUpload: { $lte: String(before) } });
 
@@ -22,28 +20,34 @@ const deleteUsers = async (uploadRenewalInterval) => {
     }
 };
 
-// TODO: lazyUser._id undefined로 나타나는 문제 해결
 const deleteImages = async (lazyUsers) => {
-    console.log('yehhh');
-    console.log(`2 lazyUsers: ${lazyUsers}`);
-    console.log(`3 lazyUsers is array: ${Array.isArray(lazyUsers)}`);
     try {
-        for (const lazyUser in lazyUsers) {
-            console.log(lazyUser._id);
-            await Image.deleteMany({ creator: mongoose.Types.ObjectId(lazyUser._id) });
-        }
+        lazyUsers.forEach(async (lazyUser) => {
+            await Image.deleteMany({ creator: mongoose.Types.ObjectId(lazyUser.id) });
+        });
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const deleteComments = async (lazyUsers) => {
+    try {
+        lazyUsers.forEach(async (lazyUser) => {
+            await Image.updateMany({}, { $pull: { comments: mongoose.Types.ObjectId(lazyUser.id) } });
+            await Comment.deleteMany({ creator: mongoose.Types.ObjectId(lazyUser.id) });
+        });
     } catch (err) {
         console.error(err);
     }
 };
 
 const setUserRefresh = (refreshInterval, uploadRenewalInterval) => {
-    console.log(`🔃 User refresh interval: ${refreshInterval} minutes\n🔃 User should upload image at least once ${uploadRenewalInterval} minutes pass`);
+    console.log(`🔃 User refresh interval: ${refreshInterval} minutes\n🔃 User should upload image at least every ${uploadRenewalInterval} minutes`);
     setInterval(async () => {
         console.log(`🔃 ${refreshInterval} min passed. user refresh starts.`);
         const lazyUsers = await deleteUsers(uploadRenewalInterval);
-        console.log(`1 lazyUsers: ${lazyUsers}`);
-        // await deleteImages(lazyUsers);
+        await deleteImages(lazyUsers);
+        await deleteComments(lazyUsers);
     }, refreshInterval * 60 * 1000);
 };
 
