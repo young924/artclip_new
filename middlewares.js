@@ -11,7 +11,7 @@ const s3 = new aws.S3({
     accessKeyId: process.env.AWS_KEY,
     secretAccessKey: process.env.AWS_PRIVATE_KEY,
     region: "ap-northeast-2",
-})
+});
 
 const multerImage = multer({
     storage: multerS3({
@@ -52,16 +52,17 @@ const awsDeleteImage = async (req, res, next) => {
         console.error(err);
         res.redirect(routes.editImage(id));
     }
-}
+};
 
 const localsMiddleware = (req, res, next) => {
     res.locals.siteName = 'Art Clip';
     res.locals.logoImageUrl = "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/KakaoTalk_Photo_2021-03-09-18-06-06.png";
+    res.locals.greyImageUrl = "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/solid+grey+image.jpg";
     res.locals.routes = routes;
     res.locals.loginImage = "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/login.jpg"
     res.locals.loggedUser = req.user || null;
     next();
-}
+};
 
 // 로그인 여부에 따라 접근 가능/불가능
 const onlyPrivate = (req, res, next) => {
@@ -70,7 +71,7 @@ const onlyPrivate = (req, res, next) => {
     } else {
         res.redirect(routes.home);
     }
-}
+};
 
 const onlyPublic = (req, res, next) => {
     if (req.user) {
@@ -78,7 +79,7 @@ const onlyPublic = (req, res, next) => {
     } else {
         next();
     }
-}
+};
 
 module.exports = {
     awsDeleteImage,

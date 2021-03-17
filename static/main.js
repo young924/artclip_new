@@ -13688,7 +13688,7 @@ try {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! @babel/polyfill */"./node_modules/@babel/polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! /Users/z1n00/Documents/GitHub/artclip_new/assets/js/main.js */"./assets/js/main.js");
+module.exports = __webpack_require__(/*! /Users/Nayoung/Documents/GitHub/artclip_new/assets/js/main.js */"./assets/js/main.js");
 
 
 /***/ })
