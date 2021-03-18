@@ -8,6 +8,26 @@
     border: 1px solid $main-color;
     margin-bottom: 1%;
   }
+
+  .input__select__short, .input__text__long, .input__text__short {
+    height: 2vw;
+    font-size: 1vw;
+    border-radius: 0.5vw;
+    border: 1px solid $main-color;
+    margin-bottom: 1%;
+  }
+
+  .input__text__long {
+    width: 25vw;
+  }
+
+  .input__text__short {
+    width: 12vw;
+  }
+
+  .input__select__short {
+    width: 11vw;
+  }
   
   .input__textarea {
     width: 60vw;

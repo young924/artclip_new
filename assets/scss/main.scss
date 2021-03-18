@@ -2,7 +2,6 @@ main {
   margin-top: 50px;
 }
 
-
 .titlebar {
     display: inline-flex;
     font-size: 40px;
@@ -11,7 +10,7 @@ main {
 
   /* button 관련 */
   
-  .submit__btn {
+  .submit__btn, .submit__btn__long {
     background-color: rgba(140, 19, 229, 0.55);
     border: 0px;
     border-radius: 7px;
@@ -22,6 +21,10 @@ main {
     margin-bottom: 1%;
   }
   
+  .submit__btn__long {
+    width: 25vw;
+  }
+
   .button__profile {
     margin: 0px 0px 0px 0px;
     display: inline;

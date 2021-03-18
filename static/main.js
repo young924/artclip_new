@@ -139,6 +139,51 @@ init();
 
 /***/ }),
 
+/***/ "./assets/js/join.js":
+/*!***************************!*\
+  !*** ./assets/js/join.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var joinForm = document.getElementById("jsJoinForm");
+var joinCheck = document.getElementById("jsJoinCheckbox");
+var joinBtn = document.getElementById("jsJoinBtn");
+var checked = false;
+
+function handleSubmit(event) {
+  if (checked) {
+    return true;
+  } else {
+    event.preventDefault();
+  }
+}
+
+function handleCheck(event) {
+  if (joinCheck.checked) {
+    checked = true;
+    joinBtn.style.backgroundColor = "rgba(140, 19, 229, 0.5)";
+    joinBtn.style.cursor = "pointer";
+  } else {
+    checked = false;
+    joinBtn.style.backgroundColor = "#D9D9D9";
+    joinBtn.style.cursor = "default";
+  }
+}
+
+function init() {
+  joinBtn.style.backgroundColor = "#D9D9D9";
+  joinBtn.style.cursor = "default";
+  joinCheck.addEventListener("click", handleCheck);
+  joinBtn.addEventListener("click", handleSubmit);
+}
+
+if (joinForm) {
+  init();
+}
+
+/***/ }),
+
 /***/ "./assets/js/like.js":
 /*!***************************!*\
   !*** ./assets/js/like.js ***!
@@ -278,6 +323,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _like__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./like */ "./assets/js/like.js");
 /* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid */ "./assets/js/grid.js");
 /* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_grid__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _join__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./join */ "./assets/js/join.js");
+/* harmony import */ var _join__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_join__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
