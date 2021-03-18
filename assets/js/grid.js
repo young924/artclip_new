@@ -15,7 +15,7 @@ const cards = document.querySelectorAll(".grid__item"),
     "imgs/cards/13.png",
     "imgs/cards/14.png",
     "imgs/cards/15.png",
-    "imgs/cards/16.png"
+    "imgs/cards/16.png",
   ];
 function handleMouseover(e) {
   const card = e.target,
@@ -43,7 +43,7 @@ function handleMouseout(e) {
 
 function init() {
   let i = 0;
-  cards.forEach(card => {
+  cards.forEach((card) => {
     cardImg = card.querySelector(".grid__image");
     cardImg.src = cardImgList[i];
     i++;

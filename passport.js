@@ -1,11 +1,11 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const passport = require("passport");
-const User = require("./models/User");
+const passport = require('passport');
+const User = require('./models/User');
 
-const KakaoStrategy = require("passport-kakao").Strategy;
-const NaverStrategy = require("passport-naver").Strategy;
-const FacebookStrategy = require("passport-facebook").Strategy;
+const KakaoStrategy = require('passport-kakao').Strategy;
+const NaverStrategy = require('passport-naver').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 passport.use(User.createStrategy());
 
@@ -15,110 +15,111 @@ passport.deserializeUser(User.deserializeUser()); // cookie에 있는 값으로 
 // kakao
 
 passport.use(
-  new KakaoStrategy(
-    {
-      clientID: process.env.KAKAO_ID, // kakao developer에서 발급받는 REST API 키
-      callbackURL: "/auth/kakao/callback" // 인증 결과를 받을 라우터
-    },
-    async (_, __, profile, cb) => {
-      console.log(profile);
-      try {
-        const {
-          id,
-          username: name,
-          _json: {
-            properties: { profile_image },
-            kakao_account: { email }
-          }
-        } = profile;
-        const user = await User.findOne({ name });
-        if (user) {
-          user.kakaoID = id;
-          await user.save();
-          return cb(null, user);
-        } else {
-          const newUser = await User.create({
-            email, // 카카오 동의 화면에서 email 동의 안했으면 email field에 그냥 이름 넣음. (usernameField가 email이라서 일단 이렇게)
-            name,
-            kakaoId: id,
-            avatarUrl: profile_image
-          });
-          return cb(null, newUser);
+    new KakaoStrategy(
+        {
+            clientID: process.env.KAKAO_ID, // kakao developer에서 발급받는 REST API 키
+            callbackURL: '/auth/kakao/callback', // 인증 결과를 받을 라우터
+        }, async (_, __, profile, cb) => {
+            console.log(profile);
+            try {
+                const {
+                    id,
+                    username: name,
+                    _json: {
+                        properties: { profile_image },
+                        kakao_account: { email },
+                    },
+                } = profile;
+                const user = await User.findOne({ name });
+                if (user) {
+                    user.kakaoID = id;
+                    await user.save();
+                    return cb(null, user);
+                } else {
+                    const newUser = await User.create({
+                        email, // 카카오 동의 화면에서 email 동의 안했으면 email field에 그냥 이름 넣음. (usernameField가 email이라서 일단 이렇게)
+                        name,
+                        kakaoId: id,
+                        avatarUrl: profile_image,
+                    });
+                    return cb(null, newUser);
+                }
+            } catch (err) {
+                return cb(err);
+            }
         }
-      } catch (err) {
-        return cb(err);
-      }
-    }
-  )
-);
+    )
+)
 
 // // naver
 
 passport.use(
-  new NaverStrategy(
-    {
-      clientID: process.env.NAVER_ID,
-      clientSecret: process.env.NAVER_SECRET,
-      callbackURL: "/auth/naver/callback"
-    },
-    async (_, __, profile, cb) => {
-      const {
-        id,
-        _json: { email }
-      } = profile;
-      try {
-        const name = email.split("@")[0];
-        console.log(id, email, name);
-        const user = await User.findOne({ name });
-        if (user) {
-          user.naverId = id;
-          await user.save();
-          return cb(null, user);
-        } else {
-          const newUser = await User.create({
-            email,
-            name,
-            naverId: id
-          });
-          return cb(null, newUser);
+    new NaverStrategy(
+        {
+            clientID: process.env.NAVER_ID,
+            clientSecret: process.env.NAVER_SECRET,
+            callbackURL: '/auth/naver/callback',
+        }, async (_, __, profile, cb) => {
+            const {
+                id,
+                _json: {
+                    email,
+                },
+            } = profile;
+            try {
+                const name = email.split('@')[0];
+                console.log(id, email, name);
+                const user = await User.findOne({ name });
+                if (user) {
+                    user.naverId = id;
+                    await user.save();
+                    return cb(null, user);
+                } else {
+                    const newUser = await User.create({
+                        email,
+                        name,
+                        naverId: id,
+                    });
+                    return cb(null, newUser);
+                }
+            } catch (err) {
+                return cb(err);
+            }
         }
-      } catch (err) {
-        return cb(err);
-      }
-    }
-  )
-);
+    )
+)
 
 // facebook
 passport.use(
-  new FacebookStrategy(
-    {
-      clientID: process.env.FACEBOOK_ID,
-      clientSecret: process.env.FACEBOOK_SECRET,
-      callbackURL: "/auth/facebook/callback"
-    },
-    async (_, __, profile, cb) => {
-      console.log(profile);
-      const {
-        id,
-        _json: { name }
-      } = profile;
-      try {
-        const user = await User.findOne({ name });
-        if (user) {
-          user.facebookId = id;
-          await user.save();
-          return cb(null, user);
-        } else {
-          const newUser = await User.create({
-            name,
-            facebookId: id
-          });
-          return cb(null, newUser);
+    new FacebookStrategy(
+        {
+            clientID: process.env.FACEBOOK_ID,
+            clientSecret: process.env.FACEBOOK_SECRET,
+            callbackURL: '/auth/facebook/callback',
+        }, async (_, __, profile, cb) => {
+            console.log(profile);
+            const {
+                id,
+                _json: {
+                    name
+                }
+            } = profile;
+            try {
+                const user = await User.findOne({ name });
+                if (user) {
+                    user.facebookId = id;
+                    await user.save();
+                    return cb(null, user);
+                } else {
+                    const newUser = await User.create({
+                        name,
+                        facebookId: id,
+                    });
+                    return cb(null, newUser);
+                }
+            } catch (err) {
+                return cb(err);
+            }
         }
-      } catch (err) {
-        return cb(err);
-      }
-    }
-  )
+    )
 );

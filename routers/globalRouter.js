@@ -1,5 +1,5 @@
-const express = require("express");
-const { home, search } = require("../controllers/imageController");
+const express = require('express');
+const { home, search } = require('../controllers/imageController');
 const {
   getJoin,
   postJoin,
@@ -12,10 +12,10 @@ const {
   naverLogin,
   naverLoginCallback,
   facebookLogin,
-  facebookLoginCallback
-} = require("../controllers/userController");
-const { onlyPublic, onlyPrivate } = require("../middlewares");
-const routes = require("../routes");
+  facebookLoginCallback,
+} = require('../controllers/userController');
+const { onlyPublic, onlyPrivate } = require('../middlewares');
+const routes = require('../routes');
 
 const globalRouter = express.Router();
 
@@ -31,18 +31,12 @@ globalRouter.get(routes.showcase, showcase);
 // social login
 
 globalRouter.get(routes.kakao, kakaoLogin);
-globalRouter.get(routes.kakaoCallback, kakaoLoginCallback, (req, res) =>
-  res.redirect(routes.home)
-);
+globalRouter.get(routes.kakaoCallback, kakaoLoginCallback, (req, res) => res.redirect(routes.home));
 
 globalRouter.get(routes.naver, naverLogin);
-globalRouter.get(routes.naverCallback, naverLoginCallback, (req, res) =>
-  res.redirect(routes.home)
-);
+globalRouter.get(routes.naverCallback, naverLoginCallback, (req, res) => res.redirect(routes.home));
 
 globalRouter.get(routes.facebook, facebookLogin);
-globalRouter.get(routes.facebookCallback, facebookLoginCallback, (req, res) =>
-  res.redirect(routes.home)
-);
+globalRouter.get(routes.facebookCallback, facebookLoginCallback, (req, res) => res.redirect(routes.home));
 
 module.exports = globalRouter;

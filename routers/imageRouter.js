@@ -1,5 +1,5 @@
-const express = require("express");
-const routes = require("../routes");
+const express = require('express');
+const routes = require('../routes');
 const {
   getUpload,
   postUpload,
@@ -8,9 +8,9 @@ const {
   postEditImage,
   deleteImage,
   postAddComment,
-  deleteComment
-} = require("../controllers/imageController");
-const { uploadImage, onlyPrivate, awsDeleteImage } = require("../middlewares");
+  deleteComment,
+} = require('../controllers/imageController');
+const { uploadImage, onlyPrivate, awsDeleteImage } = require('../middlewares');
 
 const imageRouter = express.Router();
 

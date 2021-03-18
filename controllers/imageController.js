@@ -1,42 +1,38 @@
-const routes = require("../routes");
-const Image = require("../models/Image");
-const User = require("../models/User");
-const Comment = require("../models/Comment");
+const routes = require('../routes');
+const Image = require('../models/Image')
+const User = require('../models/User');
+const Comment = require('../models/Comment');
 
 const home = async (req, res) => {
   try {
     const images = await Image.find({}).sort({ _id: -1 }).populate("creator");
-    res.render("home", { pageTitle: "Home", images });
+    res.render('home', { pageTitle: 'Home', images })
   } catch (error) {
     console.log(error);
-    res.render("home", { pageTitle: "Home", images: [] });
+    res.render('home', { pageTitle: 'Home', images: [] })
   }
 };
 
 const search = async (req, res) => {
-  const {
-    query: { term: searchingBy }
-  } = req;
-  let images = [];
+  const { query: { term: searchingBy } } = req;
+  let images = []
   try {
-    images = await Image.find({
-      title: { $regex: String(searchingBy), $options: "i" }
-    });
+    images = await Image.find({ title: { $regex: String(searchingBy), $options: 'i' } });
   } catch (error) {
     console.log(error);
   }
-  res.render("search", { pageTitle: searchingBy, searchingBy, images });
+  res.render('search', { pageTitle: searchingBy, searchingBy, images });
 };
 
 const getUpload = (req, res) => {
-  res.render("upload", { pageTitle: "Upload" });
-};
+  res.render('upload', { pageTitle: 'Upload' });
+}
 
 const postUpload = async (req, res) => {
   const {
     body: { title, description, tag, volatile },
     file: { location },
-    user: { id }
+    user: { id },
   } = req;
   try {
     const newImage = await Image.create({
@@ -45,23 +41,20 @@ const postUpload = async (req, res) => {
       title,
       description,
       tag,
-      volatile: volatile === "on" ? false : true
-    });
-    await User.findByIdAndUpdate(id, {
-      $push: { images: newImage },
-      $set: { lastUpload: Date.now() }
-    });
+      volatile: (volatile === 'on') ? false : true,
+    })
+    await User.findByIdAndUpdate(id, { $push: { images: newImage }, $set: { lastUpload: Date.now() } });
     res.redirect(routes.imageDetail(newImage.id));
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
   }
-};
+}
 
 const imageDetail = async (req, res) => {
   try {
     const {
-      params: { id }
+      params: { id },
     } = req;
     let like;
     const image = await Image.findById(id)
@@ -81,7 +74,7 @@ const imageDetail = async (req, res) => {
       else like = false;
     }
     image.save();
-    res.render("imageDetail", { pageTitle: image.title, image, like });
+    res.render('imageDetail', { pageTitle: image.title, image, like });
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
@@ -92,13 +85,11 @@ const getEditImage = async (req, res) => {
   try {
     const {
       params: { id },
-      user: { _id: userId }
+      user: { _id: userId },
     } = req;
     const image = await Image.findById(id);
-    if (String(image.creator._id) !== String(userId))
-      return res.redirect(routes.home);
-    // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
-    else res.render("editImage", { pageTitle: `Edit ${image.title}`, image });
+    if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    else res.render('editImage', { pageTitle: `Edit ${image.title}`, image });
   } catch (err) {
     console.error(err);
     res.redirect(routes.home);
@@ -110,11 +101,10 @@ const postEditImage = async (req, res) => {
     const {
       body: { title, description },
       params: { id },
-      user: { _id: userId }
+      user: { _id: userId },
     } = req;
     const image = await Image.findById(id);
-    if (String(image.creator._id) !== String(userId)) {
-      // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    if (String(image.creator._id) !== String(userId)) { // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
       return res.redirect(routes.home);
     }
     await Image.findByIdAndUpdate(id, { title, description });
@@ -123,26 +113,28 @@ const postEditImage = async (req, res) => {
     console.error(err);
     res.redirect(routes.home);
   }
-};
+}
 
 const deleteImage = async (req, res) => {
   const {
     params: { id },
-    user: { _id: userId }
+    user: { _id: userId },
   } = req;
   try {
     const image = await Image.findById(id);
-    if (String(image.creator._id) !== String(userId))
-      return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
+    if (String(image.creator._id) !== String(userId)) return res.redirect(routes.home); // 로그인된 유저가 해당 이미지 creator 아니면 home으로 보내기
     await Image.findByIdAndDelete(id); // mongoose에서 지우고
     // creator의 images에서도 삭제
-    await User.updateOne({ _id: userId }, { $pull: { images: id } });
+    await User.updateOne(
+      { _id: userId },
+      { $pull: { images: id } },
+    )
     res.redirect(routes.home);
   } catch (err) {
     console.error(err);
     res.redirect(routes.editImage(id));
   }
-};
+}
 
 const postAddComment = async (req, res) => {
   const {
@@ -154,7 +146,7 @@ const postAddComment = async (req, res) => {
     const image = await Image.findById(id);
     const newComment = await Comment.create({
       text: comment,
-      creator: user.id
+      creator: user.id,
     });
     image.comments.push(newComment.id);
     image.save();
@@ -163,43 +155,43 @@ const postAddComment = async (req, res) => {
     console.log(err);
     res.redirect(routes.home);
   }
-};
+}
 
 const deleteComment = async (req, res) => {
   const {
-    params: { id, commentId }
+    params: { id, commentId },
   } = req;
   try {
     await Image.updateOne(
       { _id: id },
-      { $pull: { comments: { _id: commentId } } }
-    );
+      { $pull: { comments: { _id: commentId } } },
+    )
     await Comment.findByIdAndDelete(commentId);
     res.redirect(routes.imageDetail(id));
   } catch (err) {
     console.log(err);
     res.redirect(routes.home);
   }
-};
+}
 
 const postLike = async (req, res) => {
   const {
     params: { id },
     body: { like },
-    user
+    user,
   } = req;
   try {
     const image = await Image.findById(id);
     if (like === true && !user.likeImages.includes(id)) {
       image.likes += 1;
       user.likeImages.push(image);
-      user.save();
+      user.save()
       image.save();
     } else if (like === false && user.likeImages.includes(id)) {
       image.likes -= 1;
       const index = user.likeImages.indexOf(id);
       user.likeImages.splice(index, 1);
-      user.save();
+      user.save()
       image.save();
     }
     res.status(200);
@@ -208,7 +200,7 @@ const postLike = async (req, res) => {
   } finally {
     res.end();
   }
-};
+}
 
 module.exports = {
   home,
@@ -221,5 +213,5 @@ module.exports = {
   deleteImage,
   deleteComment,
   postLike,
-  postAddComment
+  postAddComment,
 };
