@@ -1,15 +1,14 @@
 .join__container {
-    display: flex;
-    width: auto;
+  display: flex;
+  width: auto;
 }
 
 .join__main {
-    font-size: 35px;
-    text-align: center;
-    margin: auto;
-    
-  }
-  
+  font-size: 35px;
+  text-align: center;
+  margin: auto;
+}
+
 .join__image__container {
   width: 50%;
 }
@@ -20,51 +19,49 @@
   object-fit: fill;
 }
 
-  .join__main__title {
-    text-align: left;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-  }
-  
-  .join__main__container {
-    padding: 2vw 1vw 2vw 1vw;
-  }
-  
-  .join__form {
-    position: relative;
-    font-size: 20px;
-    outline-style: none;
-    width: 50%;
-    display: inline;
-    text-align: left;
+.join__main__title {
+  text-align: left;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
 
-  }
-  
-  .join__form__ID {
-  }
-  
-  .join__form__guideline,
-  .join__already {
-    font-size: 10px;
-    margin-bottom: 1%;
-  }
-  
+.join__main__container {
+  padding: 2vw 1vw 2vw 1vw;
+}
+
+.join__form {
+  position: relative;
+  font-size: 20px;
+  outline-style: none;
+  width: 50%;
+  display: inline;
+  text-align: left;
+}
+
+.join__form__ID {
+}
+
+.join__form__guideline,
+.join__already {
+  font-size: 10px;
+  margin-bottom: 1%;
+}
+
 .join__form__btn {
   text-align: left;
 }
 
-  .join__form__submit {
-    background-color: rgba(140, 19, 229, 0.8);
-    border: 0px;
-    border-radius: 7px;
-    color: white;
-    width: 35%;
-    font-size: 20px;
-    margin-bottom: 1%;
-  }
-  
-  .join__SNS {
-    margin-bottom: 2vw;
-    text-align: left;
-  }
-  
+.join__form__submit {
+  background-color: rgba(140, 19, 229, 0.8);
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  width: 35%;
+  font-size: 20px;
+  margin-bottom: 1%;
+}
+
+.join__SNS {
+  margin-bottom: 2vw;
+  text-align: left;
+}

@@ -1,4 +1,4 @@
-import "../scss/style.scss"
-import "./like"
-import "./grid"
-import "./join"
+import "../scss/style.scss";
+import "./like";
+import "./grid";
+import "./join";

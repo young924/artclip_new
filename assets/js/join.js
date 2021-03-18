@@ -5,32 +5,32 @@ const joinBtn = document.getElementById("jsJoinBtn");
 let checked = false;
 
 function handleSubmit(event) {
-    if (checked) {
-        return true;
-    } else {
-        event.preventDefault();
-    }
+  if (checked) {
+    return true;
+  } else {
+    event.preventDefault();
+  }
 }
 
 function handleCheck(event) {
-    if (joinCheck.checked) {
-        checked = true;
-        joinBtn.style.backgroundColor = "rgba(140, 19, 229, 0.5)";
-        joinBtn.style.cursor = "pointer";
-    } else {
-        checked = false;
-        joinBtn.style.backgroundColor = "#D9D9D9";
-        joinBtn.style.cursor = "default";
-    }
+  if (joinCheck.checked) {
+    checked = true;
+    joinBtn.style.backgroundColor = "rgba(140, 19, 229, 0.5)";
+    joinBtn.style.cursor = "pointer";
+  } else {
+    checked = false;
+    joinBtn.style.backgroundColor = "#D9D9D9";
+    joinBtn.style.cursor = "default";
+  }
 }
 
 function init() {
-    joinBtn.style.backgroundColor = "#D9D9D9";
-    joinBtn.style.cursor = "default";
-    joinCheck.addEventListener("click", handleCheck);
-    joinBtn.addEventListener("click", handleSubmit);
+  joinBtn.style.backgroundColor = "#D9D9D9";
+  joinBtn.style.cursor = "default";
+  joinCheck.addEventListener("click", handleCheck);
+  joinBtn.addEventListener("click", handleSubmit);
 }
 
 if (joinForm) {
-    init();
+  init();
 }

@@ -1,62 +1,63 @@
 /* input 관련 */
 
 .input__text {
-    width: 15vw;
-    height: 2vw;
-    font-size: 1vw;
-    border-radius: 0.5vw;
-    border: 1px solid $main-color;
-    margin-bottom: 1%;
-  }
+  width: 15vw;
+  height: 2vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid $main-color;
+  margin-bottom: 1%;
+}
 
-  .input__select__short, .input__text__long, .input__text__short {
-    height: 2vw;
-    font-size: 1vw;
-    border-radius: 0.5vw;
-    border: 1px solid $main-color;
-    margin-bottom: 1%;
-  }
+.input__select__short,
+.input__text__long,
+.input__text__short {
+  height: 2vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid $main-color;
+  margin-bottom: 1%;
+}
 
-  .input__text__long {
-    width: 25vw;
-  }
+.input__text__long {
+  width: 25vw;
+}
 
-  .input__text__short {
-    width: 12vw;
-  }
+.input__text__short {
+  width: 12vw;
+}
 
-  .input__select__short {
-    width: 11vw;
-  }
-  
-  .input__textarea {
-    width: 60vw;
-    height: 50vw;
-    font-size: 1vw;
-    border-radius: 0.5vw;
-    border: 1px solid $main-color;
-    margin-bottom: 1%;
-  }
-  
-  .input__select {
-    display: inline;
-    height: 2vw;
-    width: 15vw;
-    font-size: 1vw;
-    border-radius: 0.5vw;
-    border: 1px solid $main-color;
-    margin-bottom: 1%;
-  }
-  
-  .input__file {
-    display: block;
-    width: 35%;
-    margin-bottom: 5%;
-  }
-  
-  .career-rule {
-    display: block;
-    font-size: 0.8vw;
-    color: #707070;
-  }
-  
+.input__select__short {
+  width: 11vw;
+}
+
+.input__textarea {
+  width: 60vw;
+  height: 50vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid $main-color;
+  margin-bottom: 1%;
+}
+
+.input__select {
+  display: inline;
+  height: 2vw;
+  width: 15vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid $main-color;
+  margin-bottom: 1%;
+}
+
+.input__file {
+  display: block;
+  width: 35%;
+  margin-bottom: 5%;
+}
+
+.career-rule {
+  display: block;
+  font-size: 0.8vw;
+  color: #707070;
+}

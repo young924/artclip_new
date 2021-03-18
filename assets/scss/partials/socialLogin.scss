@@ -1,51 +1,50 @@
 .social__login {
-    text-align: center;
+  text-align: center;
 }
-  
+
 .login__other {
-    display: inline;
-    
+  display: inline;
 }
-  
+
 .login__other a:visited {
-    color: white;
+  color: white;
 }
 
-.btn__social__login__kakao, .btn__social__login  {
-    width: 10vw;
-    margin: 0vw 0vw 0vw 1vw;
-    transition: all 0.2s;
-    outline: 0;
-    border: 1px solid transparent;
-    color: #fff;
-    border-radius: 0.5vw;
-
+.btn__social__login__kakao,
+.btn__social__login {
+  width: 10vw;
+  margin: 0vw 0vw 0vw 1vw;
+  transition: all 0.2s;
+  outline: 0;
+  border: 1px solid transparent;
+  color: #fff;
+  border-radius: 0.5vw;
 }
 
 .btn__social__login__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .btn__social__login__kakao {
-    color: black;
+  color: black;
 }
 
-.login__other__text, .login__other__text__kakao{
-    color: #fff;
-    font-size: 1em;
-
+.login__other__text,
+.login__other__text__kakao {
+  color: #fff;
+  font-size: 1em;
 }
 
-.login__other__text__kakao{
-    color: black;
+.login__other__text__kakao {
+  color: black;
 }
 
 .btn__social__login:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .text__dark {
-    color: #343a40 !important;
+  color: #343a40 !important;
 }
