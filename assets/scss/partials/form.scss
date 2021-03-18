@@ -1,42 +1,41 @@
 /* input 관련 */
 
 .input__text {
-    width: 15vw;
-    height: 2vw;
-    font-size: 1vw;
-    border-radius: 0.5vw;
-    border: 1px solid $main-color;
-    margin-bottom: 1%;
-  }
-  
-  .input__textarea {
-    width: 60vw;
-    height: 50vw;
-    font-size: 1vw;
-    border-radius: 0.5vw;
-    border: 1px solid $main-color;
-    margin-bottom: 1%;
-  }
-  
-  .input__select {
-    display: inline;
-    height: 2vw;
-    width: 15vw;
-    font-size: 1vw;
-    border-radius: 0.5vw;
-    border: 1px solid $main-color;
-    margin-bottom: 1%;
-  }
-  
-  .input__file {
-    display: block;
-    width: 35%;
-    margin-bottom: 5%;
-  }
-  
-  .career-rule {
-    display: block;
-    font-size: 0.8vw;
-    color: #707070;
-  }
-  
+  width: 15vw;
+  height: 2vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid $main-color;
+  margin-bottom: 1%;
+}
+
+.input__textarea {
+  width: 60vw;
+  height: 50vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid $main-color;
+  margin-bottom: 1%;
+}
+
+.input__select {
+  display: inline;
+  height: 2vw;
+  width: 15vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 1px solid $main-color;
+  margin-bottom: 1%;
+}
+
+.input__file {
+  display: block;
+  width: 35%;
+  margin-bottom: 5%;
+}
+
+.career-rule {
+  display: block;
+  font-size: 0.8vw;
+  color: #707070;
+}

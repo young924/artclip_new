@@ -1,39 +1,39 @@
 // Global
 
-const HOME = '/';
-const JOIN = '/join';
-const LOGIN = '/login';
-const LOGOUT = '/logout';
-const SEARCH = '/search';
-const SHOWCASE = '/showcase';
+const HOME = "/";
+const JOIN = "/join";
+const LOGIN = "/login";
+const LOGOUT = "/logout";
+const SEARCH = "/search";
+const SHOWCASE = "/showcase";
 
 // Users
 
-const USERS = '/users';
-const USER_DETAIL = '/:name'; // 프로필
-const EDIT_PROFILE = '/:name/edit'; // 내 프로필 편집
-const EDIT_INFO = '/:name/info';  // personal(=account) info
-const FOLLOW = '/:name/follow';
-const UNFOLLOW = '/:name/unfollow';
+const USERS = "/users";
+const USER_DETAIL = "/:name"; // 프로필
+const EDIT_PROFILE = "/:name/edit"; // 내 프로필 편집
+const EDIT_INFO = "/:name/info"; // personal(=account) info
+const FOLLOW = "/:name/follow";
+const UNFOLLOW = "/:name/unfollow";
 
 // Images
 
-const IMAGES = '/images';
-const UPLOAD = '/upload';
-const IMAGE_DETAIL = '/:id';  // 다른 사람이 올린 image 볼 때
-const EDIT_IMAGE = '/:id/edit'; // 내가 올린 image 수정할 때
-const DELETE_IMAGE = '/:id/delete';
-const ADD_COMMENT = '/:id/add-comment';
+const IMAGES = "/images";
+const UPLOAD = "/upload";
+const IMAGE_DETAIL = "/:id"; // 다른 사람이 올린 image 볼 때
+const EDIT_IMAGE = "/:id/edit"; // 내가 올린 image 수정할 때
+const DELETE_IMAGE = "/:id/delete";
+const ADD_COMMENT = "/:id/add-comment";
 const DELETE_COMMENT = "/:id/delete-comment/:commentId";
 
 // Social Login
 
-const KAKAO = '/auth/kakao';
-const KAKAO_CALLBACK = '/auth/kakao/callback';
-const NAVER = '/auth/naver';
-const NAVER_CALLBACK = '/auth/naver/callback';
-const FACEBOOK = '/auth/facebook';
-const FACEBOOK_CALLBACK = '/auth/facebook/callback';
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/auth/kakao/callback";
+const NAVER = "/auth/naver";
+const NAVER_CALLBACK = "/auth/naver/callback";
+const FACEBOOK = "/auth/facebook";
+const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 
 // API
 
@@ -113,7 +113,7 @@ const routes = {
       return DELETE_COMMENT;
     }
   },
-  addComment: (id) => {
+  addComment: id => {
     if (id) {
       return `/images/${id}/add-comment`;
     } else {
@@ -127,7 +127,7 @@ const routes = {
   facebook: FACEBOOK,
   facebookCallback: FACEBOOK_CALLBACK,
   api: API,
-  like: LIKE,
+  like: LIKE
 };
 
 module.exports = routes;

@@ -1,13 +1,12 @@
 .users__all {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    grid-gap: 1rem;
-    margin: 5vh 5vh 5vh 5vh;
-    column-gap: 2vh;
-    row-gap: 2vh;
-  }
-  
-  .user__avatar {
-    max-height: 3vw;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 1rem;
+  margin: 5vh 5vh 5vh 5vh;
+  column-gap: 2vh;
+  row-gap: 2vh;
+}
+
+.user__avatar {
+  max-height: 3vw;
+}

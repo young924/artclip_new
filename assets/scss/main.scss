@@ -2,30 +2,28 @@ main {
   margin-top: 50px;
 }
 
-
 .titlebar {
-    display: inline-flex;
-    font-size: 40px;
-    margin: 40px 40px 40px 40px;
-  }  
+  display: inline-flex;
+  font-size: 40px;
+  margin: 40px 40px 40px 40px;
+}
 
-  /* button 관련 */
-  
-  .submit__btn {
-    background-color: rgba(140, 19, 229, 0.55);
-    border: 0px;
-    border-radius: 7px;
-    color: white;
-    width: 15vw;
-    height: 2vw;
-    font-size: 1vw;
-    margin-bottom: 1%;
-  }
-  
-  .button__profile {
-    margin: 0px 0px 0px 0px;
-    display: inline;
-    background: none;
-    border: 0px;
-  }
-  
+/* button 관련 */
+
+.submit__btn {
+  background-color: rgba(140, 19, 229, 0.55);
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  width: 15vw;
+  height: 2vw;
+  font-size: 1vw;
+  margin-bottom: 1%;
+}
+
+.button__profile {
+  margin: 0px 0px 0px 0px;
+  display: inline;
+  background: none;
+  border: 0px;
+}

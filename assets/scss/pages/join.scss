@@ -1,55 +1,54 @@
 .join__main {
-    font-size: 35px;
-    width: auto;
-    margin-right: 30%;
-    margin-left: 30%;
-  }
-  
-  .join__main__title {
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-  }
-  
-  .join__main__container {
-    padding: 2vw 1vw 2vw 1vw;
-    border-radius: 2vw;
-    border: 1px solid $main-color;
-  }
-  
-  .join__form {
-    position: relative;
-    font-size: 20px;
-    outline-style: none;
-    width: 50%;
-    display: inline;
-  }
-  
-  .join__form__ID {
-    display: inline;
-  }
-  
-  .join__form__guideline,
-  .join__already {
-    font-size: 5px;
-    margin-bottom: 1%;
-  }
-  
-  .join__form__submit {
-    background-color: rgba(140, 19, 229, 0.8);
-    border: 0px;
-    border-radius: 7px;
-    color: white;
-    width: 35%;
-    font-size: 20px;
-    margin-bottom: 1%;
-  }
-  
-  .join__SNS {
-    margin-top: 3vw;
-    margin-bottom: 2vw;
-    padding-top: 2vw;
-    padding-bottom: 2vw;
-    text-align: center;
-    border-bottom: 1px solid $main-color;
-  }
-  
+  font-size: 35px;
+  width: auto;
+  margin-right: 30%;
+  margin-left: 30%;
+}
+
+.join__main__title {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+
+.join__main__container {
+  padding: 2vw 1vw 2vw 1vw;
+  border-radius: 2vw;
+  border: 1px solid $main-color;
+}
+
+.join__form {
+  position: relative;
+  font-size: 20px;
+  outline-style: none;
+  width: 50%;
+  display: inline;
+}
+
+.join__form__ID {
+  display: inline;
+}
+
+.join__form__guideline,
+.join__already {
+  font-size: 5px;
+  margin-bottom: 1%;
+}
+
+.join__form__submit {
+  background-color: rgba(140, 19, 229, 0.8);
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  width: 35%;
+  font-size: 20px;
+  margin-bottom: 1%;
+}
+
+.join__SNS {
+  margin-top: 3vw;
+  margin-bottom: 2vw;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+  text-align: center;
+  border-bottom: 1px solid $main-color;
+}
