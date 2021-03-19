@@ -6,7 +6,7 @@
   font-size: 1vw;
   border-radius: 0.5vw;
   border: 0px solid $main-color;
-  box-shadow: 0px 0px 0.15vw #A134FF;
+  box-shadow: 0px 0px 0.15vw #a134ff;
 }
 
 .input__select__short,
@@ -17,14 +17,13 @@
   border-radius: 0.5vw;
   border: 0px solid $main-color;
   margin-bottom: 1%;
-  box-shadow: 0px 0px 0.15vw #A134FF;
+  box-shadow: 0px 0px 0.15vw #a134ff;
   margin: 0.5vw 0vw 0.5vw 0vw;
   padding-left: 0.3vw;
 }
 
 .input__text__long {
   width: 20vw;
-  
 }
 
 .input__text__short {
@@ -93,4 +92,3 @@
   background: none;
   border: 0px;
 }
-
