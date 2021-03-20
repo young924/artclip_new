@@ -4,8 +4,6 @@ include mixins/imageBlock
 block content
     .main__feed
         .titlebar 오늘의 작업
-        .main__feed__more
-                a(href="#") 더보기>
         .grid__container
             each image in images
                 +imageBlock(image)

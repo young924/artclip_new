@@ -9,6 +9,8 @@ block content
                     .user__detail__profile__info__avatar
                         if viewedUser.avatarUrl
                             img(src=viewedUser.avatarUrl, class="user__detail__profile__info__avatar__img")
+                        else
+                            img(src=unknownArtist, class="user__detail__profile__info__avatar__img__unknown")
                     .user__detail__profile__info__name
                         |#{viewedUser.name}
                     //- .user__detail__profile__info__career

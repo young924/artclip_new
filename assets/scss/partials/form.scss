@@ -56,14 +56,44 @@
 
 .input__file {
   display: block;
-  width: 35%;
-  margin-bottom: 5%;
+  width: 35vw;
+  margin-bottom: 5vw;
 }
 
 .career-rule {
   display: block;
   font-size: 0.8vw;
   color: #707070;
+}
+
+
+/* upload */
+
+.input__file__upload {
+  width: 35vw;
+  margin: 0 0 1vw 0;
+  border-radius: 0.5vw;
+  box-shadow: 0px 0px 0.15vw #A134FF;
+}
+
+.input__text__upload {
+  width: 35vw;
+  height: 2vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 0px solid $main-color;
+  box-shadow: 0px 0px 0.15vw #A134FF;
+  margin: 0 0 1vw 0;
+}
+
+.input__description__upload {
+  width: 35vw;
+  height: 16vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  border: 0px solid $main-color;
+  box-shadow: 0px 0px 0.15vw #A134FF;
+  margin: 0 0 1vw 0;
 }
 
 /* button 관련 */
@@ -76,7 +106,7 @@
   color: white;
   height: 2vw;
   font-size: 1vw;
-  margin-bottom: 1%;
+  margin-bottom: 1vw;;
 }
 
 .submit__btn {
@@ -94,3 +124,14 @@
   border: 0px;
 }
 
+.submit__btn__upload {
+  background-color: rgba(140, 19, 229, 0.55);
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  height: 2vw;
+  font-size: 1vw;
+  margin-bottom: 1vw;
+  width: 15vw;
+  display: block;
+}
