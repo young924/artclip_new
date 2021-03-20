@@ -7,7 +7,7 @@ const deleteUsers = async uploadRenewalInterval => {
   try {
     const now = new Date();
     const before = new Date(now);
-    before.setMinutes(now.getMinutes() - uploadRenewalInterval);
+    before.setDate(now.getDate() - uploadRenewalInterval);
 
     const lazyUsers = await User.find({ lastUpload: { $lte: String(before) } });
     lazyUsers.forEach(lazyUser =>
@@ -30,7 +30,21 @@ const deleteUsers = async uploadRenewalInterval => {
 const deleteImages = async lazyUsers => {
   try {
     lazyUsers.forEach(async lazyUser => {
-      await Image.deleteMany({ creator: mongoose.Types.ObjectId(lazyUser.id) });
+      // 삭제 미동의된 이미지 유저 ananymous로
+      await Image.updateMany(
+        {
+          creator: mongoose.Types.ObjectId(lazyUser.id),
+          volatile: false
+        },
+        {
+          creator: mongoose.Types.ObjectId("6055fb85f6d0b0c9c4ecfa35")
+        }
+      );
+      // 삭제 동의된 이미지 삭제
+      await Image.deleteMany({
+        creator: mongoose.Types.ObjectId(lazyUser.id),
+        volatile: true
+      });
     });
   } catch (err) {
     console.error(err);
@@ -54,15 +68,16 @@ const deleteComments = async lazyUsers => {
 };
 
 const setUserRefresh = (refreshInterval, uploadRenewalInterval) => {
+  console.log(`🔃 User refresh interval: ${refreshInterval} days`);
   console.log(
-    `🔃 User refresh interval: ${refreshInterval} minutes\n🔃 User should upload image at least every ${uploadRenewalInterval} minutes`
+    `🔃 User should upload image at least every ${uploadRenewalInterval} days`
   );
   setInterval(async () => {
-    console.log(`🔃 ${refreshInterval} min passed. user refresh starts.`);
+    console.log(`🔃 ${refreshInterval} days passed. user refresh starts.`);
     const lazyUsers = await deleteUsers(uploadRenewalInterval);
     await deleteImages(lazyUsers);
     await deleteComments(lazyUsers);
-  }, refreshInterval * 60 * 1000);
+  }, refreshInterval * 24 * 60 * 60 * 1000);
 };
 
 module.exports = setUserRefresh;

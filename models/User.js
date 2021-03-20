@@ -12,8 +12,9 @@ const UserSchema = new mongoose.Schema({
   },
   description: String,
   avatarUrl: {
-    type: String
-    // default: default photo
+    type: String,
+    default:
+      "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/unknown_profile.jpeg"
   },
   career: [String],
   follower: [
