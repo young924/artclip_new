@@ -4,19 +4,25 @@
 }
 
 .join__main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   font-size: 35px;
   text-align: center;
   margin: auto;
+  margin-top: 7%;
 }
 
 .join__image__container {
+  margin-top: -50px;
   width: 60%;
 }
 
 .join__image {
-  width: 100%;
+  position: absolute;
+  width: 60%;
   max-height: 100%;
-  object-fit: fill;
 }
 
 .join__main__title {
