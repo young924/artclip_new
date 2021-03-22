@@ -23,7 +23,7 @@ passport.use(
     async (_, __, profile, cb) => {
       console.log(profile);
       try {
-        const {
+        let {
           id,
           username: name,
           _json: {
@@ -31,14 +31,22 @@ passport.use(
             kakao_account: { email }
           }
         } = profile;
-        const user = await User.findOne({ name });
+        // if email is not given, create random string
+        if (!email)
+          email =
+            Math.random().toString(36).substring(7) +
+            "@" +
+            Math.random().toString(36).substring(7) +
+            ".com";
+
+        const user = await User.findOne({ email });
         if (user) {
           user.kakaoID = id;
           await user.save();
           return cb(null, user);
         } else {
           const newUser = await User.create({
-            email, // 카카오 동의 화면에서 email 동의 안했으면 email field에 그냥 이름 넣음. (usernameField가 email이라서 일단 이렇게)
+            email,
             name,
             kakaoId: id,
             avatarUrl: profile_image
@@ -52,7 +60,7 @@ passport.use(
   )
 );
 
-// // naver
+// naver
 
 passport.use(
   new NaverStrategy(
