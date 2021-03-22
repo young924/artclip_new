@@ -5,10 +5,10 @@
 
 .join__main {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
-  font-size: 35px;
+  font-size: 28px;
   text-align: center;
   margin: auto;
   margin-top: 7%;
@@ -16,23 +16,23 @@
 
 .join__image__container {
   margin-top: -50px;
-  width: 60%;
+  width: 55%;
 }
 
 .join__image {
   position: absolute;
-  width: 60%;
+  width: 55%;
   max-height: 100%;
 }
 
 .join__main__title {
   text-align: left;
   margin-top: 1vw;
-  margin-bottom: 1vw;
+  margin-bottom: 1.5vw;
 }
 
 .join__main__container {
-  padding: 1vw 0vw 1vw 0vw;
+  padding: 0 0 1vw 0;
 }
 
 .join__form {
