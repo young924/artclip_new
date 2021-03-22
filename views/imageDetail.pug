@@ -19,11 +19,11 @@ block content
             .image__detail__social
                 .image__detail__social__likes
                     if loggedUser
-                        button#jsLike
+                        button.jsLike
                             if like === true
-                                i.fas.fa-heart#jsHeart
+                                i.fas.fa-heart
                             else
-                                i.far.fa-heart#jsHeart
+                                i.far.fa-heart
                     else
                         i.far.fa-heart
                     | : 
@@ -45,14 +45,20 @@ block content
                 ul.image__detail__comments-list
                     each comment in image.comments.reverse()
                         li
-                            form(action=`/images/${image.id}/delete-comment/${comment.id}`, name="deleteForm")
-                                span
-                                    a(href=`/users/${comment.creator.name}`) #{comment.creator.name}
-                                span : #{comment.text}    
-                                span #{comment.createdAt.toLocaleString()} 
-                                if loggedUser && loggedUser.id === comment.creator.id
-                                    input(type='submit', value='x')
+                            form(action=`/images/${image.id}/delete-comment/${comment.id}`, name="deleteForm", class="image__detail__comments-list__comments")
+                                .image__detail__comments-list__comments__contents
+                                    span
+                                        a(href=`/users/${comment.creator.name}`) #{comment.creator.name}
+                                    span : #{comment.text} 
+                                .image__detail__comments-list__comments__detailInfo
+                                    span #{comment.createdAt.toLocaleString()} 
+                                    if loggedUser && loggedUser.id === comment.creator.id
+                                        input(type='submit', value='x')
                 if loggedUser
-                    form(action=`/images/${image.id}/add-comment`, method="post").add__commment
-                        input(type="text", placeholder="Add a comment", name="comment")
-                        input(type='submit', value='댓글 쓰기')
+                    form(action=`/images/${image.id}/add-comment`, method="post").add__comment
+                        input(type="text", placeholder="Add a comment", name="comment", class='input__text__comment')
+                        .submit__btn__comment
+                                button(type="reset").submit__btn__short
+                                    i.fas.fa-ban
+                                button(type="submit").submit__btn__short
+                                    i.far.fa-comment-alt

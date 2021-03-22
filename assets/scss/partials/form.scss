@@ -1,5 +1,50 @@
 /* input 관련 */
 
+.user__input__text {
+  width: 20vw;
+  height: 2vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;;
+  margin-bottom: 1%;
+  padding: auto;
+  border: 1px solid #a8a8a8;
+  padding-left: 0.3vw;
+}
+
+.user__input__select__short,
+.user__input__text__long,
+.user__input__text__short {
+  height: 2vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;;
+  padding: auto;
+  border: 1px solid #a8a8a8;
+  padding-left: 0.3vw;
+  margin: 0.5vw 0vw 0.5vw 0vw;
+  padding-left: 0.3vw;
+}
+
+.user__input__text__long {
+  width: 20vw;
+}
+
+.user__input__text__short {
+  width: 9vw;
+}
+
+.user__input__select__short {
+  width: 9vw;
+}
+
+.user__input__select__short:focus,
+.user__input__text__long:focus,
+.user__input__text__short:focus,
+.user__input__text:focus {
+  border: 0px solid #a8a8a8;
+  transition: box-shadow 0.1s ease-in;
+  box-shadow: 0px 0px 0.15vw #a134ff;
+}
+
 .input__text {
   width: 15vw;
   height: 2vw;
@@ -7,11 +52,13 @@
   border-radius: 0.5vw;
   border: 0px solid $main-color;
   box-shadow: 0px 0px 0.15vw #a134ff;
+  margin: 0 0 2vw 0;
 }
 
 .input__select__short,
 .input__text__long,
-.input__text__short {
+.input__text__short,
+.input__text__comment {
   height: 2vw;
   font-size: 1vw;
   border-radius: 0.5vw;
@@ -34,13 +81,17 @@
   width: 9vw;
 }
 
+.input__text__comment {
+  width: 70vw;
+}
+
 .input__textarea {
   width: 60vw;
   height: 50vw;
   font-size: 1vw;
   border-radius: 0.5vw;
   border: 1px solid $main-color;
-  margin-bottom: 1%;
+  margin: 0 0 2vw 0;
 }
 
 .input__select {
@@ -50,13 +101,13 @@
   font-size: 1vw;
   border-radius: 0.5vw;
   border: 1px solid $main-color;
-  margin-bottom: 1%;
+  margin-bottom: 1vw;
 }
 
 .input__file {
   display: block;
   width: 35vw;
-  margin-bottom: 5vw;
+  margin: 0 0 2vw 0;
 }
 
 .career-rule {
@@ -98,7 +149,8 @@
 /* button 관련 */
 
 .submit__btn,
-.submit__btn__long {
+.submit__btn__long,
+.submit__btn__short {
   background-color: rgba(140, 19, 229, 0.55);
   border: 0px;
   border-radius: 7px;
@@ -114,6 +166,14 @@
 
 .submit__btn__long {
   width: 20.6vw;
+}
+
+.submit__btn__short{
+  background-color: white;
+  height: 2vw;
+  width: 2vw;
+  margin: 0 0 0 1vw;
+  box-shadow: 0px 0px 0.15vw #a134ff;
 }
 
 .button__profile {

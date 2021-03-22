@@ -26,19 +26,19 @@ art clip 2021
 
 ## CSS
 
-- [ ] header 수정
+- [x] header 수정
 - [ ] 폰트
-- [ ] default avatar 파일 보내주기
+- [x] default avatar 파일 보내주기
 
 ### Login
 
-- [ ] Input box 그라데이션
-- [ ] 가로 길이 줄이고 사진 넣기
-- [ ] social Login 버튼 수정 (알아서 원하는대로)
+- [x] Input box 그라데이션
+- [x] 가로 길이 줄이고 사진 넣기
+- [x] social Login 버튼 수정 (알아서 원하는대로)
 
 ### Join
 
-- [ ] login과 같은 포맷으로
+- [x] login과 같은 포맷으로
 
 ### userDetail
 
