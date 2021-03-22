@@ -51,17 +51,23 @@ const postLogin = passport.authenticate("local", {
 
 const kakaoLogin = passport.authenticate("kakao");
 const kakaoLoginCallback = passport.authenticate("kakao", {
-  failureRedirect: routes.home
+  failureRedirect: routes.join,
+  successFlash: "환영합니다!",
+  failureFlash: "현재 카카오로 로그인할 수 없습니다."
 });
 
 const naverLogin = passport.authenticate("naver");
 const naverLoginCallback = passport.authenticate("naver", {
-  failureRedirect: routes.home
+  failureRedirect: routes.join,
+  successFlash: "환영합니다!",
+  failureFlash: "현재 네이버로 로그인할 수 없습니다"
 });
 
 const facebookLogin = passport.authenticate("facebook");
 const facebookLoginCallback = passport.authenticate("facebook", {
-  failureRedirect: routes.home
+  failureRedirect: routes.join,
+  successFlash: "환영합니다!",
+  failureFlash: "현재 페이스북으로 로그인할 수 없습니다"
 });
 
 const logout = (req, res) => {
