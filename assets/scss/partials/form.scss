@@ -1,18 +1,7 @@
 /* input 관련 */
 
-.user__input__text {
-  width: 20vw;
-  height: 2vw;
-  font-size: 1vw;
-  border-radius: 0.5vw;;
-  margin-bottom: 1%;
-  padding: auto;
-  border: 1px solid #a8a8a8;
-  padding-left: 0.3vw;
-}
-
 .user__input__select__short,
-.user__input__text__long,
+.user__input__text,
 .user__input__text__short {
   height: 2vw;
   font-size: 1vw;
@@ -24,7 +13,7 @@
   padding-left: 0.3vw;
 }
 
-.user__input__text__long {
+.user__input__text {
   width: 20vw;
 }
 
@@ -37,9 +26,8 @@
 }
 
 .user__input__select__short:focus,
-.user__input__text__long:focus,
-.user__input__text__short:focus,
-.user__input__text:focus {
+.user__input__text:focus,
+.user__input__text__short:focus {
   border: 0px solid #a8a8a8;
   transition: box-shadow 0.1s ease-in;
   box-shadow: 0px 0px 0.15vw #a134ff;
