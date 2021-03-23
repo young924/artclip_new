@@ -111,19 +111,19 @@ passport.use(
         id,
         _json: { name }
       } = profile;
+      // facebook doesn't give email address
+      const email =
+        Math.random().toString(36).substring(7) +
+        "@" +
+        Math.random().toString(36).substring(7) +
+        ".com";
       try {
-        const user = await User.findOne({ name });
-        if (user) {
-          user.facebookId = id;
-          await user.save();
-          return cb(null, user);
-        } else {
-          const newUser = await User.create({
-            name,
-            facebookId: id
-          });
-          return cb(null, newUser);
-        }
+        const newUser = await User.create({
+          name,
+          email,
+          facebookId: id
+        });
+        return cb(null, newUser);
       } catch (err) {
         return cb(err);
       }

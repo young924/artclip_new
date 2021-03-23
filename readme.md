@@ -5,9 +5,9 @@ art clip 2021
 ## Backend
 
 - [x] 카카오톡 로그인
-  - [ ] 페이스북 로그인
+  - [x] 페이스북 로그인
   - [ ] 네이버 로그인
-  - [ ] API key 주기적으로 변경되는 이슈 해결
+  - [ ] 카카오톡 API key 주기적으로 변경되는 이슈 해결
 - [ ] image model comments array에서 삭제
 - [ ] image model like 변경
 - [x] image 삭제하면 creator의 user 모델 image에서도 삭제
