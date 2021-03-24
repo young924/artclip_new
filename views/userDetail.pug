@@ -1,5 +1,5 @@
 extends layouts/main.pug
-include mixins/imageBlock
+include mixins/userdetail_imageBlock
 
 block content
     .user__detail
@@ -14,6 +14,11 @@ block content
                             img(src=unknownArtist, class="user__detail__profile__info__avatar__img__unknown")
                     .user__detail__profile__info__name
                         |#{viewedUser.name}
+                    .user__detail__profile__info__description
+                        if viewedUser.description
+                            |#{viewedUser.description}
+                        else
+                            span 등록된 자기소개가 없습니다.
                     //- .user__detail__profile__info__career
                     //-     .user__detail__profile__info__career__header Career
                     //-     for detail in viewedUser.career
@@ -31,38 +36,21 @@ block content
                         else
                             a(href=routes.follow(viewedUser.name))
                                 button.button__profile 팔로우+
+                    if loggedUser && loggedUser.name === viewedUser.name
+                        .user__detail__profile__picture__edit
+                            a(href=`${routes.editProfile(loggedUser.id)}`) 프로필 편집
                 .user__detail__description
                     |#{viewedUser.description}
                 .user__detail__profile__picture
                     //대표사진 불러오기
-            if loggedUser && loggedUser.name === viewedUser.name
-                .user__detail__profile__picture__edit
-                    a(href=`${routes.editProfile(loggedUser.id)}`) 프로필 편집    
+            //- if loggedUser && loggedUser.name === viewedUser.name
+            //-     .user__detail__profile__picture__edit
+            //-         a(href=`${routes.editProfile(loggedUser.id)}`) 프로필 편집    
             .user__detail__my-images
                 .user__detail__my-images__title 내 작품
-                .grid__container
+                .userDetail__grid__container
                     for image in viewedUser.images.reverse()
-                        +imageBlock(image)
-                        //- .imageBlock
-                        //-     a.imageBlock__img(href=routes.imageDetail(image.id))
-                        //-         img(src=image.fileUrl)
-                        //-     a.imageBlock__container(href=routes.imageDetail(image.id))
-                        //-     a.imageBlock__profile(href="#")
-                        //-         if viewedUser.avatarUrl
-                        //-             img(src=viewedUser.avatarUrl, class="imageBlock__profile")
-                        //-         else
-                        //-             img(src=unknownArtist, class="user__detail__profile__info__avatar__img__unknown")
-                        //-     h1
-                        //-         a.imageBlock__title #{image.title}
-                        //-     .imageBlock__btn
-                        //-         a.imageBlock__btn__heart(href='#')
-                        //-             i.far.fa-heart(style='color: white')
-                        //-             span 좋아요
-                        //-         a.imageBlock__btn__comment(href="#")
-                        //-             i.i.far.fa-comment-dots(style='color: white')
-                        //-             span 댓글
-                        //-     a.imageBlock__btn__more(href='#')
-                        //-         i.fas.fa-ellipsis-v(style='color: white;')
+                        +userdetail_imageBlock(image)
             .user__detail__like-images 
                 .user__detail__like-images__title 좋아요 한 작품
                 .grid__container

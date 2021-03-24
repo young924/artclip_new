@@ -16,12 +16,13 @@ header.header
                 .header__column__signup
                     a(href=routes.join) 회원가입
             else 
-                .header__column__upload
-                    a(href=`/images${routes.upload}`)
-                        |업로드
                 .header__column__divider
-                .header__column__profile
-                    a(href=routes.userDetail(loggedUser.name)) 프로필
+                a(href=routes.userDetail(loggedUser.name) class="header__column__profile")
+                    img(src=loggedUser.avatarUrl, class="header__column__profile__img")
                 .header__column__divider
-                .header__column__profile
-                    a(href=routes.logout) 로그아웃
+                .header__column__profile__logout
+                    a(href=routes.logout)
+                        i.fas.fa-sign-out-alt
+                .header__column__divider
+                a(href=`/images${routes.upload}`, class="header__column__upload")
+                    span 업로드
