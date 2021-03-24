@@ -7,8 +7,8 @@ const home = async (req, res) => {
   try {
     const images = await Image.find({}).sort({ _id: -1 }).populate("creator");
     res.render("home", { pageTitle: "Home", images });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
     res.render("home", { pageTitle: "Home", images: [] });
   }
 };
@@ -21,9 +21,9 @@ const search = async (req, res) => {
   try {
     images = await Image.find({
       title: { $regex: String(searchingBy), $options: "i" }
-    });
-  } catch (error) {
-    console.log(error);
+    }).populate("creator");
+  } catch (err) {
+    console.log(err);
   }
   res.render("search", { pageTitle: searchingBy, searchingBy, images });
 };
@@ -172,7 +172,7 @@ const deleteComment = async (req, res) => {
   try {
     await Image.updateOne(
       { _id: id },
-      { $pull: { comments: { _id: commentId } } }
+      { $pull: { comments: commentId } }
     );
     await Comment.findByIdAndDelete(commentId);
     res.redirect(routes.imageDetail(id));
