@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
   avatarUrl: {
     type: String,
     default:
-      "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/unknown_profile.jpeg"
+      "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/unknownartist_final.png"
   },
   career: [String],
   follower: [
