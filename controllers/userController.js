@@ -84,8 +84,21 @@ const userDetail = async (req, res) => {
       params: { name: viewedName }
     } = req;
     const viewedUser = await User.findOne({ name: viewedName })
-      .populate("images", "fileUrl title")
-      .populate("likeImages");
+      .populate("likeImages")
+      .populate({
+        path: "images",
+        select: "fileUrl title",
+        populate: [{
+          path: "creator",
+          select: "name avatarUrl"
+        }, {
+          path: "comments",
+          populate: {
+            path: "creator",
+            select: "name avatarUrl"
+          }
+        }]
+      });
     const images = viewedUser.images;
     if (req.user) {
       const {
@@ -107,7 +120,6 @@ const userDetail = async (req, res) => {
         pageTitle: "User Detail",
         viewedUser,
         viewerFollowesViewedUser,
-        images
       });
     }
   } catch (err) {

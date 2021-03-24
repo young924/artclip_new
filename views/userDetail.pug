@@ -41,7 +41,7 @@ block content
             .user__detail__my-images
                 .user__detail__my-images__title 내 작품
                 .grid__container
-                    for image in images.reverse()
+                    for image in viewedUser.images.reverse()
                         +imageBlock(image)
                         //- .imageBlock
                         //-     a.imageBlock__img(href=routes.imageDetail(image.id))
