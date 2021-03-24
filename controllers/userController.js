@@ -87,7 +87,7 @@ const userDetail = async (req, res) => {
       .populate("likeImages")
       .populate({
         path: "images",
-        select: "fileUrl title",
+        select: "fileUrl title likes",
         populate: [{
           path: "creator",
           select: "name avatarUrl"
