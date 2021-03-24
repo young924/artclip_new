@@ -1,4 +1,5 @@
 extends layouts/main.pug
+include mixins/imageBlock
 
 block content
     .user__detail
@@ -41,26 +42,27 @@ block content
                 .user__detail__my-images__title 내 작품
                 .grid__container
                     for image in images.reverse()
-                        .imageBlock
-                            a.imageBlock__img(href=routes.imageDetail(image.id))
-                                img(src=image.fileUrl)
-                            a.imageBlock__container(href=routes.imageDetail(image.id))
-                            a.imageBlock__profile(href="#")
-                                if viewedUser.avatarUrl
-                                    img(src=viewedUser.avatarUrl, class="imageBlock__profile")
-                                else
-                                    img(src=unknownArtist, class="user__detail__profile__info__avatar__img__unknown")
-                            h1
-                                a.imageBlock__title #{image.title}
-                            .imageBlock__btn
-                                a.imageBlock__btn__heart(href='#')
-                                    i.far.fa-heart(style='color: white')
-                                    span 좋아요
-                                a.imageBlock__btn__comment(href="#")
-                                    i.i.far.fa-comment-dots(style='color: white')
-                                    span 댓글
-                            a.imageBlock__btn__more(href='#')
-                                i.fas.fa-ellipsis-v(style='color: white;')
+                        +imageBlock(image)
+                        //- .imageBlock
+                        //-     a.imageBlock__img(href=routes.imageDetail(image.id))
+                        //-         img(src=image.fileUrl)
+                        //-     a.imageBlock__container(href=routes.imageDetail(image.id))
+                        //-     a.imageBlock__profile(href="#")
+                        //-         if viewedUser.avatarUrl
+                        //-             img(src=viewedUser.avatarUrl, class="imageBlock__profile")
+                        //-         else
+                        //-             img(src=unknownArtist, class="user__detail__profile__info__avatar__img__unknown")
+                        //-     h1
+                        //-         a.imageBlock__title #{image.title}
+                        //-     .imageBlock__btn
+                        //-         a.imageBlock__btn__heart(href='#')
+                        //-             i.far.fa-heart(style='color: white')
+                        //-             span 좋아요
+                        //-         a.imageBlock__btn__comment(href="#")
+                        //-             i.i.far.fa-comment-dots(style='color: white')
+                        //-             span 댓글
+                        //-     a.imageBlock__btn__more(href='#')
+                        //-         i.fas.fa-ellipsis-v(style='color: white;')
             .user__detail__like-images 
                 .user__detail__like-images__title 좋아요 한 작품
                 .grid__container

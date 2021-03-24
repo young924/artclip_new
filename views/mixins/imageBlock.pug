@@ -1,29 +1,20 @@
 mixin imageBlock(image = {})
-    //- .imageBlock
-    //-     a(href=routes.imageDetail(image._id))
-    //-         img(src=image.fileUrl)
-    //-         .imageBlock__info
-    //-             a(href=routes.imageDetail(image._id))
-    //-                 h1=image.title
-    //-                 a.btn(href='#')
-    //-                     i.far.fa-heart(style='color:white')
-    //-                 a.btn(href='#')
-    //-                     i.far.fa-share-square(style='color:white')
-    
     .imageBlock
         a.imageBlock__img(href=routes.imageDetail(image._id))
             img(src=image.fileUrl)
         a.imageBlock__container(href=routes.imageDetail(image._id))
         a.imageBlock__profile(href=`/users/${image.creator.name}`)
             img(src=image.creator.avatarUrl)
-        h1
-            a.imageBlock__title(href=routes.imageDetail(image._id)) #{image.title} by #{image.creator.name}
-        //- .imageBlock__btn
-        //-     a.imageBlock__btn__heart(href='#')
-        //-         i.far.fa-heart(style='color: white')
-        //-         span 좋아요
-        //-     a.imageBlock__btn__comment(href="#")
-        //-         i.i.far.fa-comment-dots(style='color: white')
-        //-         span 댓글
-        //- a.imageBlock__btn__more(href='#')
-        //-     i.fas.fa-ellipsis-v(style='color: white;')
+        .imageBlock__info
+            a.imageBlock__info__title__and__likes(href=routes.imageDetail(image._id)) 
+                .imageBlock__info__title #{image.title}
+                .imageBlock__info__likes
+                    i.far.fa-heart
+                    span :
+                    .imageBlock__info__likes__number=image.likes
+            a.imageBlock__info__artist__and__comments(href=routes.imageDetail(image._id))
+                .imageBlock__artist #{image.creator.name}
+                .imageBlock__info__comments
+                    i.far.fa-comment-dots
+                    span :
+                    .imageBlock__info__comments__number=image.comments.length
