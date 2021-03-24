@@ -15,7 +15,7 @@ function handleSubmit(event) {
 function handleCheck(event) {
   if (joinCheck.checked) {
     checked = true;
-    joinBtn.style.backgroundColor = "rgba(140, 19, 229, 0.5)";
+    joinBtn.style.backgroundColor = "rgba(161,52,255,1)";
     joinBtn.style.cursor = "pointer";
   } else {
     checked = false;
