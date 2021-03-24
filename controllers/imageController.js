@@ -172,7 +172,7 @@ const deleteComment = async (req, res) => {
   try {
     await Image.updateOne(
       { _id: id },
-      { $pull: { comments: { _id: commentId } } }
+      { $pull: { comments: commentId } }
     );
     await Comment.findByIdAndDelete(commentId);
     res.redirect(routes.imageDetail(id));
