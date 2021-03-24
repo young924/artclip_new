@@ -10,11 +10,9 @@ mixin imageBlock(image = {})
                 .imageBlock__info__title #{image.title}
                 .imageBlock__info__likes
                     i.far.fa-heart
-                    span :
                     .imageBlock__info__likes__number=image.likes
             a.imageBlock__info__artist__and__comments(href=routes.imageDetail(image._id))
-                .imageBlock__artist #{image.creator.name}
+                .imageBlock__info__artist #{image.creator.name}
                 .imageBlock__info__comments
                     i.far.fa-comment-dots
-                    span :
                     .imageBlock__info__comments__number=image.comments.length
