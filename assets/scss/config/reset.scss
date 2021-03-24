@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: 'GmarketSansBold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+  src: url("../GmarketSansBold.otf") format('opentype'),
+  url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -92,7 +93,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: GmarketSansBold;
   vertical-align: baseline;
   text-decoration: none;
 }
