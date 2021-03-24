@@ -67,7 +67,7 @@ const localsMiddleware = (req, res, next) => {
   res.locals.loginImage =
     "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/login.jpg";
   res.locals.loggedUser = req.user || null;
-  res.locals.unknownArtist = "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/unknown_profile.jpeg";
+  res.locals.unknownArtist = "https://artclip2021.s3.ap-northeast-2.amazonaws.com/source/unknownartist.png";
   next();
 };
 
