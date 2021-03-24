@@ -46,7 +46,10 @@ block content
                                 img(src=image.fileUrl)
                             a.imageBlock__container(href=routes.imageDetail(image.id))
                             a.imageBlock__profile(href="#")
-                                img(src=image.fileUrl)
+                                if viewedUser.avatarUrl
+                                    img(src=viewedUser.avatarUrl, class="imageBlock__profile")
+                                else
+                                    img(src=unknownArtist, class="user__detail__profile__info__avatar__img__unknown")
                             h1
                                 a.imageBlock__title #{image.title}
                             .imageBlock__btn
