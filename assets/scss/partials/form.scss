@@ -1,14 +1,24 @@
 /* input 관련 */
 
+input {
+  border: 1px solid #a8a8a8;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 0px solid #a8a8a8;
+  transition: box-shadow 0.1s ease-in;
+  box-shadow: 0px 0px 0.15vw #a134ff;
+}
+
 .user__input__select__short,
 .user__input__text,
 .user__input__text__short {
-  all: unset;
   text-align: left;
   height: 2vw;
   font-size: 1vw;
   border-radius: 0.5vw;;
-  border: 1px solid #a8a8a8;
   padding-left: 0.3vw;
   margin: 0.5vw 0vw 0.5vw 0vw;
 }
@@ -30,21 +40,11 @@
   width: 9vw;
 }
 
-.user__input__select__short:focus,
-.user__input__text:focus,
-.user__input__text__short:focus {
-  border: 0px solid #a8a8a8;
-  transition: box-shadow 0.1s ease-in;
-  box-shadow: 0px 0px 0.15vw #a134ff;
-}
-
 .input__text {
   width: 15vw;
   height: 2vw;
   font-size: 1vw;
   border-radius: 0.5vw;
-  border: 0px solid $main-color;
-  box-shadow: 0px 0px 0.15vw #a134ff;
   margin: 0 0 2vw 0;
 }
 
@@ -55,9 +55,7 @@
   height: 2vw;
   font-size: 1vw;
   border-radius: 0.5vw;
-  border: 0px solid $main-color;
   margin-bottom: 1%;
-  box-shadow: 0px 0px 0.15vw #a134ff;
   margin: 0.5vw 0vw 0.5vw 0vw;
   padding-left: 0.3vw;
 }
@@ -83,7 +81,6 @@
   height: 50vw;
   font-size: 1vw;
   border-radius: 0.5vw;
-  border: 1px solid $main-color;
   margin: 0 0 2vw 0;
 }
 
@@ -93,7 +90,6 @@
   width: 15vw;
   font-size: 1vw;
   border-radius: 0.5vw;
-  border: 1px solid $main-color;
   margin-bottom: 1vw;
 }
 
@@ -116,7 +112,6 @@
   width: 35vw;
   margin: 0 0 1vw 0;
   border-radius: 0.5vw;
-  box-shadow: 0px 0px 0.15vw #A134FF;
 }
 
 .input__text__upload {
@@ -124,8 +119,6 @@
   height: 2vw;
   font-size: 1vw;
   border-radius: 0.5vw;
-  border: 0px solid $main-color;
-  box-shadow: 0px 0px 0.15vw #A134FF;
   margin: 0 0 1vw 0;
 }
 
@@ -134,8 +127,6 @@
   height: 16vw;
   font-size: 1vw;
   border-radius: 0.5vw;
-  border: 0px solid $main-color;
-  box-shadow: 0px 0px 0.15vw #A134FF;
   margin: 0 0 1vw 0;
 }
 
