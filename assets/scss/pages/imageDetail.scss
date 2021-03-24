@@ -1,9 +1,12 @@
+.image__detail {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
 .image__detail__title {
   font-size: 2vw;
-  padding-top: 1vw;
-  margin-bottom: 1vw;
-  margin-left: 1vw;
-  margin-right: 1vw;
+  padding-top: 1.5vw;
+  margin-bottom: 1.5vw;
 }
 
 h3 {
@@ -25,8 +28,6 @@ h3 {
 }
 
 .image__detail__container {
-  margin-left: 15%;
-  margin-right: 15%;
   text-align: center;
   border-radius: 0.5vw;
 }
@@ -84,6 +85,10 @@ h3 {
   display: flex;
   justify-content: space-between;
   margin: 0 0 0.3vw 0;
+}
+
+.image__detail__comments-list__comments__contents span:first-child {
+  color: grey;
 }
 
 .add__comment {
