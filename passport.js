@@ -1,4 +1,5 @@
 require("dotenv").config();
+const crypto = require("crypto");
 
 const passport = require("passport");
 const User = require("./models/User");
@@ -23,26 +24,23 @@ passport.use(
     async (_, __, profile, cb) => {
       console.log(profile);
       try {
-        let {
+        const {
           id,
           username: name,
           _json: {
-            properties: { profile_image },
-            kakao_account: { email }
+            properties: { profile_image }
           }
         } = profile;
-        // if email is not given, create random string
-        if (!email)
-          email =
-            Math.random().toString(36).substring(7) +
-            "@" +
-            Math.random().toString(36).substring(7) +
-            ".com";
+        const email =
+          crypto.createHash("sha512").update(String(id)).digest("base64") +
+          "@randomEmail.com";
 
         const user = await User.findOne({ email });
         if (user) {
-          user.kakaoID = id;
-          await user.save();
+          if (!user.kakoId) {
+            user.kakaoID = id;
+            await user.save();
+          }
           return cb(null, user);
         } else {
           const newUser = await User.create({
@@ -76,11 +74,13 @@ passport.use(
       } = profile;
       try {
         const name = email.split("@")[0];
-        console.log(id, email, name);
-        const user = await User.findOne({ name });
+        // console.log(id, email, name);
+        const user = await User.findOne({ email });
         if (user) {
-          user.naverId = id;
-          await user.save();
+          if (!user.naverId) {
+            user.naverId = id;
+            await user.save();
+          }
           return cb(null, user);
         } else {
           const newUser = await User.create({
@@ -106,24 +106,31 @@ passport.use(
       callbackURL: "/auth/facebook/callback"
     },
     async (_, __, profile, cb) => {
-      console.log(profile);
-      const {
-        id,
-        _json: { name }
-      } = profile;
-      // facebook doesn't give email address
-      const email =
-        Math.random().toString(36).substring(7) +
-        "@" +
-        Math.random().toString(36).substring(7) +
-        ".com";
       try {
-        const newUser = await User.create({
-          name,
-          email,
-          facebookId: id
-        });
-        return cb(null, newUser);
+        console.log(profile);
+        const {
+          id,
+          _json: { name }
+        } = profile;
+        // facebook doesn't give email address
+        const email =
+          crypto.createHash("sha512").update(String(id)).digest("base64") +
+          "@randomEmail.com";
+        const user = await User.findOne({ email });
+        if (user) {
+          if (!user.facebookId) {
+            user.facebookId = id;
+            await user.save();
+          }
+          return cb(null, user);
+        } else {
+          const newUser = await User.create({
+            name,
+            email,
+            facebookId: id
+          });
+          return cb(null, newUser);
+        }
       } catch (err) {
         return cb(err);
       }
