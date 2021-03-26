@@ -25,14 +25,14 @@ const ImageSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  likes: {
-    type: Number,
-    default: 0
-  },
-  dislikes: {
-    type: Number,
-    default: 0
-  },
+  likes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }],
+  dislikes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }],
   report: {
     type: Number,
     default: 0
