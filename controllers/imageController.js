@@ -5,7 +5,7 @@ const Comment = require("../models/Comment");
 
 const home = async (req, res) => {
   try {
-    const images = await Image.find({}).sort({ _id: -1 }).populate("creator");
+    const images = await Image.find({}).sort({ _id: -1 }).populate("creator").populate("likes");
     res.render("home", { pageTitle: "Home", images });
   } catch (err) {
     console.log(err);
@@ -66,6 +66,7 @@ const imageDetail = async (req, res) => {
     let like;
     const image = await Image.findById(id)
       .populate("creator")
+      .populate("likes")
       .populate({
         path: "comments",
         populate: {
@@ -191,14 +192,15 @@ const postLike = async (req, res) => {
   try {
     const image = await Image.findById(id);
     if (like === true && !user.likeImages.includes(id)) {
-      image.likes += 1;
+      image.likes.push(user);
       user.likeImages.push(image);
       user.save();
       image.save();
     } else if (like === false && user.likeImages.includes(id)) {
-      image.likes -= 1;
-      const index = user.likeImages.indexOf(id);
-      user.likeImages.splice(index, 1);
+      const userIndex = image.like.indexOf(user);
+      image.likeImages.splice(userIndex, 1);
+      const imageIndex = user.likeImages.indexOf(id);
+      user.likeImages.splice(imageIndex, 1);
       user.save();
       image.save();
     }

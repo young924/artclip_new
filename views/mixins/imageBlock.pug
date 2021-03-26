@@ -10,7 +10,7 @@ mixin imageBlock(image = {})
                 .imageBlock__info__title #{image.title}
                 .imageBlock__info__likes
                     i.far.fa-heart
-                    .imageBlock__info__likes__number=image.likes
+                    .imageBlock__info__likes__number=image.likes.length
             a.imageBlock__info__artist__and__comments(href=routes.imageDetail(image._id))
                 .imageBlock__info__artist #{image.creator.name}
                 .imageBlock__info__comments
