@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3vw;
+  height: 3.5vw;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -42,7 +42,7 @@
 .search__text {
   display: flex;
   height: 1.5vw;
-  padding-top: 0.2vw;
+  padding-top: 0.3vw;
   font-size: 1vw;
   width: 15vw;
   border: none;
@@ -65,9 +65,9 @@
 
 .header__column__divider {
   width: 1px;
-  height: 2vw;
-  margin-left: 1.5vw;
-  margin-right: 1.5vw;
+  height: 1.5vw;
+  margin-left: 1.2vw;
+  margin-right: 1.2vw;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -94,7 +94,7 @@
   border: 0px;
   border-radius: 1vw;
   height: 2vw;
-  width: 5.5vw;
+  width: 5vw;
   font-size: 1vw;
   margin: 0 auto;
   font-size: 1vw;
