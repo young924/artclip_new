@@ -19,10 +19,11 @@ header.header
                 .header__column__divider
                 a(href=routes.userDetail(loggedUser.name) class="header__column__profile")
                     img(src=loggedUser.avatarUrl, class="header__column__profile__img")
+                    .header__column__profile__username=loggedUser.name
                 .header__column__divider
                 .header__column__profile__logout
                     a(href=routes.logout)
-                        i.fas.fa-sign-out-alt
+                        |로그아웃
                 .header__column__divider
                 a(href=`/images${routes.upload}`, class="header__column__upload")
                     span 업로드

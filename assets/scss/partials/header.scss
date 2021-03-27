@@ -72,16 +72,21 @@
 }
 
 .header__column__profile {
-  width: 2.5vw;
-  height: 2.5vw;
-  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .header__column__profile__img {
-  width: 2.5vw;
-  height: 2.5vw;
+  width: 2vw;
+  height: 2vw;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.header__column__profile__username {
+  margin-top: 0.45vw;
+  margin-left: 0.6vw;
 }
 
 .header__column__upload {
@@ -89,7 +94,7 @@
   border: 0px;
   border-radius: 1vw;
   height: 2vw;
-  width: 6vw;
+  width: 5.5vw;
   font-size: 1vw;
   margin: 0 auto;
   font-size: 1vw;

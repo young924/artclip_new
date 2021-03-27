@@ -142,6 +142,7 @@ textarea:focus {
   height: 2vw;
   font-size: 1vw;
   margin-bottom: 1vw;;
+  cursor: pointer;
 }
 
 .submit__btn {
@@ -164,6 +165,7 @@ textarea:focus {
   display: inline;
   background: none;
   border: 0px;
+  cursor: pointer;
 }
 
 .submit__btn__upload {
@@ -176,5 +178,6 @@ textarea:focus {
   margin-bottom: 1vw;
   width: 15vw;
   display: block;
+  cursor: pointer;
 }
 
