@@ -32,7 +32,7 @@ passport.use(
           }
         } = profile;
         const email =
-          crypto.createHash("sha512").update(String(id)).digest("base64") +
+          crypto.createHash("sha512").update(`kakao${id}`).digest("base64") +
           "@randomEmail.com";
 
         const user = await User.findOne({ email });
@@ -114,7 +114,7 @@ passport.use(
         } = profile;
         // facebook doesn't give email address
         const email =
-          crypto.createHash("sha512").update(String(id)).digest("base64") +
+          crypto.createHash("sha512").update(`facebook${id}`).digest("base64") +
           "@randomEmail.com";
         const user = await User.findOne({ email });
         if (user) {
