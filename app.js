@@ -28,7 +28,11 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "img-src": ["'self'", "artclip2021.s3.ap-northeast-2.amazonaws.com"]
+        "img-src": [
+          "'self'",
+          "artclip2021.s3.ap-northeast-2.amazonaws.com",
+          "https://k.kakaocdn.net"
+        ]
       }
     }
   })
