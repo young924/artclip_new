@@ -1,0 +1,9 @@
+extends layouts/main.pug
+include mixins/imageBlock
+
+block content
+    .main__feed
+        .titlebar 오늘의 작업
+        .grid__container
+            each image in images
+                +imageBlock(image)

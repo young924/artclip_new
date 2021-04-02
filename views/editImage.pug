@@ -1,0 +1,14 @@
+extends layouts/main.pug
+
+block content
+    .editimage__form
+        form(action=routes.editImage(image._id), method='post')
+            .editimage__title 제목
+            input(type='text', value=image.title, name='title' class="input__text")
+            .editimage__description 내용
+            textarea(name='description' class="input__textarea")=image.description
+            input(type='submit', value='Update' class='submit__btn')
+        .delete-image
+            a(href=routes.deleteImage(image._id))
+                button Delete Image
+
