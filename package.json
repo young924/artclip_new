@@ -4,7 +4,8 @@
   "description": "2021 art clip",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon --exec babel-node init.js --delay 2 -e js,pug,css",
+    "build:server": "babel src -d build",
+    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 -e js,pug,css",
     "dev:assets": "WEBPACK_ENV=development webpack -w",
     "build:assets": "WEBPACK_ENV=production webpack"
   },

@@ -3,8 +3,8 @@ const autoprefixer = require("autoprefixer");
 const ExtractCSS = require("extract-text-webpack-plugin");
 
 const MODE = process.env.WEBPACK_ENV;
-const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
-const OUTPUT_DIR = path.join(__dirname, "static");
+const ENTRY_FILE = path.resolve(__dirname, "src", "assets", "js", "main.js");
+const OUTPUT_DIR = path.join(__dirname, "src", "static");
 
 const config = {
   entry: ["@babel/polyfill", ENTRY_FILE],
