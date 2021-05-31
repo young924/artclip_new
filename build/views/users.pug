@@ -1,0 +1,9 @@
+extends layouts/main.pug
+
+block content
+    .users__all
+        for user in users
+            a.user__profile(href=routes.userDetail(user.name))
+                .user__avatar
+                .user=user.name
+                .user__description

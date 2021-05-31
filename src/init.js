@@ -1,3 +1,4 @@
+require("regenerator-runtime");
 const app = require("./app");
 const dotenv = require("dotenv");
 const setUserRefresh = require("./userRefresh");

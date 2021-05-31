@@ -1,0 +1,18 @@
+mixin userdetail_imageBlock(image = {})
+    .userDetail__imageBlock
+        a.userDetail__imageBlock__img(href=routes.imageDetail(image._id))
+            img(src=image.fileUrl)
+        a.userDetail__imageBlock__container(href=routes.imageDetail(image._id))
+        a.userDetail__imageBlock__profile(href=`/users/${image.creator.name}`)
+            img(src=image.creator.avatarUrl)
+        .userDetail__imageBlock__info
+            a.userDetail__imageBlock__info__title__and__likes(href=routes.imageDetail(image._id)) 
+                .userDetail__imageBlock__info__title #{image.title}
+                .userDetail__imageBlock__info__likes
+                    i.far.fa-heart
+                    .userDetail__imageBlock__info__likes__number=image.likes
+            a.userDetail__imageBlock__info__artist__and__comments(href=routes.imageDetail(image._id))
+                .userDetail__imageBlock__info__artist #{image.creator.name}
+                .userDetail__imageBlock__info__comments
+                    i.far.fa-comment-dots
+                    .userDetail__imageBlock__info__comments__number=image.comments.length

@@ -1,0 +1,29 @@
+header.header
+    .header__logo
+        a(href = "/")
+            img.header__logo__image(src=logoImageUrl)
+    .header__right
+        .header__search
+            i.fas.fa-search
+            form(action=routes.search, method='get')
+                input.search__text(type='text', placeholder='Searching by term...', name='term')
+        .header__column
+            if !loggedUser
+                .header__column__divider
+                .header__column__signin
+                    a(href=routes.login) 로그인
+                .header__column__divider
+                .header__column__signup
+                    a(href=routes.join) 회원가입
+            else 
+                .header__column__divider
+                a(href=routes.userDetail(loggedUser.name) class="header__column__profile")
+                    img(src=loggedUser.avatarUrl, class="header__column__profile__img")
+                    .header__column__profile__username=loggedUser.name
+                .header__column__divider
+                .header__column__profile__logout
+                    a(href=routes.logout)
+                        |로그아웃
+                .header__column__divider
+                a(href=`/images${routes.upload}`, class="header__column__upload")
+                    span 업로드
