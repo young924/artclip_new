@@ -2,6 +2,8 @@
 
 art clip 2021
 
+deployed at : https://artclip.herokuapp.com/
+
 ## Backend
 
 - [x] 카카오톡 로그인
